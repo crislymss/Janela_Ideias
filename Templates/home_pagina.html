@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- FIM DO GOOGLE FONTS-->
+
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FIM BOOTSTRAP ICONS -->
+
+    <!-- LINK DO CSS-->
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rodape.css' %}">
+
+    <!-- FIM LINK DO CSS-->
+
+    <!-- LINK DO JS-->
+    <script src="{% static 'js/home_pagina.js' %}" defer></script>
+    <!-- FIM LINK DO JS-->
+
+    <title>InovaUFPI</title>
+</head>
+
+<body>
+    <!-- Top-bar -->
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+          
+                <a href="home_pagina.html" class="logo">
+                    <img src="{% static 'images/logoinova.png' %}" alt="Logo">
+                </a>
+    
+                <nav id="opcoes-menu">
+                    <ul>
+                        <a class="nav-link" href="#section-1">Home</a>
+                        <a class="nav-link" href="#section-2">Informações</a>
+                        <a class="nav-link" href="#section-3">Sobre</a>
+                    </ul>
+                    <div class="line" id="line"></div>
+                </nav>
+                
+                <div class="nada"> </div>
+            </div>
+        </div>
+    </header>
+  
+    <!-- SESSION 1 - BANNER -->
+    <section id ="section-1">
+        <div class="banner" style=" background-image: url('{% static 'images/BOAS.png' %}')">
+            <div class="container-itens"> 
+                
+                <div class="itens-banner">
+                    <div class="texto-banner">
+                        <div class="gif">
+                            <img src="{% static 'images/icons8-luz-acesa.gif' %}" alt="">
+                        </div>
+                        <h2>Seja bem-vindo ao</h2>
+                    </div>
+                    <div class="itens">
+                        <h1>InovaUFPI   </h1>
+                        <p>Inovação é a chave que abre as portas do futuro.</p>
+                    
+                        <div class="botao-banner">
+                            <a href="{% url 'catalogo_startup' %}">
+                                <button class="btn">Começar <i class="bi bi-arrow-right"></i></button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- FIM SESSION 1 - BANNER -->
+
+    <!-- SESSION 2 - INFORMAÇÕES -->
+    <section id="section-2">
+        <div class="slider-content">
+
+            <input type="radio" name="btn-radio" id="radio1">
+            <input type="radio" name="btn-radio" id="radio2">
+            <input type="radio" name="btn-radio" id="radio3">
+            <input type="radio" name="btn-radio" id="radio4">
+
+            {% if noticias|length >= 4 %}
+                <div class="slide-box primeiro">
+                    <a href="{{ noticias.0.link }}">
+                        <div class="slide-1" style="background-image: url('{{ noticias.0.imagem.url }}');" alt="{{ noticias.0.imagem.url }}">
+                            <div class="slide-content">
+                                <p class="descricao">{{ noticias.0.descricao }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="slide-box">
+                    <a href="{{ noticias.1.link }}">
+                        <div class="slide-2" style="background-image: url('{{ noticias.1.imagem.url }}');" alt="{{ noticias.1.imagem.url }}">
+                            <div class="slide-content">
+                                <p class="descricao">{{ noticias.1.descricao }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="slide-box">
+                    <a href="{{ noticias.2.link }}">
+                        <div class="slide-3" style="background-image: url('{{ noticias.2.imagem.url }}');" alt="{{ noticias.2.imagem.url }}">
+                            <div class="slide-content">
+                                <p class="descricao">{{ noticias.2.descricao }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="slide-box">
+                    <a href="{{ noticias.3.link }}">
+                        <div class="slide-4" style="background-image: url('{{ noticias.3.imagem.url }}');" alt="{{ noticias.3.imagem.url }}">
+                            <div class="slide-content">
+                                <p class="descricao">{{ noticias.3.descricao }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% else %}
+                <p class="no-results">Menos de 4 notícias disponíveis.</p>
+            {% endif %}
+
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+            </div>
+
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+
+            <script>
+                var cont = 1;
+                document.getElementById('radio1').checked = true;
+
+                setInterval(() => {
+                    proximaImg();
+                }, 5000);
+
+                function proximaImg() {
+                    cont++;
+
+                    if (cont > 4) {
+                        cont = 1;
+                    }
+
+                    document.getElementById('radio' + cont).checked = true;
+                }
+            </script>
+        </div>
+    </section>
+    <!-- FIM SESSION 2 - INFORMAÇÕES -->
+
+    <!-- SESSION 3 - SOBRE -->
+    <section id="section-3">
+
+        <div class="informacoes">
+            <h1>Conheça o InovaUFPI</h1>
+            <p>Conheça um pouco mais sobre o Inova UFPI, uma plataforma dedicada a destacar e promover as iniciativas inovadoras de startups. Explore como essas ideias criativas estão moldando o futuro e fazendo a diferença em diversos setores.</p>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="img-card" style=" background-image: url('{% static 'images/ideias.jpg' %}')"></div>
+                    <h2>Ideias Inovadoras</h2>
+                    <p>Descubra no Inova UFPI uma vitrine de projetos inovadores desenvolvidos por talentos de startups. Explore soluções criativas em tecnologia, saúde e sustentabilidade. Conecte-se com ideias que promovem mudanças e inspire-se para transformar o futuro.</p>
+                </div>
+            
+                <div class="card">
+                    <div class="img-card" style=" background-image: url('{% static 'images/empresaa.jpg' %}')"></div>
+                    <h2>Empresas Apoiadas</h2>
+                    <p>Descubra o Catálogo de Startups do Inova UFPI, onde apresentamos uma variedade de projetos inovadores. Encontre startups com soluções criativas que estão revolucionando diversos setores. Conecte-se com ideias inspiradoras e faça parte da transformação.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- FIM SESSION 3 - SOBRE -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="rodape">
+            <img src="{% static 'images/ufpi.png' %}" alt="logo">
+
+
+            <div class="info">
+                <div class="botoes">
+                    <button onclick="window.location.href='https://www.instagram.com/gaai.ufpi?igsh=c2I0ZWdoMmoyb2s0';">
+                        <i class="bi bi-instagram"></i> @gaai.ufpi
+                    </button>
+                
+                    <button onclick="copyEmail()">
+                        <i class="bi bi-envelope-fill"></i> gaai@ufpi.edu.br
+                    </button>
+                </div>
+                
+                <p>Endereco: © 2024, Bairro Ininga - Teresina - PI -CEP: 64049-550</p>
+                <p>Universidade Federal do Piauí - UFPI Campus Universitário Ministro Petrônio Portella</p>
+                <p>Uma acao da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
+
+            </div>
+
+            <img src="{% static 'images/gaai-img-bg.png' %}" alt="logo">
+
+        </div>
+
+    </footer>
+    <!-- FIM FOOTER -->
+
+</body>
+</html>

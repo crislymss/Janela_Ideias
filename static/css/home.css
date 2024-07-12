@@ -1,0 +1,766 @@
+/*CONFIGURAÇÕES GERAIS*/
+/*{% load static %}*/
+.slide-content a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit the color from parent elements */
+}
+
+.slide-content a:hover {
+    text-decoration: underline; /* Add underline on hover, if desired */
+    color: inherit; /* Inherit the color from parent elements */
+}
+
+* {
+    margin: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Efeito de rolagem do site*/
+html {
+    height: 200vh;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #E9F2F4;
+}
+
+header{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+header.rolagem{
+    background-color: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.section {
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+header ul a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    margin-right: 40px;
+}
+
+
+#line {
+    height: 1px;
+    background-color: #033652;
+    width: 40px; 
+    position: absolute;
+    bottom: -5px; 
+    left: 0; 
+    transition: left 0.3s ease, width 0.3s ease;
+}
+.container {
+    max-width: 1920px; 
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+}
+
+#opcoes-menu{
+    margin-top: 80px;
+}
+
+#opcoes-menu {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 2px 0; 
+}
+
+#opcoes-menu ul {
+    display: flex;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    position: relative; 
+}
+
+#opcoes-menu li {
+    margin: 0 15px; 
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none; 
+    color: #033652; 
+    font-weight: bold;
+    padding: 2px;
+    transition: color 0.3s;
+    font-size: 13px;
+}
+
+.nav-link:hover {
+    color: #2f12c1; 
+}
+
+#section-1{
+    background-color: #033652;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 2%;
+}
+
+.itens-banner{
+    margin-top: -80px;
+}
+
+.banner {
+    margin: auto 0;
+  
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 600px; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+#section-1 .banner .gif {
+    margin-bottom: -2%; 
+}
+
+.banner .gif {
+    max-width: 100px; 
+    height: auto;
+    margin-right: 20px;
+}
+
+.banner .gif img {
+    width: 50px;
+    height: auto;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.itens{
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: -10px;
+}
+
+.texto-banner{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-left: -9px;
+}
+
+.container-itens {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    width: 100%; 
+    height: 100vh; 
+    box-sizing: border-box; 
+    padding: 20px; 
+}
+
+
+.banner .itens-banner h1{
+    color:#033652;
+    font-size: 80px;
+    margin-top: -20px;
+}
+
+.itens-banner{
+    margin-top: -60px;
+}
+
+.itens-banner .texto-banner h2{
+    color: #033652;
+    font-size: 1.9em;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.botao-banner button{
+    background-color: #033652;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.botao-banner button:hover{
+    background-color:rgb(5, 81, 147);
+    color: #f8f8f8; 
+    border: none;  
+}
+
+
+/* SESSÃO 2 - INFORMAÇÕES */
+
+#section-2{
+    margin: 0 auto;
+    width: 100%;
+    height: 440px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.slider-content{
+    width: 400%;
+    height: auto;
+    display: flex;
+}
+
+.slider-content input, .img-mobile{
+    display: none;
+}
+
+.slide-box{
+    width: 25%;
+    height: 400px;
+    text-align: center;
+    transition: 1s;
+    position: relative;
+    padding: 0;
+}
+
+.slide-box img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.slide-content{
+    padding: 30px;
+    margin-top: 13%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    width: 100%;
+    height: 210px;
+    font-size: 18px;
+    text-align: left; 
+    position: absolute;
+}
+
+.slide-box a{
+    color: white;
+    text-decoration: none;
+}
+
+.slide-content p{
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.slide-1, .slide-2, .slide-3, .slide-4{
+    width: 100%;
+    height: 380px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-color: black;
+    padding: 20px;
+}
+
+input[type="radio"] {
+    display: none; 
+}
+
+.nav-manual .manual-btn {
+    width: 15px;  
+    height: 15px; 
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: transparent;
+}
+
+#radio1:checked ~ .nav-manual .manual-btn[for="radio1"],
+#radio2:checked ~ .nav-manual .manual-btn[for="radio2"],
+#radio3:checked ~ .nav-manual .manual-btn[for="radio3"],
+#radio4:checked ~ .nav-manual .manual-btn[for="radio4"] {
+    background-color: white;
+}
+
+.nav-auto div {
+    width: 15px;  
+    height: 15px; 
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: transparent;
+}
+
+#radio1:checked ~ .nav-auto .auto-btn1,
+#radio2:checked ~ .nav-auto .auto-btn2,
+#radio3:checked ~ .nav-auto .auto-btn3,
+#radio4:checked ~ .nav-auto .auto-btn4 {
+    background-color: white;
+}
+
+.nav-manual, .nav-auto {
+    position: absolute;
+    width: 100%;
+    margin-top: 24%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child) {
+    margin-right: 10px;
+}
+
+.nav-manual .manual-btn:hover {
+    background-color: white;
+}
+
+#radio1:checked ~ .primeiro {
+    margin-left: 0%;
+}
+
+#radio2:checked ~ .primeiro {
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .primeiro {
+    margin-left: -50%;
+}
+
+#radio4:checked ~ .primeiro {
+    margin-left: -75%;
+}
+
+
+
+/* FIM DA SESSÃO 2*/
+
+/* SESSÃO 3 - CARDS */
+
+.informacoes{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 4%;
+}
+
+.informacoes h1{
+    color: #033652;
+    font-size: 40px;
+    text-align: center;
+}
+
+.informacoes p{
+    color: #555;
+    font-size: 15px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: calc(50% - 40px);
+    box-sizing: border-box;
+
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px;
+
+    border-top: 10px solid #033652;
+
+    overflow: hidden; 
+    position: relative;
+
+}
+
+.img-card {
+    width: 100%;
+    height: 200px; 
+    background-size: cover;
+    background-position: center;
+}
+
+.card h2 {
+    text-align: center;
+    color: #033652;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 1em;
+    color: #555;
+    text-align: center;
+}
+
+/* FIM DA SESSÃO 3 */
+
+@media (max-width: 1281px){
+    .nav-manual, .nav-auto{
+        margin-top: 27%;
+    }
+    .slide-box{
+        height: 400px;
+    }
+    .slide-content{
+        height: 160px;
+        font-size: 16px;
+    }
+    #line{
+        width: 45px;
+    }
+}
+
+@media (max-width: 1115px){
+    .nav-manual, .nav-auto{
+        margin-top: 31%;
+    }
+    .slide-content{
+        height: 160px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 884px) {
+    .container-itens {
+        margin-top: -180px;
+    }
+
+    .slide-content p{
+        font-size: 1.5em;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 40%;
+    }
+
+    .slide-content{
+        margin-top: 20%;
+        width: 100%;
+        height: 140px;
+    }
+
+    .informacoes h1{
+        font-size: 30px;
+    }
+
+    .informacoes p{
+        font-size: 0.8em;
+    }
+
+    .img-card {
+        width: 100%;
+        height: 150px; 
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card{
+        padding: 7px;
+    }
+
+    .card h2 {
+        font-size: 1em;
+    }
+
+    .card p{
+        font-size: 0.8em;
+    }
+
+    html {
+        height: 100vh;
+    }
+
+}
+
+@media (max-width: 835px) {
+    .banner{
+        height: 520px;
+    }
+    .container-itens {
+        margin-top: -280px;
+    }
+}
+
+@media (max-width: 820px){
+    .container-itens {
+        margin-top: -270px;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 42%;
+    }
+}
+
+@media (max-width: 800px){
+    .container-itens {
+        margin-top: -320px;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 42%;
+    }
+}
+
+@media (max-width: 768px){
+    .container-itens {
+        margin-top: -200px;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 45%;
+    }
+
+    .banner{
+        height: 500px;
+    }
+
+}
+
+@media (max-width: 428px){
+    .logo img{
+        height: 50px;
+    }
+
+    #line {
+        height: 0.3em;
+    }
+
+    #opcoes-menu{
+        margin-top: 60px;
+    }
+
+    .nav-link{
+        font-size: 0.9em;
+    }
+
+    .banner{
+        height: 260px;
+    }
+
+    #section-1 .banner .gif {
+        margin-bottom: 0; 
+    }
+
+    .banner .gif img{
+        width: 30px;
+        display: block;
+        margin-top: -15px;
+    }
+
+    .banner .gif{
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    .texto-banner{
+        flex-direction: center; 
+        justify-content: center; 
+        margin-top: -10px;
+        padding: 0;
+        margin: 0;
+        margin-left: -41px;
+    }
+
+    .container-itens {
+        margin-top: -210px;
+    }
+
+    #section-2{
+        height: 320px;
+        padding: 1px;
+    }
+
+    .slide-1, .slide-2, .slide-3, .slide-4{
+        height: 280px;
+    }
+
+    .slide-box img{
+        height: 200px;
+    }
+
+    .slide-box{
+        height: 300px;
+    }
+
+    .itens p{
+        font-size: 0.6em;
+        width: 180px;
+    }
+
+    .itens-banner .texto-banner h2{
+        font-size: 0.9em;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .banner .itens-banner h1{
+        font-size: 38px;
+        margin-top: -10px;
+    }
+
+    .botao-banner button{
+        padding: 10px;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    .slide-content{
+        margin-top: 20%;
+        width: 100%;
+        height: 100px;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 60%;
+    }
+
+    .slide-content p{
+        font-size: 1em;
+    }
+
+    .nav-manual .manual-btn{
+        width: 10px;
+        height: 10px;
+    }
+
+    .nav-auto div{
+        width: 10px;
+        height: 10px;
+    }
+
+    .informacoes h1{
+        font-size: 25px;
+    }
+
+    .informacoes p{
+        font-size: 0.7em;
+    }
+
+    .card{
+        width: calc(100% - 40px);
+    }
+    .card p{
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 391px){
+    .logo img{
+        height: 42px;
+    }
+
+    .nav-link{
+        font-size: 0.75em;
+    }
+
+    #line{
+        width: 35px;
+    }
+
+    .banner .container-itens{
+        margin-top: -180px;
+    }
+
+    .banner{
+        height: 250px;
+    }
+
+    .nav-manual, .nav-auto{
+        margin-top: 60%;
+    }
+
+    #section-2{
+        height: 300px;
+        padding: 1px;
+    }
+
+    .slide-box{
+        height: 270px;
+    }
+
+    .slide-box img{
+        height: 250px;
+    }
+
+    .slide-content{
+        height: 100px;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .slide-1, .slide-2, .slide-3, .slide-4{
+        height: 250px;
+    }
+
+    .container-itens {
+        margin-top: -120px;
+    }
+
+    .botao-banner button{
+        padding: 8px;
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .informacoes p{
+        font-size: 0.7em;
+    }
+
+    .card p{
+        font-size: 0.7em;
+    }
+}

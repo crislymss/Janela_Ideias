@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="{% static 'css/perfil_projeto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rodape.css' %}">
+    <script src="{% static 'js/demais_pagina.js' %}" defer></script>
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+                <a href="{% url 'home' %}" class="logo">
+                    <img src="{% static 'images/logoinova.png' %}" alt="Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="section-1">
+        <div class="container-degrade">
+            <h3>//NOME STARTUP // > //NOME PROJETO //</h3>
+        </div>
+        <div class="foto-inicial" style=" background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
+            <h3>//NOME PROJETO //</h3>
+        </div>
+    </section>
+    
+    <section id="section-2" class="section-flex">
+        <div class="conteiner-1">
+            <div class="equipe">
+                <h4>Coodernador</h4>
+                <div class="card-coodernador">
+                    <div class="img-coodernador">
+                        <img src={% static 'images/semFoto.png' %} alt="">
+                    </div>
+                    <div class="info-coodernador">
+                        <h4>//NOME DO COODERNADOR //</h4>
+                        <p>//CARGO //</p>
+                        <p>//FORMAÇÃO //</p>
+                        <p>//EMAIL DO SOCIO //</p>
+                        <a><i class="bi bi-linkedin"></i> Linkedin</a>
+                    </div>
+                </div>
+                <h4>Membros</h4>
+                <div class="card-membro">
+                    <div class="img-membro">
+                        <img src={% static 'images/semFoto.png' %} alt="">
+                    </div>
+                    <div class="info-membro">
+                        <h4>//NOME DO MEMBRO //</h4>
+                        <p>//CARGO //</p>
+                        <p>//FORMAÇÃO //</p>
+                        <p>//EMAIL DO SOCIO //</p>
+                        <a><i class="bi bi-linkedin"></i> Linkedin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="conteiner-2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="carrossel">
+                <div class="fotos">
+                    <div class="foto">
+                        <img src="{% static 'images/semFoto.png' %}" alt="logo" width="1000px" height="200px">
+                            
+                    </div>
+                </div>
+                <button class="seta seta-esquerda" onclick="moverCarrossel(-1)">&#10094;</button>
+                <button class="seta seta-direita" onclick="moverCarrossel(1)">&#10095;</button>
+            </div>
+        
+            <div class="video-youtube">
+                <iframe width="800" height="400" src="https://www.youtube.com/embed/SEcJzSuy8Ms?si=aS7ErCuOQhdFXbJp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div>
+        </div>
+        
+    </section>
+    
+    
+    <footer>
+        <div class="rodape">
+            <img src="{% static 'images/ufpi.png' %}" alt="logo">
+            <div class="info">
+                <div class="botoes">
+                    <button onclick="window.location.href='https://www.instagram.com/gaai.ufpi';">
+                        <i class="bi bi-instagram"></i> @gaai.ufpi
+                    </button>
+                    <button onclick="copyEmail()">
+                        <i class="bi bi-envelope-fill"></i> gaai@ufpi.edu.br
+                    </button>
+                </div>
+                <p>Endereço: © 2024, Bairro Ininga - Teresina - PI - CEP: 64049-550</p>
+                <p>Universidade Federal do Piauí - UFPI Campus Universitário Ministro Petrônio Portella</p>
+                <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
+            </div>
+            <img src="{% static 'images/gaai-img-bg.png' %}" alt="logo">
+        </div>
+    </footer>
+
+    <script>
+        let index = 0;
+
+        function moverCarrossel(direcao) {
+            const fotos = document.querySelector('.fotos');
+            const totalFotos = document.querySelectorAll('.foto').length;
+            index = (index + direcao + totalFotos) % totalFotos;
+            fotos.style.transform = translateX(${-index * 100}%);
+        }
+    </script>
+</body>
+</html>
