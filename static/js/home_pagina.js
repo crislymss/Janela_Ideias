@@ -35,3 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+window.addEventListener("scroll", function() {
+    let header = document.querySelector("#header");
+    let logo = document.querySelector(".logo");
+    let headerContainer = document.querySelector(".header-conteiner");
+    let opcoes_menu = document.querySelector(".opcoes-menu");
+
+    if (window.scrollY > 0) {
+        headerContainer.classList.add("rolagem");
+        logo.classList.add("rolagem");
+        opcoes_menu.classList.add("rolagem");
+    } else {
+        headerContainer.classList.remove("rolagem");
+        logo.classList.remove("rolagem");
+        opcoes_menu.classList.remove("rolagem");
+    }
+});
