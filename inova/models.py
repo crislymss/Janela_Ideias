@@ -67,3 +67,13 @@ def limitar_quantidade_noticias(sender, instance, **kwargs):
 
         # apaga a noticia antiga
         noticia_antiga.delete()
+
+
+class Projeto(models.Model):
+    nome = models.CharField(max_length=200, blank=False, null=False)
+    descricao = models.TextField(blank=False, null=False)
+    link_video = models.URLField(blank=True, null=True)
+    startup = models.ForeignKey(Startup, related_name='projetos', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
