@@ -354,14 +354,41 @@ header{
 }
 
 .apoio{
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    background-size: cover;
     background-position: center;
-    width: 100%;
+    background-repeat: no-repeat;
     height: 100vh;
+    /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-#section-3{
-    background-color: rgba(124, 162, 173, 0.5);
-    margin: 20%;
+
+
+
+.imagem-piaui {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.sobre {
+
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15% 35% 15% 10%;
+}
+
+.sobre h2{
+    color: #3F205F;
+    font-size: 30px;
+    margin: 0px 0px 5px 0;
 }
