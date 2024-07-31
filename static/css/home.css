@@ -102,6 +102,15 @@ header{
     margin-top: 20px;
 }
 
+.coteiner-button a{
+    text-decoration: none;
+    color: #3F205F;
+}
+
+.coteiner-button a:hover{
+   color: white;
+}
+
 .round-button {
     margin-left: 200px;
     font-weight: bold;
@@ -116,11 +125,13 @@ header{
     border-radius: 25px; 
     cursor: pointer;
     transition: background-color 0.3s ease; 
+    text-decoration: none;
 }
 
 .round-button:hover {
     background-color: #3F205F;
     color: white;
+    text-decoration: none;
 }
 
 .round-button i{
