@@ -107,9 +107,7 @@ header{
     color: #3F205F;
 }
 
-.coteiner-button a:hover{
-   color: white;
-}
+
 
 .round-button {
     margin-left: 200px;
@@ -128,17 +126,18 @@ header{
     text-decoration: none;
 }
 
-.round-button:hover {
+.round-button:hover, a:hover {
     background-color: #3F205F;
-    color: white;
     text-decoration: none;
+    color: white;
 }
+
+
 
 .round-button i{
     font-weight: bold;
     font-size: 18px;
 }
-
 
 .animation-area{
     background: #E9F2F4;

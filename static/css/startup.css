@@ -6,6 +6,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 /*Efeito de rolagem do site*/
 html {
     height: 100vh;
@@ -46,7 +50,7 @@ header.rolagem{
 
 .container-degrade{
     padding: 20px;
-    background: linear-gradient(55deg, #033652, #E9F2F4);
+    background: linear-gradient(55deg, #3F205F, #E9F2F4);
     color: white;
     font-weight: bold;
 }
@@ -63,7 +67,7 @@ header.rolagem{
 .info-startup h1{
     font-size: 30px;
     font-weight: 700;
-    color: #033652;
+    color: #3F205F;
 }
 
 .info-startup h4{
@@ -76,7 +80,7 @@ header.rolagem{
 .info-startup span{
     font-size: 18px;
     font-weight: 500;
-    color: #033652;
+    color: #3F205F;
     font-weight: bold;
 }
 
@@ -109,7 +113,7 @@ header.rolagem{
 
 .conteiner-3 h1{
     font-weight: normal;
-    color: #033652;
+    color: #3F205F;
 }
 
 .conteiner-3 h4{
@@ -129,11 +133,11 @@ header.rolagem{
 #section-3 h1{
     font-size: 30px;
     font-weight: 700;
-    color: #033652;
+    color: #3F205F;
 }
 
 .espaco{
-    background-color: #033652;
+    background-color: #3F205F;
 }
 
 .card{
@@ -199,7 +203,7 @@ header.rolagem{
 .conteiner-4 h1{
     font-size: 20px;
     font-weight: 700;
-    color: #033652;
+    color: #3F205F;
 }
 
 .info-coodernador h4{
@@ -216,5 +220,5 @@ header.rolagem{
 }
 
 .info-coodernador i{
-    color: #033652
+    color: #3F205F
 }
