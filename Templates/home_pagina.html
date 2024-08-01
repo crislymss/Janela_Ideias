@@ -18,7 +18,7 @@
 
     <!-- LINK DO CSS-->
 
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagina_home.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
 
     <!-- FIM LINK DO CSS-->
@@ -34,7 +34,7 @@
     <header>
         <div class="header-conteiner">
             <a href="#" class="logo">
-                <img src="static/images/logo INBATE 1.png" alt="" width="150px">
+                <img src="static/images/logo.png" alt="" width="150px">
             </a>
             <div class="opcoes_menu">
                 <a href="#section-1" class="opcoes">Home</a>
@@ -70,70 +70,76 @@
     <section id="section-2">
         <div class="informacoes">
             <div class="slider">
+            {% if noticias|length >= 6 %}
                 <div class="slides">
                     <input type="radio" name="radio-btn" id="radio1">
                     <input type="radio" name="radio-btn" id="radio2">
                     <input type="radio" name="radio-btn" id="radio3">
                     <input type="radio" name="radio-btn" id="radio4">
 
-                    <div class="slide first">
-                        <a href="">
-                            <img src="https://blog.ebaconline.com.br/blog/wp-content/uploads/2023/11/image3-3.png" alt="imagem1">
-                            <h5>notice 1</h5>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a href="">
-                            <img src="https://designcomcafe.com.br/wp-content/uploads/2023/10/como-criar-prompts-para-geracao-de-imagens-com-ia-1024x538.jpg" alt="imagem2">
-                            <h5>notice 2</h5>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a href="">
-                            <img src="https://dm0fehhuxv6f6.cloudfront.net/wp-content/uploads/2023/04/30035515/bing-panda-600x600.jpg" alt="imagem3">
-                            <h5>notice 3</h5>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a href="">
-                            <img src="https://static.vecteezy.com/ti/fotos-gratis/t2/17323707-close-up-de-um-reptil-em-um-galho-de-arvore-contra-um-impressionante-papel-de-parede-de-fundo-natural-hd-foto.jpg" alt="imagem4">
-                            <h5>notice 5</h5>
-                        </a>
+                    
+                        <div class="slide first">
+                            <a href="{{ noticias.0.link }}">
+                                <img src="{{ noticias.0.imagem.url }}" alt="imagem1">
+                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="{{ noticias.1.link }}">
+                                <img src="{{ noticias.1.imagem.url }}" alt="imagem2">
+                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="{{ noticias.2.link }}">
+                                <img src="{{ noticias.2.imagem.url }}" alt="imagem3">
+                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="{{ noticias.3.link }}">
+                                <img src="{{ noticias.3.imagem.url }}" alt="imagem4">
+                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                            </a>
+                        </div>
+
+                        <div class="navigation-auto">
+                            <div class="auto-btn1"></div>
+                            <div class="auto-btn2"></div>
+                            <div class="auto-btn3"></div>
+                            <div class="auto-btn4"></div>
+                        </div>
                     </div>
 
-                    <div class="navigation-auto">
-                        <div class="auto-btn1"></div>
-                        <div class="auto-btn2"></div>
-                        <div class="auto-btn3"></div>
-                        <div class="auto-btn4"></div>
+                    <div class="manul-navigation">
+                        <label for="radio1" class="manual-btn"></label>
+                        <label for="radio2" class="manual-btn"></label>
+                        <label for="radio3" class="manual-btn"></label>
+                        <label for="radio4" class="manual-btn"></label>
+                    </div>
+
+                </div>
+                
+                <div class="coteiner-infos">
+                    <div class="infos">
+                        <a href="{{ noticias.4.link }}">
+                            <img src="{{ noticias.4.imagem.url }}" alt="">
+                        <h4>{{ noticias.4.descricao|slice:":100" }}{% if noticias.4.descricao|length > 100 %}...{% endif %}</h4>
+                        </a>
+                        <hr>
+                    </div>
+                    <div class="infos">
+                        <a href="{{ noticias.5.link }}">
+                            <img src="{{ noticias.5.imagem.url }}" alt="">
+                        <h4>{{ noticias.5.descricao|slice:":100" }}{% if noticias.5.descricao|length > 100 %}...{% endif %}</h4>
+                        </a>
+                        <hr>
                     </div>
                 </div>
 
-                <div class="manul-navigation">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
-
-            </div>
-            
-            <div class="coteiner-infos">
-                <div class="infos">
-                    <a href="">
-                        <img src="static/images/noticia.webp" alt="">
-                    <h4>Dicas para os profissionais de TI - Laser Outsourcing</h4>
-                    </a>
-                    <hr>
-                </div>
-                <div class="infos">
-                    <a href="">
-                        <img src="static/images/noticia.webp" alt="">
-                    <h4>Dicas para os profissionais de TI - Laser Outsourcing</h4>
-                    </a>
-                    <hr>
-                </div>
-            </div>
+            {% else %}
+                <p class="no-results">Menos de 5 notícias disponíveis.</p>
+            {% endif %}
 
             <script>
                 var cont = 1;

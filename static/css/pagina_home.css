@@ -125,10 +125,20 @@ header{
     transition: background-color 0.3s ease; 
     text-decoration: none;
 }
-
-.round-button:hover, a:hover {
-    background-color: #3F205F;
+.round-button a {
+    color: inherit;
     text-decoration: none;
+}
+
+.round-button:hover {
+    background-color: #3F205F;
+}
+
+.round-button:hover a {
+    color: white;
+}
+
+.round-button:hover i {
     color: white;
 }
 
