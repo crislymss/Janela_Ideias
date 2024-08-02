@@ -22,7 +22,7 @@ class Noticias_admin(admin.ModelAdmin):
     search_fields = ('nome', 'descricao')
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'descricao', 'link_video', 'startup')
+    list_display = ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto')
     search_fields = ('nome', 'descricao', 'startup__nome')
 
 

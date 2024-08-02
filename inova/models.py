@@ -74,6 +74,7 @@ class Projeto(models.Model):
     descricao = models.TextField(blank=False, null=False)
     link_video = models.URLField(blank=True, null=True)
     startup = models.ForeignKey(Startup, related_name='projetos', on_delete=models.CASCADE)
+    logo_projeto = models.ImageField(upload_to='inova/', blank=True, null=True)
 
 
     def __str__(self):

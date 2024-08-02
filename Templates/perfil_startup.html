@@ -58,7 +58,7 @@
             {% for projeto in projetos %}
                 <a href="{% url 'perfil_projeto' startup_nome=projeto.startup.nome projeto_nome=projeto.nome %}">
                     <div class="card">
-                        <div class="img-projeto" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
+                        <div class="img-projeto" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% if projeto.logo_projeto %}{{ projeto.logo_projeto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}')">
                             <h2>{{ projeto.nome }}</h2>
                         </div>
                         <div class="info-projeto">
