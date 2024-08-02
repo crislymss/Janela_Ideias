@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/startup.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/pagina_startup.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
     <script src="{% static 'js/demais_pagina.js' %}" defer></script>
     <title>{{ startup.nome }}</title>
@@ -19,7 +20,7 @@
         <div class="container">
             <div class="flex">
                 <a href="{% url 'home' %}" class="logo">
-                    <img src="{% static 'images/logoINBATE1.png' %}" alt="" width="150px">
+                    <img src="{% static "images/logo.png" %}" alt="" width="150px">
                 </a>
             </div>
         </div>
@@ -54,21 +55,18 @@
     <section id="section-3">
         <div class="conteiner-3">
             <h1>Projetos</h1>
-            {% for projeto in projetos %}
-                <a href="{% url 'perfil_projeto' startup_nome=startup.nome projeto_nome=projeto.nome %}">
+           
+                <a href="">
                     <div class="card">
-                        <div class="img-projeto" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
-                            <h2>{{ projeto.nome }}</h2>
+                        <div class="img-projeto" style="">
+                            <h2></h2>
                         </div>
                         <div class="info-projeto">
-                            <p>{{ projeto.descricao }}</p>
+                            <p></p>
                         </div>
                     </div>
                 </a>
-            {% empty %}
-                <p>Não há projetos disponíveis para esta startup.</p>
-            {% endfor %}
-        </div>
+            </div>
     </section>
 
     <section id="section-4">
