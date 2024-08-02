@@ -70,6 +70,16 @@ header{
     transition: width 2s ease;
 }
 
+.perfil-button {
+    background-color: #3F205F; 
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+
 .coteiner-banner {
     position: relative;
     z-index: 1;

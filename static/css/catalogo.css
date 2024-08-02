@@ -50,6 +50,15 @@ header.rolagem{
     align-items: center;
 }
 
+.perfil-button {
+    background-color: #3F205F; 
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
 #search-bar {
     border: 1px solid white;
     border-radius: 20px 0 0 20px;
@@ -70,6 +79,12 @@ header.rolagem{
     padding: 20px;
     background: linear-gradient(55deg, #3F205F, #E9F2F4);
     color: white;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
 }
 
 .alinhar-filtros {

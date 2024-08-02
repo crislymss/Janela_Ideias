@@ -42,6 +42,15 @@ header.rolagem {
     object-fit: cover;
 }
 
+.perfil-button {
+    background-color: #3F205F; 
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
 .container-degrade {
     padding: 20px;
     background: linear-gradient(55deg, #3F205F, #E9F2F4);
