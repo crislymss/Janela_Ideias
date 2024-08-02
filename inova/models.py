@@ -48,7 +48,7 @@ class Noticias(models.Model):
 def limitar_quantidade_noticias(sender, instance, **kwargs):
     # Essa parte vai contar as noticias do banco de dados, limitando a 4 noticias
 
-    if Noticias.objects.count() > 4:
+    if Noticias.objects.count() > 6:
         #e vai pegar a notícia mais antiga (a primeira que foi cadastrada)
         noticia_antiga = Noticias.objects.order_by('id').first()
 

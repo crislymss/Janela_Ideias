@@ -41,8 +41,17 @@
                 <a href="#section-2" class="opcoes">Informações</a>
                 <a href="#section-3" class="opcoes">Sobre</a>
             </div>
+
+            <div class="perfil_menu">
+                <a href="{% url 'admin:index' %}" class="perfil-link">
+                    <i class="bi bi-person-circle perfil-icone"></i>
+                </a>
+            </div>
+
         </div>
+
     </header>
+
 
     <div id="section-1" class="animation-area">
         <ul class="box-area">
@@ -138,7 +147,7 @@
                 </div>
 
             {% else %}
-                <p class="no-results">Menos de 5 notícias disponíveis.</p>
+                <p class="no-results">Menos de 6 notícias disponíveis.</p>
             {% endif %}
 
             <script>
