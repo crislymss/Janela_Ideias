@@ -19,6 +19,7 @@ class Startup(models.Model):
     email = models.CharField(max_length=200, blank=False, null=False)
     telefone = models.IntegerField()
     logo_startup = models.ImageField(upload_to='inova/', blank=True, null=True)
+    
 
     # Novos campos de contato
     rua = models.CharField(max_length=255, blank=True, null=True)
@@ -73,6 +74,7 @@ class Projeto(models.Model):
     descricao = models.TextField(blank=False, null=False)
     link_video = models.URLField(blank=True, null=True)
     startup = models.ForeignKey(Startup, related_name='projetos', on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.nome
