@@ -58,8 +58,9 @@
     </section>
 
    <section id="section-3">
+        <h1>Projetos</h1>
         <div class="conteiner-3">
-            <h1>Projetos</h1>
+            
             {% for projeto in projetos %}
                 <a href="{% url 'perfil_projeto' startup_nome=projeto.startup.nome projeto_nome=projeto.nome %}">
                     <div class="card">

@@ -124,9 +124,13 @@ header.rolagem{
 
 .conteiner-3{
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
 }
 
-.conteiner-3 h1{
+#section-3 h1{
     font-weight: normal;
     color: #3F205F;
 }
@@ -161,9 +165,10 @@ header.rolagem{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    max-width: 600px;
+    width: 600px;
     padding: 0;
     cursor: pointer;
+    
 }
 
 .img-projeto{
@@ -237,3 +242,4 @@ header.rolagem{
 .info-coodernador i{
     color: #3F205F
 }
+

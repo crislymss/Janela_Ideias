@@ -28,6 +28,8 @@ header.rolagem {
 
 .container {
     max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .flex {
@@ -43,12 +45,13 @@ header.rolagem {
 }
 
 .perfil-button {
-    background-color: #3F205F; 
-    color: white; 
+    background-color: #3F205F;
+    color: white;
     border: none;
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
 }
 
 .container-degrade {
@@ -58,22 +61,22 @@ header.rolagem {
     font-weight: bold;
 }
 
-.foto-inicial{
+.foto-inicial {
     width: 100%;
     height: 250px;
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.foto-inicial h3{
+.foto-inicial h3 {
     font-size: 32px;
     color: white;
     margin-top: 13%;
     padding: 10px;
 }
 
-.section-flex{
+.section-flex {
     display: flex;
 }
 
@@ -83,15 +86,16 @@ header.rolagem {
     width: 1000px;
 }
 
-.card-coodernador{
-   display: flex;
-}
-
-.card-membro{
+.card-coodernador {
     display: flex;
 }
 
-.img-coodernador img, .img-membro img{
+.card-membro {
+    display: flex;
+}
+
+.img-coodernador img,
+.img-membro img {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -101,26 +105,30 @@ header.rolagem {
 
 
 
-.conteiner-1 h4{
+.conteiner-1 h4 {
     font-size: 20px;
     font-weight: 700;
     color: #033652;
 }
 
-.info-coodernador h4, .info-membro h4{
+.info-coodernador h4,
+.info-membro h4 {
     font-size: 12px;
 }
 
-.info-coodernador p, .info-membro p{
+.info-coodernador p,
+.info-membro p {
     font-size: 10px;
 }
 
-.info-coodernador a, .info-membro a{
+.info-coodernador a,
+.info-membro a {
     cursor: pointer;
     font-size: 12px;
 }
 
-.info-coodernador i, .img-membro i{
+.info-coodernador i,
+.img-membro i {
     color: #033652
 }
 
@@ -134,7 +142,7 @@ header.rolagem {
 }
 
 .fotos {
-    
+
     transition: transform 0.5s ease-in-out;
 }
 
@@ -165,4 +173,3 @@ header.rolagem {
 .seta-direita {
     right: 10px;
 }
-
