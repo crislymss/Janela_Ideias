@@ -9,11 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
     <link rel="stylesheet" href="{% static 'css/perfil_projeto.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
     <script src="{% static 'js/demais_pagina.js' %}" defer></script>
-
+    <title>{{ projeto.nome }}</title>
 </head>
 
 <body>
@@ -29,65 +28,88 @@
 
     <section id="section-1">
         <div class="container-degrade">
-            <h3>//NOME STARTUP // > //NOME PROJETO //</h3>
+            <h3>{{ projeto.startup.nome }} > {{ projeto.nome }}</h3>
         </div>
-        <div class="foto-inicial" style=" background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
-            <h3>//NOME PROJETO //</h3>
+        <div class="foto-inicial" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% if projeto.imagem %}{{ projeto.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}')">
+            <h3>{{ projeto.nome }}</h3>
         </div>
     </section>
     
     <section id="section-2" class="section-flex">
         <div class="conteiner-1">
             <div class="equipe">
-                <h4>Coodernador</h4>
+                <h4>Coordenador</h4>
+                {% if projeto.coordenador %}
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src={% static 'images/semFoto.png' %} alt="">
+                        <img src="{% if projeto.coordenador.imagem %}{{ projeto.coordenador.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-coodernador">
-                        <h4>//NOME DO COODERNADOR //</h4>
-                        <p>//CARGO //</p>
-                        <p>//FORMAÇÃO //</p>
-                        <p>//EMAIL DO SOCIO //</p>
-                        <a><i class="bi bi-linkedin"></i> Linkedin</a>
+                        <h4>{{ projeto.coordenador.nome }}</h4>
+                        <p>{{ projeto.coordenador.cargo }}</p>
+                        <p>{{ projeto.coordenador.formacao }}</p>
+                        <p>{{ projeto.coordenador.email }}</p>
+                        <a href="{{ projeto.coordenador.linkedin }}"><i class="bi bi-linkedin"></i> Linkedin</a>
                     </div>
                 </div>
+                {% else %}
+                <p>Coordenador não definido.</p>
+                {% endif %}
+                
                 <h4>Membros</h4>
+                {% if projeto.membros.all %}
+                {% for membro in projeto.membros.all %}
                 <div class="card-membro">
                     <div class="img-membro">
-                        <img src={% static 'images/semFoto.png' %} alt="">
+                        <img src="{% if membro.imagem %}{{ membro.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-membro">
-                        <h4>//NOME DO MEMBRO //</h4>
-                        <p>//CARGO //</p>
-                        <p>//FORMAÇÃO //</p>
-                        <p>//EMAIL DO SOCIO //</p>
-                        <a><i class="bi bi-linkedin"></i> Linkedin</a>
+                        <h4>{{ membro.nome }}</h4>
+                        <p>{{ membro.cargo }}</p>
+                        <p>{{ membro.formacao }}</p>
+                        <p>{{ membro.email }}</p>
+                        <a href="{{ membro.linkedin }}"><i class="bi bi-linkedin"></i> Linkedin</a>
                     </div>
                 </div>
+                {% endfor %}
+                {% else %}
+                <p>Não há membros definidos.</p>
+                {% endif %}
             </div>
         </div>
     
         <div class="conteiner-2">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>{{ projeto.descricao }}</p>
             <div class="carrossel">
                 <div class="fotos">
+                    {% if projeto.imagens.all %}
+                    {% for imagem in projeto.imagens.all %}
+                    <div class="foto">
+                        <img src="{{ imagem.url }}" alt="foto do projeto" width="1000px" height="200px">
+                    </div>
+                    {% endfor %}
+                    {% else %}
                     <div class="foto">
                         <img src="{% static 'images/semFoto.png' %}" alt="logo" width="1000px" height="200px">
-                            
                     </div>
+                    {% endif %}
                 </div>
                 <button class="seta seta-esquerda" onclick="moverCarrossel(-1)">&#10094;</button>
                 <button class="seta seta-direita" onclick="moverCarrossel(1)">&#10095;</button>
             </div>
         
+            {% if projeto.link_video %}
             <div class="video-youtube">
-                <iframe width="800" height="400" src="https://www.youtube.com/embed/SEcJzSuy8Ms?si=aS7ErCuOQhdFXbJp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <div>
+                {% with projeto.link_video|slice:':-11' as video_id %}
+                <iframe width="800" height="400" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% endwith %}
+            </div>
+            {% else %}
+            <p>Vídeo não disponível.</p>
+            {% endif %}
         </div>
-        
+
     </section>
-    
     
     <footer>
         <div class="rodape">
@@ -116,7 +138,7 @@
             const fotos = document.querySelector('.fotos');
             const totalFotos = document.querySelectorAll('.foto').length;
             index = (index + direcao + totalFotos) % totalFotos;
-            fotos.style.transform = translateX(${-index * 100}%);
+            fotos.style.transform = `translateX(${-index * 100}%)`;
         }
     </script>
 </body>
