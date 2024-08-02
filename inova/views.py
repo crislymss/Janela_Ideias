@@ -1,12 +1,15 @@
+from .models import Startup, Projeto  # Certifique-se de ter esses modelos definidos
 from django.shortcuts import render, get_object_or_404
 from .models import Startup, Noticias
+from django.shortcuts import render, get_object_or_404
+from .models import Startup, Projeto
+
 
 # views.py
 
 
 from django.shortcuts import render, redirect
 from .forms import StartupForm
-
 
 
 def criar_startup(request):
@@ -78,7 +81,11 @@ def catalogo_startup(request):
 
 def perfil_startup(request, nome):
     startup = get_object_or_404(Startup, nome=nome)
-    return render(request, 'perfil_startup.html', {'startup': startup})
+    projetos = Projeto.objects.filter(startup=startup)
+    return render(request, 'perfil_startup.html', {'startup': startup, 'projetos': projetos})
 
-def perfil_projeto(request):
-    return render(request, 'perfil_projeto.html')
+
+def perfil_projeto(request, startup_nome, projeto_nome):
+    startup = get_object_or_404(Startup, nome=startup_nome)
+    projeto = get_object_or_404(Projeto, startup=startup, nome=projeto_nome)
+    return render(request, 'perfil_projeto.html', {'startup': startup, 'projeto': projeto})

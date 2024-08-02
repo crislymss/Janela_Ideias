@@ -8,7 +8,6 @@ from django.dispatch import receiver
 
 #mudar o startup para Startup / fazer os migrations
 # models.py
-
 class Startup(models.Model):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=200, blank=False, null=False)
@@ -31,7 +30,7 @@ class Startup(models.Model):
     cep = models.CharField(max_length=10, blank=True, null=True)
     pais = models.CharField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nome
 
 
@@ -41,15 +40,14 @@ class Noticias(models.Model):
     descricao = models.TextField(default = 'Descricao')
     imagem = models.ImageField(upload_to = 'media/noticias/', blank = True, null = True)
     link = models.URLField(blank = True, null = True)
-    # data = models.DateField(auto_now_add = True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nome
 @receiver(post_save, sender=Noticias)
 def limitar_quantidade_noticias(sender, instance, **kwargs):
     # Essa parte vai contar as noticias do banco de dados, limitando a 4 noticias
 
-    if Noticias.objects.count() > 6:
+    if Noticias.objects.count() > 4:
         #e vai pegar a notícia mais antiga (a primeira que foi cadastrada)
         noticia_antiga = Noticias.objects.order_by('id').first()
 

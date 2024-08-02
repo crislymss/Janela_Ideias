@@ -57,17 +57,25 @@
     </section>
 
     <section id="section-3">
-        <h1>Projetos</h1>
-        <a href = "perfil_projeto.html">
-            <div class="card">
-                <div class="img-projeto" style=" background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
-                    <h2>//NOME DO PROJETO //</h2>
-                </div>
-                <div class="info-projeto">
-                    <p>//DESCRIÇÃO DO PROJETO //</p>
-                </div> 
-            </div>
-        </a>
+        <div class="conteiner-3">
+            <h1>Projetos</h1>
+            {% for projeto in projetos %}
+                <p>Startup Nome: {{ projeto.startup.nome }}</p>
+                <p>Projeto Nome: {{ projeto.nome }}</p>
+                <a href="{% url 'perfil_projeto' startup_nome=projeto.startup.nome projeto_nome=projeto.nome %}">
+                    <div class="card">
+                        <div class="img-projeto" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% static 'images/semFoto.png' %}')">
+                            <h2>{{ projeto.nome }}</h2>
+                        </div>
+                        <div class="info-projeto">
+                            <p>{{ projeto.descricao }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <p>Não há projetos disponíveis para esta startup.</p>
+            {% endfor %}
+        </div>
     </section>
 
     <section id="section-4">
