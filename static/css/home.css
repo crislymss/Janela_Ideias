@@ -5,7 +5,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
     background-color: #ECECEC;
 }
@@ -15,7 +15,7 @@ html {
     scroll-behavior: smooth;
 }
 
-header{
+header {
     width: 100%;
     position: sticky;
     top: 0;
@@ -33,12 +33,12 @@ header{
     transition: width 1s ease;
 }
 
-.opcoes_menu.rolagem{
-   margin-top: -5px;
+.opcoes_menu.rolagem {
+    margin-top: -5px;
 
 }
 
-.header-conteiner{
+.header-conteiner {
     padding: 10px;
     background-color: white;
     position: sticky;
@@ -48,35 +48,35 @@ header{
     transition: width 2s ease;
 }
 
-.opcoes_menu{
+.opcoes_menu {
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
 }
 
-.opcoes{
-    display: inline-block; 
+.opcoes {
+    display: inline-block;
     margin: 0 10px;
-    text-decoration: none; 
+    text-decoration: none;
     color: #3F205F;
 }
 
-.opcoes:hover{
+.opcoes:hover {
     color: #762cc0;
 }
 
-.logo{
+.logo {
     margin-left: 10px;
     transition: width 2s ease;
 }
 
 .perfil-button {
-    background-color: #3F205F; 
-    color: white; 
+    background-color: #3F205F;
+    color: white;
     border: none;
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .perfil-button:hover {
@@ -89,7 +89,7 @@ header{
     z-index: 1;
 }
 
-.texto-banner{
+.texto-banner {
     padding: 100px 10px 100px 80px;
     font-size: 50px;
     color: white;
@@ -97,18 +97,13 @@ header{
 }
 
 .texto-banner h2 {
-    margin-bottom: -10px; 
-    color:white;
+    margin-bottom: -10px;
+    color: white;
     font-size: 50px;
 }
 
-.texto-banner img{
-    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.5)) 
-            drop-shadow(0 0 1px rgba(255, 255, 255, 0.5)) 
-            drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) 
-            drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) 
-            drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) 
-            drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+.texto-banner img {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 
@@ -132,9 +127,9 @@ header{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 25px; 
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; 
+    transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
 }
 
@@ -144,18 +139,18 @@ header{
 }
 
 
-.round-button i{
+.round-button i {
     font-weight: bold;
     font-size: 18px;
 }
 
-.animation-area{
+.animation-area {
     background: #E9F2F4;
     width: 100%;
     height: 70vh;
 }
 
-.box-area{
+.box-area {
     position: relative;
     top: 0;
     left: 0;
@@ -164,7 +159,7 @@ header{
     overflow: hidden;
 }
 
-.box-area li{
+.box-area li {
     position: absolute;
     display: block;
     list-style: none;
@@ -175,124 +170,131 @@ header{
     bottom: -150px;
 }
 
-.box-area li:nth-child(1){
+.box-area li:nth-child(1) {
     left: 86%;
     width: 80px;
     height: 80px;
     animation-delay: 0s;
 }
-.box-area li:nth-child(2){
+
+.box-area li:nth-child(2) {
     left: 12%;
     width: 30px;
     height: 30px;
     animation-delay: 1.5s;
     animation-duration: 10s;
 }
-.box-area li:nth-child(3){
+
+.box-area li:nth-child(3) {
     left: 70%;
     width: 100px;
     height: 100px;
     animation-delay: 5.5s;
 }
-.box-area li:nth-child(4){
+
+.box-area li:nth-child(4) {
     left: 42%;
     width: 150px;
     height: 150px;
     animation-delay: 0s;
     animation-duration: 15s;
 }
-.box-area li:nth-child(5){
+
+.box-area li:nth-child(5) {
     left: 65%;
     width: 40px;
     height: 40px;
     animation-delay: 0s;
 }
-.box-area li:nth-child(6){
+
+.box-area li:nth-child(6) {
     left: 15%;
     width: 110px;
     height: 110px;
     animation-delay: 3.5s;
 }
 
-@keyframes animate{
-    0%{
+@keyframes animate {
+    0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
-    100%{
+
+    100% {
         transform: translateY(-800px) rotate(360deg);
         opacity: 0;
     }
 }
 
-.informacoes{
+.informacoes {
     display: flex;
 }
 
-.coteiner-infos{
+.coteiner-infos {
     margin-top: 10px;
     padding: 40px;
 }
 
-.infos{
+.infos {
     width: 700px;
 }
 
-.infos a{
+.infos a {
     display: flex;
     padding: 20px;
     gap: 20px;
     text-decoration: none;
 }
 
-.infos img{
+.infos img {
     width: 300px;
     height: 150px;
     border-radius: 5px;
 }
 
-.infos h4{
+.infos h4 {
     font-size: 20px;
     color: #3F205F;
 }
 
 .texto h4 {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
-  
+
 .texto p {
-    margin-top: 0; 
+    margin-top: 0;
     color: slategray;
 }
-.slider{
+
+.slider {
     width: 800px;
     height: 400px;
     overflow: hidden;
-    margin:60px
+    margin: 60px
 }
 
-.slides{
+.slides {
     width: 400%;
     height: 400px;
     display: flex;
 }
 
-.slides input{
+.slides input {
     display: none;
 }
 
-.slide{
+.slide {
     width: 25%;
     position: relative;
     transition: 2s;
 }
 
-.slide img{
+.slide img {
     width: 800px;
     height: 400px;
 }
 
-.slide h5{
+.slide h5 {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     margin-top: -17%;
@@ -303,7 +305,7 @@ header{
     font-size: 18px;
 }
 
-.manul-navigation{
+.manul-navigation {
     position: absolute;
     width: 800px;
     margin-top: -30px;
@@ -312,7 +314,7 @@ header{
     margin-left: -100px;
 }
 
-.manual-btn{
+.manual-btn {
     border: 2px solid #fff;
     padding: 5px;
     border-radius: 10px;
@@ -320,31 +322,31 @@ header{
     transition: 0.5s;
 }
 
-.manual-btn:not(:last-child){
+.manual-btn:not(:last-child) {
     margin-right: 10px;
 }
 
-.manual-btn:hover{
+.manual-btn:hover {
     background: #fff;
 }
 
-#radio1:checked ~ .first{
+#radio1:checked~.first {
     margin-left: 0;
 }
 
-#radio2:checked ~ .first{
+#radio2:checked~.first {
     margin-left: -25%;
 }
 
-#radio3:checked ~ .first{
+#radio3:checked~.first {
     margin-left: -50%;
 }
 
-#radio4:checked ~ .first{
+#radio4:checked~.first {
     margin-left: -75%;
 }
 
-.navigation-auto div{
+.navigation-auto div {
     border: 2px solid #fff;
     padding: 5px;
     border-radius: 10px;
@@ -352,7 +354,7 @@ header{
     transition: 0.5s;
 }
 
-.navigation-auto{
+.navigation-auto {
     position: absolute;
     width: 800px;
     margin-top: 370px;
@@ -361,27 +363,27 @@ header{
     margin-left: -100px;
 }
 
-.navigation-auto div:not(:last-child){
+.navigation-auto div:not(:last-child) {
     margin-right: 10px;
 }
 
-#radio1:checked ~ .navigation-auto .auto-btn1{
+#radio1:checked~.navigation-auto .auto-btn1 {
     background: #fff;
 }
 
-#radio2:checked ~ .navigation-auto .auto-btn2{
+#radio2:checked~.navigation-auto .auto-btn2 {
     background: #fff;
 }
 
-#radio3:checked ~ .navigation-auto .auto-btn3{
+#radio3:checked~.navigation-auto .auto-btn3 {
     background: #fff;
 }
 
-#radio4:checked ~ .navigation-auto .auto-btn4{
+#radio4:checked~.navigation-auto .auto-btn4 {
     background: #fff;
 }
 
-.apoio{
+.apoio {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -405,7 +407,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .sobre {
@@ -415,7 +417,7 @@ header{
     margin: 15% 35% 15% 10%;
 }
 
-.sobre h2{
+.sobre h2 {
     color: #3F205F;
     font-size: 30px;
     margin: 0px 0px 5px 0;

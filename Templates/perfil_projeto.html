@@ -9,19 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/projetos_perfil.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tela_projeto.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
     <script src="{% static 'js/demais_pagina.js' %}" defer></script>
     <title>{{ projeto.nome }}</title>
 </head>
-
 
 <body>
     <header id="header">
         <div class="container">
             <div class="flex">
                 <a href="{% url 'home' %}" class="logo">
-                    <img src="{% static "images/logo.png" %}" alt="" width="150px">
+                    <img src="{% static 'images/logo.png' %}" alt="" width="150px">
                 </a>
             </div>
             
@@ -56,7 +55,7 @@
                         <p>{{ projeto.coordenador.cargo }}</p>
                         <p>{{ projeto.coordenador.formacao }}</p>
                         <p>{{ projeto.coordenador.email }}</p>
-                        <a href="{{ projeto.coordenador.linkedin }}"><i class="bi bi-linkedin"></i> Linkedin</a>
+                        <a href="{{ projeto.coordenador.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i> Linkedin</a>
                     </div>
                 </div>
                 {% else %}
@@ -75,7 +74,7 @@
                         <p>{{ membro.cargo }}</p>
                         <p>{{ membro.formacao }}</p>
                         <p>{{ membro.email }}</p>
-                        <a href="{{ membro.linkedin }}"><i class="bi bi-linkedin"></i> Linkedin</a>
+                        <a href="{{ membro.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i> Linkedin</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -89,33 +88,41 @@
             <p>{{ projeto.descricao }}</p>
             <div class="carrossel">
                 <div class="fotos">
-                    {% if projeto.imagens.all %}
-                    {% for imagem in projeto.imagens.all %}
+                    {% if projeto.foto1 %}
                     <div class="foto">
-                        <img src="{{ imagem.url }}" alt="foto do projeto" width="1000px" height="200px">
+                        <img src="{{ projeto.foto1.url }}" alt="foto do projeto" width="1000px" height="200px">
                     </div>
-                    {% endfor %}
-                    {% else %}
+                    {% endif %}
+                    {% if projeto.foto2 %}
                     <div class="foto">
-                        <img src="{% static 'images/semFoto.png' %}" alt="logo" width="1000px" height="200px">
+                        <img src="{{ projeto.foto2.url }}" alt="foto do projeto" width="1000px" height="200px">
+                    </div>
+                    {% endif %}
+                    {% if projeto.foto3 %}
+                    <div class="foto">
+                        <img src="{{ projeto.foto3.url }}" alt="foto do projeto" width="1000px" height="200px">
                     </div>
                     {% endif %}
                 </div>
                 <button class="seta seta-esquerda" onclick="moverCarrossel(-1)">&#10094;</button>
                 <button class="seta seta-direita" onclick="moverCarrossel(1)">&#10095;</button>
             </div>
-        
             {% if projeto.link_video %}
             <div class="video-youtube">
-                {% with projeto.link_video|slice:':-11' as video_id %}
-                <iframe width="800" height="400" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                {% endwith %}
+                <iframe id="youtube-video" width="800" height="400" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var url = "{{ projeto.link_video }}";
+                        var videoId = url.split("v=")[1].split("&")[0];
+                        var iframe = document.getElementById('youtube-video');
+                        iframe.src = "https://www.youtube.com/embed/" + videoId;
+                    });
+                </script>
             </div>
             {% else %}
             <p>Vídeo não disponível.</p>
             {% endif %}
         </div>
-
     </section>
     
     <footer>
@@ -146,6 +153,14 @@
             const totalFotos = document.querySelectorAll('.foto').length;
             index = (index + direcao + totalFotos) % totalFotos;
             fotos.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('gaai@ufpi.edu.br').then(() => {
+                alert('Email copiado para a área de transferência!');
+            }, () => {
+                alert('Falha ao copiar o email.');
+            });
         }
     </script>
 </body>

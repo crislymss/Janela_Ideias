@@ -51,7 +51,7 @@ header.rolagem {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    
+
 }
 
 .perfil-button:hover {
@@ -147,7 +147,9 @@ header.rolagem {
 
 .fotos {
 
-    transition: transform 0.5s ease-in-out;
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
 }
 
 .foto {

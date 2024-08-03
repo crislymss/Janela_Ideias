@@ -1,29 +1,36 @@
 from django.contrib import admin
 from inova.models import Startup, Noticias, Projeto
 
+
 class ProjetoInline(admin.TabularInline):
     model = Projeto
-    extra = 1  # Número de formulários vazios para novos projetos
+    extra = 1
+
 
 class Startups_admin(admin.ModelAdmin):
-    # List_display mostra os dados na tela do admin
     list_display = (
         'nome', 'cnpj', 'area_de_negocio', 'setor', 'email', 'telefone',
         'logo_startup', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'pais'
     )
-    # search_fields são os dados utilizados como filtros para o admin
-    search_fields = ('setor', 'nome', 'area_de_negocio', 'cidade', 'estado', 'pais')
+    search_fields = ('setor', 'nome', 'area_de_negocio',
+                     'cidade', 'estado', 'pais')
     inlines = [ProjetoInline]
-
 
 
 class Noticias_admin(admin.ModelAdmin):
     list_display = ('nome', 'descricao', 'data', 'imagem', 'link')
     search_fields = ('nome', 'descricao', 'data')
 
+
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto')
+    list_display = ('nome', 'descricao', 'link_video',
+                    'startup', 'logo_projeto')
     search_fields = ('nome', 'descricao', 'startup__nome')
+    fieldsets = (
+        (None, {
+            'fields': ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto', 'foto1', 'foto2', 'foto3')
+        }),
+    )
 
 
 admin.site.register(Noticias, Noticias_admin)
