@@ -59,6 +59,10 @@ header.rolagem{
     cursor: pointer; 
 }
 
+.perfil-button:hover {
+    background-color: #542b7f;
+}
+
 #search-bar {
     border: 1px solid white;
     border-radius: 20px 0 0 20px;

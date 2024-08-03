@@ -54,6 +54,10 @@ header.rolagem {
     
 }
 
+.perfil-button:hover {
+    background-color: #542b7f;
+}
+
 .container-degrade {
     padding: 20px;
     background: linear-gradient(55deg, #3F205F, #E9F2F4);

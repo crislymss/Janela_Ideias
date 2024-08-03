@@ -96,19 +96,19 @@
                         <div class="slide">
                             <a href="{{ noticias.1.link }}">
                                 <img src="{{ noticias.1.imagem.url }}" alt="imagem2">
-                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                                <h5>{{ noticias.1.descricao|slice:":65" }}{% if noticias.1.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
                         <div class="slide">
                             <a href="{{ noticias.2.link }}">
                                 <img src="{{ noticias.2.imagem.url }}" alt="imagem3">
-                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                                <h5>{{ noticias.2.descricao|slice:":65" }}{% if noticias.2.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
                         <div class="slide">
                             <a href="{{ noticias.3.link }}">
                                 <img src="{{ noticias.3.imagem.url }}" alt="imagem4">
-                                <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
+                                <h5>{{ noticias.3.descricao|slice:":65" }}{% if noticias.3.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
 
@@ -133,8 +133,10 @@
                     <div class="infos">
                         <a href="{{ noticias.4.link }}">
                             <img src="{{ noticias.4.imagem.url }}" alt="">
-                        <h4>{{ noticias.4.descricao|slice:":100" }}{% if noticias.4.descricao|length > 100 %}...{% endif %}</h4>
-                        <p>{{ noticias.4.data|date:"d/m/Y" }}</p>
+                            <div class="texto">
+                                <h4>{{ noticias.4.descricao|slice:":100" }}{% if noticias.4.descricao|length > 100 %}...{% endif %}</h4>
+                                <p>{{ noticias.4.data|date:"d/m/Y" }}</p>
+                            </div>
                         </a>
                         
                         <hr>
@@ -142,8 +144,10 @@
                     <div class="infos">
                         <a href="{{ noticias.5.link }}">
                             <img src="{{ noticias.5.imagem.url }}" alt="">
-                        <h4>{{ noticias.5.descricao|slice:":100" }}{% if noticias.5.descricao|length > 100 %}...{% endif %}</h4>
-                        <p>{{ noticias.5.data|date:"d/m/Y" }}</p>
+                            <div class="texto">
+                                <h4>{{ noticias.5.descricao|slice:":100" }}{% if noticias.5.descricao|length > 100 %}...{% endif %}</h4>
+                                <p>{{ noticias.5.data|date:"d/m/Y" }}</p>
+                            </div>
                         </a>
                         
                         <hr>

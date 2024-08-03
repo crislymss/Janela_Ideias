@@ -79,6 +79,10 @@ header{
     cursor: pointer; 
 }
 
+.perfil-button:hover {
+    background-color: #542b7f;
+}
+
 
 .coteiner-banner {
     position: relative;
@@ -244,7 +248,7 @@ header{
 .infos img{
     width: 300px;
     height: 150px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .infos h4{
@@ -252,6 +256,14 @@ header{
     color: #3F205F;
 }
 
+.texto h4 {
+    margin-bottom: 10px; 
+}
+  
+.texto p {
+    margin-top: 0; 
+    color: slategray;
+}
 .slider{
     width: 800px;
     height: 400px;

@@ -41,7 +41,7 @@ class Noticias(models.Model):
     descricao = models.TextField(default = 'Descricao')
     imagem = models.ImageField(upload_to = 'media/noticias/', blank = True, null = True)
     link = models.URLField(blank = True, null = True)
-    data = models.DateField(auto_now_add=True)
+    data = models.DateField()
 
     def _str_(self):
         return self.nome
