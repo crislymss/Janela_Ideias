@@ -134,14 +134,18 @@
                         <a href="{{ noticias.4.link }}">
                             <img src="{{ noticias.4.imagem.url }}" alt="">
                         <h4>{{ noticias.4.descricao|slice:":100" }}{% if noticias.4.descricao|length > 100 %}...{% endif %}</h4>
+                        <p>{{ noticias.4.data|date:"d/m/Y" }}</p>
                         </a>
+                        
                         <hr>
                     </div>
                     <div class="infos">
                         <a href="{{ noticias.5.link }}">
                             <img src="{{ noticias.5.imagem.url }}" alt="">
                         <h4>{{ noticias.5.descricao|slice:":100" }}{% if noticias.5.descricao|length > 100 %}...{% endif %}</h4>
+                        <p>{{ noticias.5.data|date:"d/m/Y" }}</p>
                         </a>
+                        
                         <hr>
                     </div>
                 </div>
