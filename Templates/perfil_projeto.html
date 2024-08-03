@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/tela_projeto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/projetos.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
     <script src="{% static 'js/demais_pagina.js' %}" defer></script>
     <title>{{ projeto.nome }}</title>
@@ -34,7 +34,7 @@
 
     <section id="section-1">
         <div class="container-degrade">
-            <h3>{{ projeto.startup.nome }} > {{ projeto.nome }}</h3>
+            <h3>{{ projeto.startup.nome }} • {{ projeto.nome }}</h3>
         </div>
         <div class="foto-inicial" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% if projeto.logo_projeto %}{{ projeto.logo_projeto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}')">
             <h3>{{ projeto.nome }}</h3>
@@ -85,22 +85,32 @@
         </div>
     
         <div class="conteiner-2">
-            <p>{{ projeto.descricao }}</p>
+            <p class="descricao">{{ projeto.descricao }}</p>
             <div class="carrossel">
                 <div class="fotos">
                     {% if projeto.foto1 %}
                     <div class="foto">
-                        <img src="{{ projeto.foto1.url }}" alt="foto do projeto" width="1000px" height="200px">
+                        <img src="{{ projeto.foto1.url }}" alt="foto do projeto" >
                     </div>
                     {% endif %}
                     {% if projeto.foto2 %}
                     <div class="foto">
-                        <img src="{{ projeto.foto2.url }}" alt="foto do projeto" width="1000px" height="200px">
+                        <img src="{{ projeto.foto2.url }}" alt="foto do projeto">
                     </div>
                     {% endif %}
                     {% if projeto.foto3 %}
                     <div class="foto">
-                        <img src="{{ projeto.foto3.url }}" alt="foto do projeto" width="1000px" height="200px">
+                        <img src="{{ projeto.foto3.url }}" alt="foto do projeto" >
+                    </div>
+                    {% endif %}
+                    {% if projeto.foto4 %}
+                    <div class="foto">
+                        <img src="{{ projeto.foto4.url }}" alt="foto do projeto" >
+                    </div>
+                    {% endif %}
+                    {% if projeto.foto5 %}
+                    <div class="foto">
+                        <img src="{{ projeto.foto5.url }}" alt="foto do projeto" width=>
                     </div>
                     {% endif %}
                 </div>
@@ -113,12 +123,24 @@
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         var url = "{{ projeto.link_video }}";
-                        var videoId = url.split("v=")[1].split("&")[0];
-                        var iframe = document.getElementById('youtube-video');
-                        iframe.src = "https://www.youtube.com/embed/" + videoId;
+                        if (url) {
+                            // Verifica se a URL contém "v="
+                            var videoIdMatch = url.match(/v=([^&]+)/);
+                            if (videoIdMatch) {
+                                var videoId = videoIdMatch[1];
+                                var iframe = document.getElementById('youtube-video');
+                                iframe.src = "https://www.youtube.com/embed/" + videoId;
+                            } else {
+                                console.error("ID do vídeo não encontrado na URL.");
+                            }
+                        } else {
+                            console.error("URL do vídeo não disponível.");
+                        }
                     });
                 </script>
             </div>
+            
+            
             {% else %}
             <p>Vídeo não disponível.</p>
             {% endif %}
@@ -146,22 +168,43 @@
     </footer>
 
     <script>
-        let index = 0;
-
-        function moverCarrossel(direcao) {
-            const fotos = document.querySelector('.fotos');
-            const totalFotos = document.querySelectorAll('.foto').length;
-            index = (index + direcao + totalFotos) % totalFotos;
-            fotos.style.transform = `translateX(${-index * 100}%)`;
-        }
-
-        function copyEmail() {
-            navigator.clipboard.writeText('gaai@ufpi.edu.br').then(() => {
-                alert('Email copiado para a área de transferência!');
-            }, () => {
-                alert('Falha ao copiar o email.');
-            });
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const carrossel = document.querySelector('.fotos');
+            const fotos = document.querySelectorAll('.foto');
+            const totalFotos = fotos.length;
+            const larguraFoto = 1000; // Largura de cada foto (ajuste conforme necessário)
+            let contador = 0;
+        
+            if (totalFotos > 0) {
+                // Ajusta a largura total do contêiner de fotos
+                carrossel.style.width = `${larguraFoto * totalFotos}px`;
+        
+                function avancarCarrossel() {
+                    contador = (contador + 1) % totalFotos;
+                    carrossel.style.transform = `translateX(-${contador * larguraFoto}px)`;
+                }
+        
+                function retrocederCarrossel() {
+                    contador = (contador - 1 + totalFotos) % totalFotos;
+                    carrossel.style.transform = `translateX(-${contador * larguraFoto}px)`;
+                }
+        
+                function moverCarrossel(direcao) {
+                    if (direcao === 1) {
+                        avancarCarrossel();
+                    } else if (direcao === -1) {
+                        retrocederCarrossel();
+                    }
+                }
+        
+                // Configura o intervalo para avançar automaticamente
+                setInterval(avancarCarrossel, 10000); // Troca a cada 4 segundos
+        
+                // Adiciona a função ao onclick das setas
+                window.moverCarrossel = moverCarrossel;
+            }
+        });
+        
     </script>
 </body>
 </html>

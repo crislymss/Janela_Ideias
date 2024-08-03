@@ -136,30 +136,51 @@ header.rolagem {
     color: #033652
 }
 
-
+.descricao {
+    margin-bottom: 20px;
+}
 
 .carrossel {
+    width: 1000px; 
     position: relative;
-    max-width: 600px;
     margin: auto;
     overflow: hidden;
 }
 
 .fotos {
-
     display: flex;
     transition: transform 0.5s ease;
     will-change: transform;
 }
 
 .foto {
-    min-width: 100%;
-    box-sizing: border-box;
+    min-width: 1000px; 
+    flex-shrink: 0;
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .foto img {
     width: 100%;
+    height: auto;
+    object-fit: cover; 
+    display: block;
 }
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(0); }
+    25% { transform: translateX(-1000px); }
+    45% { transform: translateX(-1000px); }
+    50% { transform: translateX(-2000px); }
+    70% { transform: translateX(-2000px); }
+    75% { transform: translateX(-3000px); }
+    95% { transform: translateX(-3000px); }
+    100% { transform: translateX(0); }
+}
+
 
 .seta {
     position: absolute;
@@ -179,3 +200,11 @@ header.rolagem {
 .seta-direita {
     right: 10px;
 }
+
+.video-youtube {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+

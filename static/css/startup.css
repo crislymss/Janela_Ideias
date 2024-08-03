@@ -79,6 +79,15 @@ header.rolagem{
     padding: 20px;
 }
 
+.logo-startup img {
+    max-width: 600px; /* Limita a largura máxima da imagem */
+    max-height: 200px; /* Limita a altura máxima da imagem */
+    width: auto; /* Permite que a largura se ajuste automaticamente */
+    height: auto; /* Permite que a altura se ajuste automaticamente */
+    object-fit: cover; /* Ajusta a imagem para caber dentro do contêiner sem cortar */
+}
+
+
 .info-startup{
     padding: 20px;
 }
@@ -115,16 +124,11 @@ header.rolagem{
 
 .logo-startup{
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.05);
 }
 
-.logo-startup img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+
 
 .conteiner-3{
     padding: 20px;
@@ -199,6 +203,17 @@ header.rolagem{
     position: relative;
 }
 
+.info-projeto p::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Ajuste conforme necessário */
+    background: linear-gradient(to top, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0));
+    pointer-events: none; /* Garante que o degradê não interfira com o clique */
+}
+
 #section-4{
     padding: 0px 20px 0px 20px;
 }
@@ -247,3 +262,16 @@ header.rolagem{
     color: #3F205F
 }
 
+.conteiner-5 h1, 
+.conteiner-5 h4 {
+    font-weight: normal; 
+}
+
+.conteiner-5 h1{
+    color: #3F205F;
+    font-size: 30px;
+}
+
+.conteiner-5{
+    padding: 40px;
+}

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from inova.models import Startup, Noticias, Projeto
+from django.core.exceptions import ValidationError
 
 
 class ProjetoInline(admin.TabularInline):
@@ -23,15 +24,13 @@ class Noticias_admin(admin.ModelAdmin):
 
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'descricao', 'link_video',
-                    'startup', 'logo_projeto')
+    list_display = ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto')
     search_fields = ('nome', 'descricao', 'startup__nome')
     fieldsets = (
         (None, {
-            'fields': ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto', 'foto1', 'foto2', 'foto3')
+            'fields': ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto', 'foto1', 'foto2', 'foto3', 'foto4', 'foto5')
         }),
     )
-
 
 admin.site.register(Noticias, Noticias_admin)
 admin.site.register(Startup, Startups_admin)
