@@ -18,8 +18,8 @@ class Startups_admin(admin.ModelAdmin):
 
 
 class Noticias_admin(admin.ModelAdmin):
-    list_display = ('nome', 'descricao', 'imagem', 'link')
-    search_fields = ('nome', 'descricao')
+    list_display = ('nome', 'descricao', 'data', 'imagem', 'link')
+    search_fields = ('nome', 'descricao', 'data')
 
 class ProjetoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto')
