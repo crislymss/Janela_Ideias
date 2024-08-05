@@ -53,16 +53,17 @@ def catalogo_startup(request):
 
     startups = Startup.objects.all()
 
-    if setor_filter:
+    if setor_filter and area_negocio_filter:
+        startups = startups.filter(setor=setor_filter) | startups.filter(
+            area_de_negocio=area_negocio_filter)
+    elif setor_filter:
         startups = startups.filter(setor=setor_filter)
-
-    if area_negocio_filter:
+    elif area_negocio_filter:
         startups = startups.filter(area_de_negocio=area_negocio_filter)
 
     if search_query:
         startups = startups.filter(nome__icontains=search_query)
 
-    # Obter todas as opções para setores e áreas de negócio
     setores = Startup.objects.values_list('setor', flat=True).distinct()
     areas_negocio = Startup.objects.values_list(
         'area_de_negocio', flat=True).distinct()
@@ -77,6 +78,7 @@ def catalogo_startup(request):
     }
 
     return render(request, 'catalogo_startup.html', context)
+
 
 
 def perfil_startup(request, nome):
