@@ -38,7 +38,7 @@
         </div>
 
         <div class="alinhar-filtros">
-            <form id="setor-form" method="GET" action="{% url 'catalogo_startup' %}">
+            <form id="filtros-form" method="GET" action="{% url 'catalogo_startup' %}">
                 <select name="setor" id="setor">
                     <option value="">Selecione um setor</option>
                     {% for setor in setores %}
@@ -46,9 +46,6 @@
                     {% endfor %}
                 </select>
       
-            </form>
-
-            <form id="area-negocio-form" method="GET" action="{% url 'catalogo_startup' %}">
                 <select name="area_negocio" id="area-negocio">
                     <option value="">Selecione uma área de negócio</option>
                     {% for area_negocio in areas_negocio %}
@@ -56,14 +53,11 @@
                     {% endfor %}
                 </select>
                
-            </form>
-
-            <div class="search-container">
-                <form method="GET" action="{% url 'catalogo_startup' %}">
+                <div class="search-container">
                     <input type="text" id="search-bar" name="search" placeholder="Pesquisar..." value="{{ search_query }}">
                     <button type="submit" id="search-button"><i class="bi bi-search"></i></button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
 
         <div class="flex-card">
@@ -113,11 +107,11 @@
 
     <script>
         document.getElementById('setor').addEventListener('change', function() {
-            document.getElementById('setor-form').submit();
+            document.getElementById('filtros-form').submit();
         });
 
         document.getElementById('area-negocio').addEventListener('change', function() {
-            document.getElementById('area-negocio-form').submit();
+            document.getElementById('filtros-form').submit();
         });
     </script>
 </body>
