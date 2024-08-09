@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagina_catalogo.css' %}">
     <link rel="stylesheet" href="{% static 'css/rodape_pagina.css' %}">
     <script src="{% static 'js/demais_pagina.js' %}" defer></script>
     <title>Catálogo de Startups</title>
@@ -38,6 +38,8 @@
 
             <div class="alinhar-filtros">
                 <form id="filtros-form" method="GET" action="{% url 'catalogo_startup' %}">
+                    <button type="button" id="clear-filters" onclick="clearFilters()">Limpar Filtros</button>
+
                     <select name="setor" id="setor">
                         <option value="">Selecione um setor</option>
                         {% for setor in setores %}
@@ -57,7 +59,6 @@
                         <button type="submit" id="search-button"><i class="bi bi-search"></i></button>
                     </div>
                     
-                    <button type="button" id="clear-filters" onclick="clearFilters()">Limpar Filtros</button>
                 </form>
             </div>
 

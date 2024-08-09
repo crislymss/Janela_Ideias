@@ -123,9 +123,9 @@
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         var url = "{{ projeto.link_video }}";
+                        console.log("URL do vídeo:", url); // Adicione isso para depuração
                         if (url) {
-                            // Verifica se a URL contém "v="
-                            var videoIdMatch = url.match(/v=([^&]+)/);
+                            var videoIdMatch = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|v=|embed\/|v\/)|youtu\.be\/|youtube\.com\/(?:v|e(?:mbed)?)\/|user\/[^\/\n\s]+\/playlist\/\S+\/|playlist\?list=)([a-zA-Z0-9_-]{11})/);
                             if (videoIdMatch) {
                                 var videoId = videoIdMatch[1];
                                 var iframe = document.getElementById('youtube-video');
@@ -137,10 +137,9 @@
                             console.error("URL do vídeo não disponível.");
                         }
                     });
+                    
                 </script>
             </div>
-            
-            
             {% else %}
             <p>Vídeo não disponível.</p>
             {% endif %}
