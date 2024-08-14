@@ -1,27 +1,30 @@
 from django.contrib import admin
-from inova.models import Startup, Noticias, Projeto
-from django.core.exceptions import ValidationError
-
+from .models import Startup, Administrador, Membro, Projeto, Noticias
 
 class ProjetoInline(admin.TabularInline):
     model = Projeto
     extra = 1
 
+class AdministradorInline(admin.StackedInline):
+    model = Administrador
+    can_delete = False
+    verbose_name_plural = 'Administrador'
+
+class MembroInline(admin.TabularInline):
+    model = Membro
+    extra = 1
 
 class Startups_admin(admin.ModelAdmin):
     list_display = (
         'nome', 'cnpj', 'area_de_negocio', 'setor', 'email', 'telefone',
         'logo_startup', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'pais'
     )
-    search_fields = ('setor', 'nome', 'area_de_negocio',
-                     'cidade', 'estado', 'pais')
-    inlines = [ProjetoInline]
-
+    search_fields = ('setor', 'nome', 'area_de_negocio', 'cidade', 'estado', 'pais')
+    inlines = [ProjetoInline, AdministradorInline, MembroInline]
 
 class Noticias_admin(admin.ModelAdmin):
     list_display = ('nome', 'descricao', 'data', 'imagem', 'link')
     search_fields = ('nome', 'descricao', 'data')
-
 
 class ProjetoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'descricao', 'link_video', 'startup', 'logo_projeto')
@@ -35,3 +38,5 @@ class ProjetoAdmin(admin.ModelAdmin):
 admin.site.register(Noticias, Noticias_admin)
 admin.site.register(Startup, Startups_admin)
 admin.site.register(Projeto, ProjetoAdmin)
+admin.site.register(Administrador)
+admin.site.register(Membro)

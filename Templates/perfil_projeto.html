@@ -23,7 +23,7 @@
                     <img src="{% static 'images/logo.png' %}" alt="" width="150px">
                 </a>
             </div>
-            
+
             <div class="perfil_menu">
                 <a href="{% url 'admin:index' %}" class="perfil-link">
                     <button class="perfil-button">Entrar</button>
@@ -40,7 +40,7 @@
             <h3>{{ projeto.nome }}</h3>
         </div>
     </section>
-    
+
     <section id="section-2" class="section-flex">
         <div class="conteiner-1">
             <div class="equipe">
@@ -61,7 +61,7 @@
                 {% else %}
                 <p>Coordenador não definido.</p>
                 {% endif %}
-                
+
                 <h4>Membros</h4>
                 {% if projeto.membros.all %}
                 {% for membro in projeto.membros.all %}
@@ -83,7 +83,7 @@
                 {% endif %}
             </div>
         </div>
-    
+
         <div class="conteiner-2">
             <p class="descricao">{{ projeto.descricao }}</p>
             <div class="carrossel">
@@ -137,7 +137,7 @@
                             console.error("URL do vídeo não disponível.");
                         }
                     });
-                    
+
                 </script>
             </div>
             {% else %}
@@ -145,7 +145,7 @@
             {% endif %}
         </div>
     </section>
-    
+
     <footer>
         <div class="rodape">
             <img src="{% static 'images/ufpi.png' %}" alt="logo">
@@ -173,21 +173,21 @@
             const totalFotos = fotos.length;
             const larguraFoto = 1000; // Largura de cada foto (ajuste conforme necessário)
             let contador = 0;
-        
+
             if (totalFotos > 0) {
                 // Ajusta a largura total do contêiner de fotos
                 carrossel.style.width = `${larguraFoto * totalFotos}px`;
-        
+
                 function avancarCarrossel() {
                     contador = (contador + 1) % totalFotos;
                     carrossel.style.transform = `translateX(-${contador * larguraFoto}px)`;
                 }
-        
+
                 function retrocederCarrossel() {
                     contador = (contador - 1 + totalFotos) % totalFotos;
                     carrossel.style.transform = `translateX(-${contador * larguraFoto}px)`;
                 }
-        
+
                 function moverCarrossel(direcao) {
                     if (direcao === 1) {
                         avancarCarrossel();
@@ -195,15 +195,15 @@
                         retrocederCarrossel();
                     }
                 }
-        
+
                 // Configura o intervalo para avançar automaticamente
                 setInterval(avancarCarrossel, 10000); // Troca a cada 4 segundos
-        
+
                 // Adiciona a função ao onclick das setas
                 window.moverCarrossel = moverCarrossel;
             }
         });
-        
+
     </script>
 </body>
 </html>

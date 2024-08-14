@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- templates/admin/adm_alternativo.html -->
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div class="custom-admin">
+    <h1>{% block title %}Administração{% endblock %}</h1>
+    {% block content %}
+    <!-- Adicione o conteúdo personalizado aqui -->
+    <div class="admin-body">
+        {{ block.super }}
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}
+
+
+
+</body>
+</html>

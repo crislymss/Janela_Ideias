@@ -3,6 +3,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import User
 
 class Startup(models.Model):
     id = models.AutoField(primary_key=True)
@@ -73,3 +75,42 @@ class Projeto(models.Model):
         self.clean()
         super().save(*args, **kwargs)
 
+
+
+
+"""class Administrador(AbstractBaseUser):
+    startup = models.OneToOneField(Startup, related_name='administrador', on_delete=models.CASCADE)
+    nome = models.CharField(max_length=200, blank=False, null=False)
+    cargo = models.CharField(max_length=200, blank=False, null=False)
+    formacao = models.CharField(max_length=200, blank=False, null=False)
+    email = models.EmailField(max_length=254, unique=True, blank=False, null=False)
+    linkedin = models.URLField(blank=True, null=True)
+    senha = models.CharField(max_length=128, blank=False, null=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['nome', 'cargo', 'formacao']"""
+
+class Administrador(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=100)
+    cargo = models.CharField(max_length=50)
+    formacao = models.CharField(max_length=100)
+    email = models.EmailField()  # Corrigido
+    linkedin = models.URLField()
+    senha = models.CharField(max_length=128)  # Opcional, se necessário
+
+    startup = models.OneToOneField(Startup, on_delete=models.CASCADE, related_name='administrador')
+
+    def __str__(self):
+        return self.nome
+
+class Membro(models.Model):
+    nome = models.CharField(max_length=100)
+    cargo = models.CharField(max_length=50)
+    formacao = models.CharField(max_length=100)
+    email = models.EmailField()
+    linkedin = models.URLField()
+    startup = models.ForeignKey(Startup, on_delete=models.CASCADE, related_name='membros')
+
+    def __str__(self):
+        return self.nome

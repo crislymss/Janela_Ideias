@@ -79,36 +79,38 @@
     </section>
 
     <section id="section-4">
-        <div class="conteiner-4">
-            <h1>Sócios</h1>
-            <div class="card-coodernador">
-                <div class="img-coodernador">
-                    <img src="{% static 'images/semFoto.png' %}" alt="">
-                </div>
-                <div class="info-coodernador">
-                    <h4>//NOME DO SOCIO //</h4>
-                    <p>//CARGO //</p>
-                    <p>//FORMAÇÃO //</p>
-                    <p>//EMAIL DO SOCIO //</p>
-                    <a><i class="bi bi-linkedin"></i> Linkedin</a>
-                </div>
+        <h1>Equipe</h1>
+        <h2>Administrador</h2>
+        {% if administrador %}
+            <div class="info-administrador">
+                <h3>{{ administrador.nome }}</h3>
+                <p><strong>Cargo:</strong> {{ administrador.cargo }}</p>
+                <p><strong>Formação:</strong> {{ administrador.formacao }}</p>
+                <p><strong>Email:</strong> {{ administrador.email }}</p>
+                <p><strong>LinkedIn:</strong> <a href="{{ administrador.linkedin }}" target="_blank">{{ administrador.linkedin }}</a></p>
             </div>
+        {% else %}
+            <p>Não há administrador cadastrado para esta startup.</p>
+        {% endif %}
 
-            <h1>Administradores</h1>
-            <div class="card-coodernador">
-                <div class="img-coodernador">
-                    <img src="{% static 'images/semFoto.png' %}" alt="">
-                </div>
-                <div class="info-coodernador">
-                    <h4>//NOME DO ADM //</h4>
-                    <p>//CARGO //</p>
-                    <p>//FORMAÇÃO //</p>
-                    <p>//EMAIL DO ADM //</p>
-                    <a><i class="bi bi-linkedin"></i> Linkedin</a>
-                </div>
-            </div>
-        </div>
+        <h2>Membros</h2>
+        {% if membros %}
+            <ul class="lista-membros">
+                {% for membro in membros %}
+                    <li>
+                        <h3>{{ membro.nome }}</h3>
+                        <p><strong>Cargo:</strong> {{ membro.cargo }}</p>
+                        <p><strong>Formação:</strong> {{ membro.formacao }}</p>
+                        <p><strong>Email:</strong> {{ membro.email }}</p>
+                        <p><strong>LinkedIn:</strong> <a href="{{ membro.linkedin }}" target="_blank">{{ membro.linkedin }}</a></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Não há membros cadastrados para esta startup.</p>
+        {% endif %}
     </section>
+
 
     <section id="section-5">
         <div class="conteiner-5">
