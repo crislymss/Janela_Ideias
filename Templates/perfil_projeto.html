@@ -63,24 +63,26 @@
                 {% endif %}
 
                 <h4>Membros</h4>
-                {% if projeto.membros.all %}
-                {% for membro in projeto.membros.all %}
-                <div class="card-membro">
-                    <div class="img-membro">
-                        <img src="{% if membro.imagem %}{{ membro.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
-                    </div>
-                    <div class="info-membro">
-                        <h4>{{ membro.nome }}</h4>
-                        <p>{{ membro.cargo }}</p>
-                        <p>{{ membro.formacao }}</p>
-                        <p>{{ membro.email }}</p>
-                        <a href="{{ membro.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i> Linkedin</a>
-                    </div>
-                </div>
-                {% endfor %}
+                {% if membros %}
+                    {% for membro_projeto in membros %}
+                        <div class="card-membro">
+                            <div class="img-membro">
+                                <img src="{% if membro_projeto.membro.imagem %}{{ membro_projeto.membro.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                            </div>
+                            <div class="info-membro">
+                                <h4>{{ membro_projeto.membro.nome }}</h4>
+                                <p>{{ membro_projeto.membro.cargo }}</p>
+                                <p>{{ membro_projeto.membro.formacao }}</p>
+                                <p>{{ membro_projeto.membro.email }}</p>
+                                <a href="{{ membro_projeto.membro.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i> Linkedin</a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% else %}
-                <p>Não há membros definidos.</p>
+                    <p>Não há membros definidos.</p>
                 {% endif %}
+                
+
             </div>
         </div>
 

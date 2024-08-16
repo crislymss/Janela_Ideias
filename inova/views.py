@@ -149,7 +149,13 @@ def perfil_startup(request, nome):
 def perfil_projeto(request, startup_nome, projeto_nome):
     startup = get_object_or_404(Startup, nome=startup_nome)
     projeto = get_object_or_404(Projeto, startup=startup, nome=projeto_nome)
-    return render(request, 'perfil_projeto.html', {'startup': startup, 'projeto': projeto})
+    membros = projeto.membros.all()  # Assumindo que 'membros' é o related_name usado
+    context = {
+        'startup': startup,
+        'projeto': projeto,
+        'membros': membros,
+    }
+    return render(request, 'perfil_projeto.html', context)
 
 
 

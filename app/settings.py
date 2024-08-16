@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'inova',
         'USER': 'postgres',
-        'PASSWORD': '20pmto4b',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
     }
 }

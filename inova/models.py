@@ -49,32 +49,6 @@ def limitar_quantidade_noticias(sender, instance, **kwargs):
         noticia_antiga.delete()
 
 
-class Projeto(models.Model):
-    nome = models.CharField(max_length=200, blank=False, null=False)
-    descricao = models.TextField(blank=False, null=False)
-    link_video = models.URLField(blank=True, null=True)
-    startup = models.ForeignKey(Startup, related_name='projetos', on_delete=models.CASCADE)
-    logo_projeto = models.ImageField(upload_to='inova/', blank=True, null=True)
-    foto1 = models.ImageField(upload_to='inova/', blank=True, null=True)
-    foto2 = models.ImageField(upload_to='inova/', blank=True, null=True)
-    foto3 = models.ImageField(upload_to='inova/', blank=True, null=True)
-    foto4 = models.ImageField(upload_to='inova/', blank=True, null=True)
-    foto5 = models.ImageField(upload_to='inova/', blank=True, null=True)
-
-    def __str__(self):
-        return self.nome
-
-    def clean(self):
-        super().clean()
-        fotos = [self.foto1, self.foto2, self.foto3, self.foto4, self.foto5]
-        fotos_preenchidas = [foto for foto in fotos if foto]
-        if not (2 <= len(fotos_preenchidas) <= 5):
-            raise ValidationError('O projeto deve ter entre 2 e 5 fotos.')
-
-    def save(self, *args, **kwargs):
-        self.clean()
-        super().save(*args, **kwargs)
-
 
 
 
@@ -114,3 +88,39 @@ class Membro(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+
+
+class Projeto(models.Model):
+    nome = models.CharField(max_length=200, blank=False, null=False)
+    descricao = models.TextField(blank=False, null=False)
+    link_video = models.URLField(blank=True, null=True)
+    startup = models.ForeignKey(Startup, related_name='projetos', on_delete=models.CASCADE)
+    logo_projeto = models.ImageField(upload_to='inova/', blank=True, null=True)
+    foto1 = models.ImageField(upload_to='inova/', blank=True, null=True)
+    foto2 = models.ImageField(upload_to='inova/', blank=True, null=True)
+    foto3 = models.ImageField(upload_to='inova/', blank=True, null=True)
+    foto4 = models.ImageField(upload_to='inova/', blank=True, null=True)
+    foto5 = models.ImageField(upload_to='inova/', blank=True, null=True)
+    coordenador = models.ForeignKey(Administrador, on_delete=models.SET_NULL, null=True, blank=True, related_name='projetos_coordenados')
+
+    def __str__(self):
+        return self.nome
+
+    def clean(self):
+        super().clean()
+        fotos = [self.foto1, self.foto2, self.foto3, self.foto4, self.foto5]
+        fotos_preenchidas = [foto for foto in fotos if foto]
+        if not (2 <= len(fotos_preenchidas) <= 5):
+            raise ValidationError('O projeto deve ter entre 2 e 5 fotos.')
+
+    def save(self, *args, **kwargs):
+        self.coordenador = self.startup.administrador
+        super().save(*args, **kwargs)
+
+
+class MembroProjeto(models.Model):
+    membro = models.ForeignKey(Membro, on_delete=models.CASCADE)
+    projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='membros')
+
