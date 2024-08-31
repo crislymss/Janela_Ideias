@@ -33,8 +33,6 @@ class MembroProjetoInline(admin.TabularInline):
     extra = 1
 
 
-
-
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
@@ -79,9 +77,24 @@ class ProjetoAdmin(admin.ModelAdmin):
 
 
     
+# Aqui são os objetos que aparecem no menu do adm
+# 1 Noticias manipula as noticias que aparecem na tela inicial
 
 admin.site.register(Noticias, Noticias_admin)
+
+# 2 Startup_admin faz a gestão das startups
+
 admin.site.register(Startup, Startups_admin)
+
+# 3 Projeto vai gerir os projetos cadastrados na plataforma
 admin.site.register(Projeto, ProjetoAdmin)
+
+# 4 Vai gerir os administradores, lembrando que cada startup tem 1(um) administrador
 admin.site.register(Administrador)
-admin.site.register(Membro)
+
+# 5 Membro faz a gestão dos membros cadastrados, podendo adicionar e vincular a uma startup
+# eu removi do menu de administração para evitar poluição desnessesária da tela
+# Já que esses membros podem ser adicionados diretamente nas opções da startup
+#admin.site.register(Membro)
+
+
