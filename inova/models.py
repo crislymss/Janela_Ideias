@@ -116,9 +116,14 @@ class Projeto(models.Model):
             raise ValidationError('O projeto deve ter entre 2 e 5 fotos.')
 
     def save(self, *args, **kwargs):
-        self.coordenador = self.startup.administrador
-        super().save(*args, **kwargs)
+        # Certifique-se de que a startup já foi salva antes de tentar definir o coordenador
+        if not self.startup.administrador:
+            raise ValidationError("A startup não possui um administrador.")
 
+        self.coordenador = self.startup.administrador
+
+        # Chame o método save padrão
+        super().save(*args, **kwargs)
 
 class MembroProjeto(models.Model):
     membro = models.ForeignKey(Membro, on_delete=models.CASCADE)

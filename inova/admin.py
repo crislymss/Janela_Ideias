@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.core.exceptions import ValidationError
+
 from .models import Startup, Administrador, Membro, Projeto, Noticias, MembroProjeto
 from django import forms
 
@@ -46,7 +48,7 @@ class ProjetoForm(forms.ModelForm):
                 self.fields['coordenador'].queryset = Administrador.objects.filter(startup=startup_id)
                 self.fields['membros'].queryset = Membro.objects.filter(startup=startup_id)
             except (ValueError, TypeError):
-                pass  # caso id da startup não seja válido
+                pass  # se o id da startup não seja válido
         elif self.instance.pk:
             self.fields['coordenador'].queryset = Administrador.objects.filter(startup=self.instance.startup)
             self.fields['membros'].queryset = Membro.objects.filter(startup=self.instance.startup)
@@ -63,18 +65,19 @@ class ProjetoAdmin(admin.ModelAdmin):
     inlines = [MembroProjetoInline]
 
     def save_model(self, request, obj, form, change):
+        if not obj.startup.administrador:
+            raise ValidationError("A startup selecionada não possui um administrador.")
         obj.coordenador = obj.startup.administrador
+
+        #método save padrão
         super().save_model(request, obj, form, change)
+
+
 
     def get_readonly_fields(self, request, obj=None):
         if obj:
             return self.readonly_fields + ('coordenador',)
         return self.readonly_fields
-
-
-
-
-
 
     
 # Aqui são os objetos que aparecem no menu do adm
