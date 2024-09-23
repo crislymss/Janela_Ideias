@@ -24,7 +24,7 @@ class Startups_admin(admin.ModelAdmin):
         'logo_startup', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'pais'
     )
     search_fields = ('setor', 'nome', 'area_de_negocio', 'cidade', 'estado', 'pais')
-    inlines = [ProjetoInline, AdministradorInline, MembroInline]
+    inlines = [ AdministradorInline, MembroInline]
 
 class Noticias_admin(admin.ModelAdmin):
     list_display = ('nome', 'descricao', 'data', 'imagem', 'link')
