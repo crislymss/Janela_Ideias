@@ -11,11 +11,11 @@ class Startup(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False)
     descricao = models.TextField(
         default='descrição...', blank=False, null=False)
-    cnpj = models.IntegerField()
+    cnpj = models.CharField(max_length=200, blank=False, null=False)
     area_de_negocio = models.CharField(max_length=200, blank=False, null=False)
     setor = models.CharField(max_length=200, blank=False, null=False)
     email = models.CharField(max_length=200, blank=False, null=False)
-    telefone = models.IntegerField()
+    telefone = models.CharField(max_length=200, blank=False, null=False)
     logo_startup = models.ImageField(upload_to='inova/', blank=True, null=True)
     rua = models.CharField(max_length=255, blank=True, null=True)
     numero = models.CharField(max_length=10, blank=True, null=True)
@@ -47,8 +47,6 @@ def limitar_quantidade_noticias(sender, instance, **kwargs):
     if Noticias.objects.count() > 6:
         noticia_antiga = Noticias.objects.order_by('id').first()
         noticia_antiga.delete()
-
-
 
 
 

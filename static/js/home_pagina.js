@@ -13,27 +13,6 @@ function copyEmail() {
     alert("Endereço de email copiado!");
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const line = document.getElementById('line');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            const linkRect = link.getBoundingClientRect();
-            const parentRect = link.parentElement.getBoundingClientRect();
-
-            line.style.width = linkRect.width + 'px';
-            line.style.left = linkRect.left - parentRect.left + 'px';
-
-            // Optional: Smooth scroll to section
-            document.querySelector(link.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-});
 
 window.addEventListener("scroll", function() {
     let header = document.querySelector("#header");
