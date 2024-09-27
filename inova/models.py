@@ -71,6 +71,8 @@ class Administrador(models.Model):
     formacao = models.CharField(max_length=100)
     email = models.EmailField()  # Corrigido
     linkedin = models.URLField()
+    foto = models.ImageField(
+        upload_to='media/membros/', blank=True, null=True)
     senha = models.CharField(max_length=128)  # Opcional, se necessário
 
     startup = models.OneToOneField(Startup, on_delete=models.CASCADE, related_name='administrador')
@@ -83,6 +85,8 @@ class Membro(models.Model):
     cargo = models.CharField(max_length=50)
     formacao = models.CharField(max_length=100)
     email = models.EmailField()
+    foto = models.ImageField(
+        upload_to='media/membros/', blank=True, null=True)
     linkedin = models.URLField()
     startup = models.ForeignKey(Startup, on_delete=models.CASCADE, related_name='membros')
 

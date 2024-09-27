@@ -48,7 +48,7 @@
                 {% if projeto.coordenador %}
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="{% if projeto.coordenador.imagem %}{{ projeto.coordenador.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                        <img src="{% if projeto.coordenador.foto %}{{ projeto.coordenador.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-coodernador">
                         <h4>{{ projeto.coordenador.nome }}</h4>
@@ -67,7 +67,7 @@
                     {% for membro_projeto in membros %}
                         <div class="card-membro">
                             <div class="img-membro">
-                                <img src="{% if membro_projeto.membro.imagem %}{{ membro_projeto.membro.imagem.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                                <img src="{% if membro_projeto.membro.foto %}{{ membro_projeto.membro.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                             </div>
                             <div class="info-membro">
                                 <h4>{{ membro_projeto.membro.nome }}</h4>
