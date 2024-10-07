@@ -214,3 +214,12 @@ button, select, .search-container {
 .flex-card .card-startup a p {
     color: inherit; 
 }
+
+.min-height {
+    min-height: calc(60vh - 200px);
+    /* Ajuste conforme a altura do seu cabeçalho e rodapé */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
