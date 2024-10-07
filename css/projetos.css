@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ECECEC;
+}
+
+header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+header.rolagem {
+    background-color: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+}
+
+.perfil-button {
+    background-color: #3F205F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.perfil-button:hover {
+    background-color: #542b7f;
+}
+
+.container-degrade {
+    padding: 20px;
+    background: linear-gradient(55deg, #3F205F, #E9F2F4);
+    color: white;
+    font-weight: bold;
+}
+
+.foto-inicial {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.foto-inicial h3 {
+    font-size: 32px;
+    color: white;
+    margin-top: 13%;
+    padding: 10px;
+}
+
+.section-flex {
+    display: flex;
+}
+
+.conteiner-1 {
+    background-color: white;
+    margin: 0;
+    width: 1000px;
+}
+
+.card-coodernador {
+    display: flex;
+}
+
+.card-membro {
+    display: flex;
+}
+
+.img-coodernador img,
+.img-membro img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+
+.conteiner-1 h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #033652;
+}
+
+.info-coodernador h4,
+.info-membro h4 {
+    font-size: 12px;
+}
+
+.info-coodernador p,
+.info-membro p {
+    font-size: 10px;
+}
+
+.info-coodernador a,
+.info-membro a {
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.info-coodernador i,
+.img-membro i {
+    color: #033652
+}
+
+.descricao {
+    margin-bottom: 20px;
+}
+
+.carrossel {
+    width: 1000px; 
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.fotos {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.foto {
+    min-width: 1000px; 
+    flex-shrink: 0;
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    display: block;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(0); }
+    25% { transform: translateX(-1000px); }
+    45% { transform: translateX(-1000px); }
+    50% { transform: translateX(-2000px); }
+    70% { transform: translateX(-2000px); }
+    75% { transform: translateX(-3000px); }
+    95% { transform: translateX(-3000px); }
+    100% { transform: translateX(0); }
+}
+
+
+.seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.seta-esquerda {
+    left: 10px;
+}
+
+.seta-direita {
+    right: 10px;
+}
+
+.video-youtube {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+

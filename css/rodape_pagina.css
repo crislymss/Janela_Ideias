@@ -1,0 +1,89 @@
+.rodape{
+    background-color: #3F205F;
+    display: flex;
+    padding: 2%;
+    box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.3);
+ }
+ 
+ .rodape img{
+    width: 120px;
+    height: auto;
+
+ }
+ 
+ .rodape p{
+    color: white;
+    font-size: 0.9em;
+ }
+ 
+ .info{
+    margin: 0 auto;
+    text-align: center;
+
+ }
+ 
+ .botoes button{
+    background-color: transparent;
+    border: none;
+    color:white;
+    font-size: 0.9em;
+    cursor: pointer;
+    
+ }
+ 
+ .botoes button i{
+    width: 30px;
+    height: auto;
+    margin: 0 10px;
+    color: white;
+    margin-right: -2px;
+    font-size: 1.2em;
+    cursor: pointer;
+ }
+ 
+ @media (max-width: 884px){
+    .rodape p{
+        font-size: 0.8em;
+    }
+
+    .rodape img{
+        width: 100px;
+    }
+ }
+ 
+ @media (max-width: 428px){
+    .rodape{
+        padding: 1%;
+    }
+
+    .botoes button i{
+        width: 10px;
+    }
+
+    .botoes button{
+        font-size: 0.4em;
+    
+    }
+
+    .rodape p{
+        font-size: 0.4em;
+    }
+
+    .rodape img{
+        width: 70px;
+    }
+ }
+ 
+ @media (max-width: 391px){
+    .rodape{
+        padding: 0.7%;
+    }
+
+    .rodape p{
+        font-size: 0.35em;
+    }
+
+    .rodape img{
+        width: 66px;
+    }
+ }

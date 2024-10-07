@@ -1,0 +1,53 @@
+/* static/css/custom_admin.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.custom-admin {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.custom-admin h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.admin-body {
+    margin-top: 20px;
+}
+
+.module {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.module h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.module .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.module .form-row .form-field {
+    flex: 1 1 45%;
+    margin-right: 2%;
+}
+
+.module .form-row .form-field:last-child {
+    margin-right: 0;
+}
