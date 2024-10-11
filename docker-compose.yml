@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD:  75395
     volumes:
-      - /home/volumes/postgres-data:/var/lib/postgresql/data
+      - /var/volumes/inbate/postgres-data:/var/lib/postgresql/data
 
   web:
     build: .
@@ -17,5 +17,5 @@ services:
     depends_on:
       - db
     volumes:
-      - /home/volumes/media-db:/app/media
+      - /var/volumes/inbate/media-db:/app/media
     restart: always
