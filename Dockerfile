@@ -1,24 +1,41 @@
-# Use uma imagem base do Python
-FROM python:3.12-slim
+FROM python:3.10.9-slim
 
-# Defina o diretório de trabalho no container
-WORKDIR /app
+ARG DJANGO_ENV
 
-# Instale o Poetry
-RUN pip install poetry
+ENV DJANGO_ENV=${DJANGO_ENV} \
+  # python:
+  PYTHONFAULTHANDLER=1 \
+  PYTHONUNBUFFERED=1 \
+  PYTHONHASHSEED=random \
+  # pip:
+  PIP_NO_CACHE_DIR=off \
+  PIP_DISABLE_PIP_VERSION_CHECK=on \
+  PIP_DEFAULT_TIMEOUT=100 \
+  # poetry:
+  POETRY_VERSION=1.0.5 \
+  POETRY_VIRTUALENVS_CREATE=false \
+  POETRY_CACHE_DIR='/var/cache/pypoetry'
 
-# Copie os arquivos do projeto para o container
-COPY . .
+# System deps:
+RUN apt-get update \
+  && apt-get install --no-install-recommends -y \
+    bash \
+    build-essential \
+    curl \
+    gettext \
+    git \
+    libpq-dev \
+    wget \
+  # Cleaning cache:
+  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+  && pip install poetry
 
-RUN apt-get update && apt-get install -y libpq-dev
+# set work directory
+WORKDIR /code
+COPY pyproject.toml poetry.lock /code/
 
-RUN apt-get update && apt-get install -y gcc
-
-# Instale as dependências de compilação
-RUN apt-get update && apt-get install -y gcc libpq-dev
-
-# Instale as dependências do projeto
+# Install dependencies:
 RUN poetry install
 
-# Comando para iniciar a aplicação (ajuste conforme necessário)
-CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8001"]
+# copy project
+COPY . .

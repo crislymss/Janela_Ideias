@@ -1,0 +1,6 @@
+inova/__pycache__/
+app/__pycache__/
+.idea/
+.vscode/
+.venv/
+media/media/membros/

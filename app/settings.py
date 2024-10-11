@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("DB_NAME"),
-        'USER': os.environ.get("DB_USER"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
-        'HOST': os.environ.get("DB_HOST"),  
+        'NAME': 'inova',
+        'USER': 'postgres',
+        'PASSWORD': 75395,
+        'HOST': 'db',  
     }
 }
 
@@ -133,6 +133,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+CORS_ALLOW_ALL_ORIGINS = True # Permite que qualquer domínio acesse a API
+
+ALLOWED_HOSTS = ['*']
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
