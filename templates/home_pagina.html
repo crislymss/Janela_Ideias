@@ -24,7 +24,7 @@
     <!-- FIM LINK DO CSS-->
 
     <!-- LINK DO JS-->
-    <script src="{% static 'js/home_pagina.js' %}" defer></script>
+    <script src="inbate{% static 'js/home_pagina.js' %}" defer></script>
     <!-- FIM LINK DO JS-->
 
     <title>Inbate</title>
@@ -34,7 +34,7 @@
     <header>
         <div class="header-conteiner">
             <a href="#" class="logo">
-                <img src="{% static "images/logo.png" %}" alt="" width="150px">
+                <img src="inbate{% static "images/logo.png" %}" alt="" width="150px">
             </a>
             <div class="opcoes_menu">
                 <a href="#section-1" class="opcoes">Home</a>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="perfil_menu">
-                <a href="{% url 'admin:index' %}" class="perfil-link">
+                <a href="inbate{% url 'admin:index' %}" class="perfil-link">
                     <button class="perfil-button">Entrar</button>
                 </a>
             </div>
@@ -59,7 +59,7 @@
                 <div class="texto-banner">
                     <h2>SEJA</h2>
                     <h2>BEM VINDO A</h2>
-                    <img src="{% static "images/nome.png" %}" alt="">
+                    <img src="inbate{% static "images/nome.png" %}" alt="">
                     
                     <div class="coteiner-button">
                         <a href = "catalogo_startup"><button class="round-button">  COMEÇAR <i class="bi bi-arrow-right"></i></button></a>
@@ -88,26 +88,26 @@
 
                     
                         <div class="slide first">
-                            <a href="{{ noticias.0.link }}">
-                                <img src="{{ noticias.0.imagem.url }}" alt="imagem1">
+                            <a href="inbate{{ noticias.0.link }}">
+                                <img src="inbate{{ noticias.0.imagem.url }}" alt="imagem1">
                                 <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
                         <div class="slide">
-                            <a href="{{ noticias.1.link }}">
-                                <img src="{{ noticias.1.imagem.url }}" alt="imagem2">
+                            <a href="inbate{{ noticias.1.link }}">
+                                <img src="inbate{{ noticias.1.imagem.url }}" alt="imagem2">
                                 <h5>{{ noticias.1.descricao|slice:":65" }}{% if noticias.1.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
                         <div class="slide">
-                            <a href="{{ noticias.2.link }}">
-                                <img src="{{ noticias.2.imagem.url }}" alt="imagem3">
+                            <a href="inbate{{ noticias.2.link }}">
+                                <img src="inbate{{ noticias.2.imagem.url }}" alt="imagem3">
                                 <h5>{{ noticias.2.descricao|slice:":65" }}{% if noticias.2.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
                         <div class="slide">
-                            <a href="{{ noticias.3.link }}">
-                                <img src="{{ noticias.3.imagem.url }}" alt="imagem4">
+                            <a href="inbate{{ noticias.3.link }}">
+                                <img src="inbate{{ noticias.3.imagem.url }}" alt="imagem4">
                                 <h5>{{ noticias.3.descricao|slice:":65" }}{% if noticias.3.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
@@ -131,8 +131,8 @@
                 
                 <div class="coteiner-infos">
                     <div class="infos">
-                        <a href="{{ noticias.4.link }}">
-                            <img src="{{ noticias.4.imagem.url }}" alt="">
+                        <a href="inbate{{ noticias.4.link }}">
+                            <img src="inbate{{ noticias.4.imagem.url }}" alt="">
                             <div class="texto">
                                 <h4>{{ noticias.4.descricao|slice:":100" }}{% if noticias.4.descricao|length > 100 %}...{% endif %}</h4>
                                 <p>{{ noticias.4.data|date:"d/m/Y" }}</p>
@@ -142,8 +142,8 @@
                         <hr>
                     </div>
                     <div class="infos">
-                        <a href="{{ noticias.5.link }}">
-                            <img src="{{ noticias.5.imagem.url }}" alt="">
+                        <a href="inbate{{ noticias.5.link }}">
+                            <img src="inbate{{ noticias.5.imagem.url }}" alt="">
                             <div class="texto">
                                 <h4>{{ noticias.5.descricao|slice:":100" }}{% if noticias.5.descricao|length > 100 %}...{% endif %}</h4>
                                 <p>{{ noticias.5.data|date:"d/m/Y" }}</p>
@@ -180,7 +180,7 @@
         
     </section>
     <!-- SESSION 3 - SOBRE -->
-    <section id="section-3" class="imagem-piaui" style="background-image: url('{% static 'images/piaui.jpg' %}');">
+    <section id="section-3" class="imagem-piaui" style="background-image: url('inbate{% static 'images/piaui.jpg' %}');">
         <div class="sobre">
             <h2>Conheça a INBATE</h2>
             <p>A Incubadora de Empresas de Base Tecnológica da Universidade Federal do Piauí (INBATE/UFPI) foi criada com o objetivo de estimular a produção de conhecimento e fomentar novos empreendimentos. A INBATE apoia propostas inovadoras de pesquisadores e estudantes da universidade, visando transformá-las em negócios de sucesso. Em sua primeira chamada de incubação, os projetos receberam um investimento total de R$ 250 mil em bolsas. Isso demonstra o compromisso da incubadora em criar um ambiente propício para o desenvolvimento e crescimento das startups, fornecendo suporte, infraestrutura e recursos necessários para sua incubação e posterior inserção no mercado.</p>
@@ -190,12 +190,12 @@
 
 
     
-    <section id="section-4" class="apoio" style="background-image: url('{% static 'images/imagem-apoiooo.jpg' %}');">
+    <section id="section-4" class="apoio" style="background-image: url('inbate{% static 'images/imagem-apoiooo.jpg' %}');">
     </section>
 
     <footer>
          <div class="rodape">
-            <img src="{% static 'images/ufpi.png' %}" alt="logo">
+            <img src="inbate{% static 'images/ufpi.png' %}" alt="logo">
             <div class="info">
                 <div class="botoes">
                     <button onclick="window.location.href='https://www.instagram.com/gaai.ufpi';">
@@ -209,7 +209,7 @@
                 <p>Universidade Federal do Piauí - UFPI Campus Universitário Ministro Petrônio Portella</p>
                 <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
-            <img src="{% static 'images/gaai-img-bg.png' %}" alt="logo">
+            <img src="inbate{% static 'images/gaai-img-bg.png' %}" alt="logo">
         </div>
     </footer>
 
