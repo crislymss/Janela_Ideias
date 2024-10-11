@@ -29,17 +29,17 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('inbate/admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('teste/', views.teste, name='teste'),
-    path('catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
-    path('perfil_startup/<str:nome>/',
+    path('inbate/teste/', views.teste, name='teste'),
+    path('inbate/catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
+    path('inbate/perfil_startup/<str:nome>/',
          views.perfil_startup, name='perfil_startup'),
-    path('criar_startup/', views.criar_startup, name='criar_startup'),
-    path('perfil_projeto/<str:startup_nome>/<str:projeto_nome>/',
+    path('inbate/criar_startup/', views.criar_startup, name='criar_startup'),
+    path('inbate/perfil_projeto/<str:startup_nome>/<str:projeto_nome>/',
          views.perfil_projeto, name='perfil_projeto'),
-    path('login/', login_view, name='login'),
-    path('perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
+    path('inbate/login/', login_view, name='login'),
+    path('inbate/perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
