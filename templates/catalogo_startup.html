@@ -69,8 +69,8 @@
                 {% block content %}
                     {% if startups %}
                         {% for startup in startups %}
-                            <div class="card-startup">
-                                <a href="inbate/perfil_startup/{{ startup.nome }}"> 
+                            <div class="card-startup"> <a href="perfil_startup/{{ startup.nome }}"> 
+                               
                                     <br>
                                     {% if startup.logo_startup %}
                                         <img src="{{ startup.logo_startup.url }}" alt="{{ startup.nome }}" width="400px" height="400px">
