@@ -32,7 +32,7 @@ urlpatterns = [
     path('inbate/admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('inbate/teste/', views.teste, name='teste'),
-    path('inbate/catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
+    path('catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
     path('inbate/perfil_startup/<str:nome>/',
          views.perfil_startup, name='perfil_startup'),
     path('inbate/criar_startup/', views.criar_startup, name='criar_startup'),
