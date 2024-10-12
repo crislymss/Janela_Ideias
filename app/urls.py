@@ -39,7 +39,7 @@ urlpatterns = [
     path('perfil_projeto/<str:startup_nome>/<str:projeto_nome>/',
          views.perfil_projeto, name='perfil_projeto'),
     path('login/', login_view, name='login'),
-    path('<str:nome>/', perfil_startup, name='perfil_startup'),
+    path('perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
