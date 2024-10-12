@@ -86,11 +86,10 @@
             <div class="flex-coodernador">
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="{% if administrador.foto %}
-                            /inbate{{ administrador.foto.url }}
+                        {% if administrador.foto %}
+                            <img src="/inbate{{ administrador.foto.url }}" alt=""> 
                         {% else %}
-                          /inbate{% static 'images/semFoto.png' %}
-                            {% endif %}" alt="">
+                            <img src="/inbate{% static 'images/semFoto.png' %}" alt="">
                     </div>
                     <div class="info-coodernador">
                         <h3>{{ administrador.nome }}</h3>
