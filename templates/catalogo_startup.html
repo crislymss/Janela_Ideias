@@ -73,9 +73,9 @@
                                 <a href="/inbate{% url 'perfil_startup' startup.nome %}">
                                     <br>
                                     {% if startup.logo_startup %}
-                                        <img src="inbate{{ startup.logo_startup.url }}" alt="{{ startup.nome }}" width="400px" height="400px">
+                                        <img src="/inbate{{ startup.logo_startup.url }}" alt="{{ startup.nome }}" width="400px" height="400px">
                                     {% else %}
-                                        <img src="inbate{% static 'images/semFoto.png' %}" alt="logo" width="190px" height="190px">
+                                        <img src="/inbate{% static 'images/semFoto.png' %}" alt="logo" width="190px" height="190px">
                                     {% endif %}
                                     <div class="line" id="line"></div>
                                     <h2>{{ startup.nome }}</h2>
