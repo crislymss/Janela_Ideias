@@ -21,12 +21,12 @@
     <header id="header">
         <div class="container">
             <div class="flex">
-                <a href="{% url 'home' %}" class="logo">
+                <a href="" class="logo">
                     <img src="{% static "images/logo.png" %}" alt="">
                 </a>
             </div>
             <div class="perfil_menu">
-                <a href="{% url 'admin:index' %}" class="perfil-link">
+                <a href="inbate{% url 'admin:index' %}" class="perfil-link">
                     <button class="perfil-button">Entrar</button>
                 </a>
             </div>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="alinhar-filtros">
-                <form id="filtros-form" method="GET" action="{% url 'catalogo_startup' %}">
+                <form id="filtros-form" method="GET" action="inbate{% url 'catalogo_startup' %}">
                     <button type="button" id="clear-filters" onclick="clearFilters()">Limpar Filtros</button>
 
                     <select name="setor" id="setor">
@@ -70,7 +70,7 @@
                     {% if startups %}
                         {% for startup in startups %}
                             <div class="card-startup">
-                                <a href="{% url 'perfil_startup' startup.nome %}">
+                                <a href="inbate{% url 'perfil_startup' startup.nome %}">
                                     <br>
                                     {% if startup.logo_startup %}
                                         <img src="{{ startup.logo_startup.url }}" alt="{{ startup.nome }}" width="400px" height="400px">
@@ -98,7 +98,7 @@
 
     <footer>
         <div class="rodape">
-            <img src="{% static 'images/ufpi.png' %}" alt="logo">
+            <img src="inbate{% static 'images/ufpi.png' %}" alt="logo">
             <div class="info">
                 <div class="botoes">
                     <button onclick="window.location.href='https://www.instagram.com/gaai.ufpi';">
@@ -112,7 +112,7 @@
                 <p>Universidade Federal do Piauí - UFPI Campus Universitário Ministro Petrônio Portella</p>
                 <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
-            <img src="{% static 'images/gaai-img-bg.png' %}" alt="logo">
+            <img src="inbate{% static 'images/gaai-img-bg.png' %}" alt="logo">
         </div>
     </footer>
 
@@ -126,7 +126,7 @@
         });
 
         function clearFilters() {
-            window.location.href = "{% url 'catalogo_startup' %}";
+            window.location.href = "inbate{% url 'catalogo_startup' %}";
         }
     </script>
 </body>
