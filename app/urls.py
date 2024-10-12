@@ -30,7 +30,7 @@ from django.urls import path
 
 urlpatterns = [
     path('inbate/admin/', admin.site.urls),
-    path('inbate/home_pagina', views.index, name='home'),
+    path('', views.index, name='home'),
     path('inbate/teste/', views.teste, name='teste'),
     path('inbate/catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
     path('inbate/perfil_startup/<str:nome>/',
