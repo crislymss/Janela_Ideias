@@ -29,8 +29,8 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('inbate/admin/', admin.site.urls),
-    path('inbate/home_pagina', views.index, name='home'),
+    path('inbate''admin/', admin.site.urls),
+    path('inbate''home_pagina', views.index, name='home'),
     path('inbate/teste/', views.teste, name='teste'),
     path('inbate/catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
     path('inbate/perfil_startup/<str:nome>/',
@@ -39,7 +39,7 @@ urlpatterns = [
     path('inbate/perfil_projeto/<str:startup_nome>/<str:projeto_nome>/',
          views.perfil_projeto, name='perfil_projeto'),
     path('inbate/login/', login_view, name='login'),
-    path('inbate/perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
+    path('perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
