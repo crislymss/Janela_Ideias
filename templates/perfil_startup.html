@@ -86,7 +86,7 @@
             <div class="flex-coodernador">
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="{% if administrador.foto %}{{ administrador.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                        <img src="/inbate{% if administrador.foto %}{{ administrador.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-coodernador">
                         <h3>{{ administrador.nome }}</h3>
@@ -107,7 +107,7 @@
                 {% for membro in membros %}
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="{% if membro.foto %}{{ membro.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                        <img src="/inbate{% if membro.foto %}{{ membro.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-coodernador">
                         <h3>{{ membro.nome }}</h3>
@@ -141,7 +141,7 @@
 
     <footer>
         <div class="rodape">
-            <img src="{% static 'images/ufpi.png' %}" alt="logo">
+            <img src="../static/images/ufpi.png" alt="logo">
             <div class="info">
                 <div class="botoes">
                     <button onclick="window.location.href='https://www.instagram.com/gaai.ufpi';">
@@ -155,7 +155,7 @@
                 <p>Universidade Federal do Piauí - UFPI Campus Universitário Ministro Petrônio Portella</p>
                 <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
-            <img src="{% static 'images/gaai-img-bg.png' %}" alt="logo">
+            <img src="../static/images/gaai-img-bg.png" alt="logo">
         </div>
     </footer>
 
