@@ -70,7 +70,7 @@
                     {% if startups %}
                         {% for startup in startups %}
                             <div class="card-startup"> 
-                                <a href="{% url 'perfil_startup' startup.nome %}">
+                                <a href="/inbate{% url 'perfil_startup' startup.nome %}">
                                     <br>
                                     {% if startup.logo_startup %}
                                         <img src="inbate{{ startup.logo_startup.url }}" alt="{{ startup.nome }}" width="400px" height="400px">
