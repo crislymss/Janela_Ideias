@@ -36,7 +36,7 @@
         <div class="container-degrade">
             <h3>{{ projeto.startup.nome }} • {{ projeto.nome }}</h3>
         </div>
-        <div class="foto-inicial" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% if projeto.logo_projeto %}{{ projeto.logo_projeto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}')">
+        <div class="foto-inicial" style="background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('{% if projeto.logo_projeto %} /inbate{{ projeto.logo_projeto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}')">
             <h3>{{ projeto.nome }}</h3>
         </div>
     </section>
