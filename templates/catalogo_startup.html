@@ -69,7 +69,9 @@
                 {% block content %}
                     {% if startups %}
                         {% for startup in startups %}
-                            <div class="card-startup"> <a href="perfil_startup/{{ startup.nome }}"> 
+                            <div class="card-startup"> 
+                                <a href="https://inovaufpi.ufpi.br/inbate/perfil_startup/{{ startup.nome }}"> 
+
                                
                                     <br>
                                     {% if startup.logo_startup %}
