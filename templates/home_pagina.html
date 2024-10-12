@@ -89,7 +89,7 @@
                     
                         <div class="slide first">
                             <a href="inbate{{ noticias.0.link }}">
-                                <img src="/inbate/media/media/" alt="imagem1">
+                                <img src="inbate{{ noticias.0.imagem.url }}" alt="imagem1">
                                 <h5>{{ noticias.0.descricao|slice:":65" }}{% if noticias.0.descricao|length > 65 %}...{% endif %}</h5>
                             </a>
                         </div>
