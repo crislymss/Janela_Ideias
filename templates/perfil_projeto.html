@@ -48,7 +48,7 @@
                 {% if projeto.coordenador %}
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="{% if projeto.coordenador.foto %}{{ projeto.coordenador.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                        <img src="{% if projeto.coordenador.foto %}/inbate/perfil_projeto/arquivo/novata{{ projeto.coordenador.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                     </div>
                     <div class="info-coodernador">
                         <h4>{{ projeto.coordenador.nome }}</h4>
@@ -67,7 +67,7 @@
                     {% for membro_projeto in membros %}
                         <div class="card-membro">
                             <div class="img-membro">
-                                <img src="{% if membro_projeto.membro.foto %}{{ membro_projeto.membro.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
+                                <img src="{% if membro_projeto.membro.foto %}/inbate/perfil_projeto/arquivo/novata{{ membro_projeto.membro.foto.url }}{% else %}{% static 'images/semFoto.png' %}{% endif %}" alt="">
                             </div>
                             <div class="info-membro">
                                 <h4>{{ membro_projeto.membro.nome }}</h4>
@@ -92,27 +92,27 @@
                 <div class="fotos">
                     {% if projeto.foto1 %}
                     <div class="foto">
-                        <img src="/inbate/perfil_projeto/arquivo/novata/{{ projeto.foto1.url }}" alt="foto do projeto" >
+                        <img src="/inbate/perfil_projeto/arquivo/novata{{ projeto.foto1.url }}" alt="foto do projeto" >
                     </div>
                     {% endif %}
                     {% if projeto.foto2 %}
                     <div class="foto">
-                        <img src="/inbate/perfil_projeto/arquivo/novata/{{ projeto.foto2.url }}" alt="foto do projeto">
+                        <img src="/inbate/perfil_projeto/arquivo/novata{{ projeto.foto2.url }}" alt="foto do projeto">
                     </div>
                     {% endif %}
                     {% if projeto.foto3 %}
                     <div class="foto">
-                        <img src="/inbate/perfil_projeto/arquivo/novata/{{ projeto.foto3.url }}" alt="foto do projeto" >
+                        <img src="/inbate/perfil_projeto/arquivo/novata{{ projeto.foto3.url }}" alt="foto do projeto" >
                     </div>
                     {% endif %}
                     {% if projeto.foto4 %}
                     <div class="foto">
-                        <img src="/inbate/perfil_projeto/arquivo/novata/{{ projeto.foto4.url }}" alt="foto do projeto" >
+                        <img src="/inbate/perfil_projeto/arquivo/novata{{ projeto.foto4.url }}" alt="foto do projeto" >
                     </div>
                     {% endif %}
                     {% if projeto.foto5 %}
                     <div class="foto">
-                        <img src="/inbate/perfil_projeto/arquivo/novata/{ projeto.foto5.url }}" alt="foto do projeto" width=>
+                        <img src="/inbate/perfil_projeto/arquivo/novata{ projeto.foto5.url }}" alt="foto do projeto" width=>
                     </div>
                     {% endif %}
                 </div>
