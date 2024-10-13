@@ -86,7 +86,7 @@
             <div class="flex-coodernador">
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="/inbate/catalogo_startup/perfil_startup{{ administrador.foto.url }}" alt="socios"> 
+                        <img src="/inbate/{{ administrador.foto.url }}" alt="socios"> 
                     </div>
                     <div class="info-coodernador">
                         <h3>{{ administrador.nome }}</h3>
@@ -107,7 +107,7 @@
                 {% for membro in membros %}
                 <div class="card-coodernador">
                     <div class="img-coodernador">
-                        <img src="/inbate/catalogo_startup/perfil_startup{{ membro.foto.url }}" alt="membros">
+                        <img src="/inbate/{{ membro.foto.url }}" alt="membros">
                     </div>
                     <div class="info-coodernador">
                         <h3>{{ membro.nome }}</h3>
