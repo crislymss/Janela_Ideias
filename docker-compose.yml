@@ -17,5 +17,5 @@ services:
     depends_on:
       - db
     volumes:
-      - /var/volumes/inbate/media-db:/app/media
+      - /var/volumes/inbate/media-db:/code/media
     restart: always
