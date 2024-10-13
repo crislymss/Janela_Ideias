@@ -21,11 +21,11 @@
         <div class="container">
             <div class="flex">
                 <a href="{% url 'home' %}" class="logo">
-                    <img src="https://inovaufpi.ufpi.br/inbate/admin/login/?next=/admin/" alt="" width="150px">
+                    <img src="/inbate{% static "images/logo.png" %}" alt="" width="150px">
                 </a>
             </div>
             <div class="perfil_menu">
-                <a href="{% url 'admin:index' %}" class="perfil-link">
+                <a href="https://inovaufpi.ufpi.br/inbate/admin/login/?next=/admin/" class="perfil-link">
                     <button class="perfil-button">Entrar</button>
                 </a>
             </div>
