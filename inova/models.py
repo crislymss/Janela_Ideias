@@ -70,7 +70,7 @@ class Administrador(models.Model):
     email = models.EmailField()  # Corrigido
     linkedin = models.URLField()
     foto = models.ImageField(
-        upload_to='media/membros/', blank=True, null=True)
+        upload_to='membros/', blank=True, null=True)
     senha = models.CharField(max_length=128)  # Opcional, se necessário
 
     startup = models.OneToOneField(Startup, on_delete=models.CASCADE, related_name='administrador')
