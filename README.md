@@ -9,3 +9,6 @@ Passo a passo
 3 - python manage.py runserver
 
 
+## Figma
+
+https://www.figma.com/design/LLUXkJv395RlFNxQn9xk9r/Janela-de-Ideias?node-id=4-6&t=blcrqw2MCn4UhOLp-1
