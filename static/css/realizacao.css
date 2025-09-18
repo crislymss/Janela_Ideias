@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Chau Philomene One', sans-serif;
+  font-weight: 400;
+}
+
+#realizacao {
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+}
+
+#realizacao h2 {
+  font-size: 2rem;
+  color: #666;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#realizacao h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.container-realizacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo-realizacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.logo-realizacao:hover {
+  transform: scale(1.05);
+}
+
+.logo-realizacao img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.logo-realizacao:hover img {
+  filter: grayscale(0%);
+}
+
+.logo-propesqi, .logo-nintec {
+  text-align: center;
+  padding: 20px;
+  min-width: 200px;
+}
+
+.logo-propesqi .logo-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1a365d;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.logo-propesqi .logo-subtitle {
+  font-size: 0.7rem;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logo-nintec .logo-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e67e22;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+.logo-nintec .logo-subtitle {
+  font-size: 0.7rem;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .container-realizacao {
+    gap: 30px;
+  }
+  
+  .logo-realizacao img {
+    height: 60px;
+  }
+}

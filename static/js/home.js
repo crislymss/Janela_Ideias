@@ -56,6 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextButton = document.getElementById('nextBtn');
   const prevButton = document.getElementById('prevBtn');
 
+  // Verifica se os elementos existem antes de continuar
+  if (!track || !cards.length || !nextButton || !prevButton) {
+    console.log('Elementos do carrossel não encontrados');
+    return;
+  }
+
   // Calcula a largura de um card mais sua margem (assumida como 20px)
   const cardWidth = cards[0].getBoundingClientRect().width + 20;
 
@@ -87,3 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
     moveToCard(currentIndex - 1);
   });
 });
+
+// Funções para os botões do hero section
+function explorar() {
+  // Scroll para a seção "quem-somos"
+  const quemSomosSection = document.getElementById('quem-somos');
+  if (quemSomosSection) {
+    quemSomosSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function participar() {
+  // Scroll para a seção "como-participar"
+  const comoParticiparSection = document.getElementById('como-participar');
+  if (comoParticiparSection) {
+    comoParticiparSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
