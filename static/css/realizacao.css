@@ -36,7 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 100px;
   flex-wrap: wrap;
   max-width: 1000px;
   margin: 0 auto;
@@ -62,45 +62,14 @@
   transition: filter 0.3s ease;
 }
 
+.logo-menor img {
+  height: 60px;
+}
+
 .logo-realizacao:hover img {
   filter: grayscale(0%);
 }
 
-.logo-propesqi, .logo-nintec {
-  text-align: center;
-  padding: 20px;
-  min-width: 200px;
-}
-
-.logo-propesqi .logo-text {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #1a365d;
-  margin-bottom: 5px;
-  letter-spacing: 2px;
-}
-
-.logo-propesqi .logo-subtitle {
-  font-size: 0.7rem;
-  color: #4a5568;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.logo-nintec .logo-text {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #e67e22;
-  margin-bottom: 5px;
-  font-style: italic;
-}
-
-.logo-nintec .logo-subtitle {
-  font-size: 0.7rem;
-  color: #4a5568;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
 
 @media (max-width: 768px) {
   .container-realizacao {
