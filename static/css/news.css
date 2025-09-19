@@ -26,7 +26,8 @@
 
 .carousel-wrapper {
     position: relative; 
-    padding: 0 40px;   
+    padding: 0 40px;  
+    z-index: 1; 
 }
 
 .carousel-container {
@@ -40,6 +41,7 @@
 }
 
 .nav-btn {
+    z-index: 1111;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -52,6 +54,11 @@
     z-index: 10;
     color: #0a4a7d;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .fas{

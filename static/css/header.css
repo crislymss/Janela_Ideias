@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    overflow-x: hidden; /* Esconde as barras de rolagem */
+    overflow-x: hidden; 
 }
 
 header {
@@ -21,7 +21,6 @@ header {
   align-items: center;
   justify-content: space-between;
   
-  /* As 3 propriedades essenciais para o efeito */
   position: sticky;
   top: 0;
   z-index: 10;

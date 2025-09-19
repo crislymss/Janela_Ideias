@@ -103,6 +103,71 @@ function explorar() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel-track');
+    const cards = Array.from(track.children);
+    const nextButton = document.getElementById('nextBtn');
+    const prevButton = document.getElementById('prevBtn');
+
+    if (!track || cards.length === 0 || !nextButton || !prevButton) {
+        console.error('Elementos do carrossel não foram encontrados.');
+        return;
+    }
+
+    const cardWidth = cards[0].offsetWidth + 20;
+    const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+    const cardsVisible = Math.round(containerWidth / cardWidth);
+    
+    let currentIndex = 0;
+    const maxIndex = cards.length - cardsVisible;
+
+    // Função para atualizar a aparência e o estado dos botões
+    const updateNavButtons = () => {
+        // Botão "Anterior"
+        if (currentIndex === 0) {
+            prevButton.classList.add('disabled');
+            prevButton.disabled = true;
+        } else {
+            prevButton.classList.remove('disabled');
+            prevButton.disabled = false;
+        }
+
+        // Botão "Próximo"
+        if (currentIndex === maxIndex) {
+            nextButton.classList.add('disabled');
+            nextButton.disabled = true;
+        } else {
+            nextButton.classList.remove('disabled');
+            nextButton.disabled = false;
+        }
+    }
+
+    const moveToCard = (targetIndex) => {
+        if (targetIndex < 0) {
+            targetIndex = 0;
+        } else if (targetIndex > maxIndex) {
+            targetIndex = maxIndex;
+        }
+
+        track.style.transform = 'translateX(-' + (targetIndex * cardWidth) + 'px)';
+        currentIndex = targetIndex;
+
+        // Atualiza os botões após cada movimento
+        updateNavButtons();
+    }
+
+    nextButton.addEventListener('click', () => {
+        moveToCard(currentIndex + 1);
+    });
+
+    prevButton.addEventListener('click', () => {
+        moveToCard(currentIndex - 1);
+    });
+
+    // Inicia os botões no estado correto
+    updateNavButtons();
+});
+
 function participar() {
   // Scroll para a seção "como-participar"
   const comoParticiparSection = document.getElementById('como-participar');
