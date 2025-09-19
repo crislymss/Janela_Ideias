@@ -5,17 +5,38 @@
   font-weight: 400;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden; /* Esconde as barras de rolagem */
+}
+
 header {
   background: #f8f8f8;
   padding: 10px 40px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
-  position: relative; 
   align-items: center;
+  justify-content: space-between;
+  
+  /* As 3 propriedades essenciais para o efeito */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  
+  transition: padding 0.3s ease
+}
+
+header.rolagem {
+    padding: 5px 40px;
+    background: rgba(248, 248, 248, 0.9);
 }
 
 .logo img {
   width: 120px;
+  transition: width 0.3s ease;
 }
 
 nav {

@@ -110,3 +110,21 @@ function participar() {
     comoParticiparSection.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+window.addEventListener("scroll", function(){
+    // Seleciona a tag <header> corretamente
+    const header = document.querySelector("header");
+    
+    // Adiciona a classe 'rolagem' se a rolagem for maior que 0, senão remove
+    header.classList.toggle("rolagem", window.scrollY > 0);
+});
+
+function copyEmail() {
+    var tempInput = document.createElement("input");
+    tempInput.value = "propesqi@ufpi.edu.br";
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Endereço de email copiado!");
+}

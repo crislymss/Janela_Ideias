@@ -1,17 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Chau Philomene One', sans-serif;
-  font-weight: 400;
-}
-
 #realizacao {
   background-color: #f8f9fa;
   padding: 40px 20px;
 }
 
 #realizacao h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #666;
   margin-bottom: 30px;
   font-weight: bold;
