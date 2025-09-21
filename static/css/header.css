@@ -25,7 +25,34 @@ header {
   top: 0;
   z-index: 10;
   
-  transition: padding 0.3s ease
+  transition: padding 0.3s ease, background 0.3s ease
+}
+
+/* Header específico para catálogo */
+body.catalogo-page header,
+html body.catalogo-page header {
+  background: white !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+body.catalogo-page header .logo img {
+  filter: none;
+}
+
+body.catalogo-page nav a {
+  color: #555 !important;
+}
+
+body.catalogo-page nav a.active {
+  color: #1a6b74 !important;
+}
+
+body.catalogo-page nav a::after {
+  background: #1a6b74 !important;
+}
+
+body.catalogo-page nav a:hover {
+  color: #1a6b74 !important;
 }
 
 header.rolagem {

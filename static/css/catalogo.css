@@ -1,0 +1,384 @@
+/* Reset e configurações básicas */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* Hero Section */
+.hero-catalogo {
+    background-image: url('../images/texture2.png'), linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    color: #333;
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.hero-catalogo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.hero-catalogo .container {
+    position: relative;
+    z-index: 2;
+}
+
+.titulo-principal {
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    color: #232f42;
+}
+
+.estatisticas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numero {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.numero-azul {
+    color: #1a6b74;
+}
+
+.numero-amarelo {
+    color: #f39c12;
+}
+
+.numero-verde {
+    color: #27ae60;
+}
+
+.label {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+}
+
+.descricao {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Filtros Section */
+.filtros-section {
+    background-color: white;
+    padding: 40px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.filtros-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1a6b74;
+}
+
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.resultado-busca {
+    color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.filtros {
+    display: flex;
+    gap: 15px;
+}
+
+.filtro-select {
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 160px;
+}
+
+.filtro-select:focus {
+    outline: none;
+    border-color: #1a6b74;
+}
+
+/* Startups Grid */
+.startups-grid-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.startups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.startup-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e1e5e9;
+}
+
+.startup-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.startup-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-bg {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #1a6b74, #232f42);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.icon-bg i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.incubadora {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+}
+
+.setor-tag {
+    background-color: #e3f2fd;
+    color: #1a6b74;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.startup-nome {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #232f42;
+    margin-bottom: 15px;
+    font-family: 'Chau Philomene One', sans-serif;
+}
+
+.startup-descricao {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.ver-detalhes {
+    color: #1a6b74;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.ver-detalhes:hover {
+    color: #232f42;
+}
+
+.ver-detalhes i {
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .filtros-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .search-box {
+        max-width: none;
+    }
+    
+    .filtros {
+        justify-content: center;
+    }
+    
+    .startups-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+    
+    .estatisticas {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .numero {
+        font-size: 3rem;
+    }
+    
+    .filtros {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .filtro-select {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .startups-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .startup-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-catalogo {
+        padding: 60px 0 40px;
+    }
+    
+    .titulo-principal {
+        font-size: 2rem;
+    }
+    
+    .numero {
+        font-size: 2.5rem;
+    }
+    
+    .label {
+        font-size: 1rem;
+    }
+    
+    .descricao {
+        font-size: 1rem;
+    }
+    
+    .filtros-section {
+        padding: 30px 0;
+    }
+    
+    .startups-grid-section {
+        padding: 40px 0;
+    }
+    
+    .startup-card {
+        padding: 20px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .startup-nome {
+        font-size: 1.3rem;
+    }
+}
