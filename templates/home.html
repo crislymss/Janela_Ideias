@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/hero.css">
+    <link rel="stylesheet" href="../static/css/quem-somos.css">
+    <link rel="stylesheet" href="../static/css/sobre.css">
+    <link rel="stylesheet" href="../static/css/news.css">
+    <link rel="stylesheet" href="../static/css/como-participar-localizaçao.css">
+    <link rel="stylesheet" href="../static/css/realizacao.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+
+    <link rel="icon" href="../static/images/janela.png" type="image/png">
+
+    <title>Janela de Ideias</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
+        </div>
+        <nav>
+            <a href="#">Inicío</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#">Catalogo</a>
+        </nav>
+    </header>
+
+    <section class="hero" style="background-image: url('../static/images/texture2.png'), linear-gradient(to bottom right, #007DAF, #e9c46a);">
+        <div class="hero-content">
+            <h1>JANELA DE IDEIAS</h1>
+            <p>Descubra as startups mais inovadoras e seus projetos revolucionários. Conecte-se com o futuro da tecnologia e empreendedorismo.</p>
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="explorar()">Explorar Startups <i class="bi bi-arrow-right"></i></button>
+                <button class="btn btn-secondary" onclick="participar()">Como Participar</button>
+            </div>
+        </div>
+        <i class="bi bi-arrow-down-short scroll-arrow"></i>
+    </section>
+
+    <section id="quem-somos">
+        <div class="container-title">
+            <h1>Quem somos?</h1>
+            <p>Conectamos diferentes tipos de inovadores em uma única plataforma</p>
+        </div>
+
+        <div class="container-cards">
+            <div class="card-quem-somos reveal-on-scroll">
+                <div class="card-icon icon-blue">
+                    <i class="bi bi-rocket-takeoff-fill"></i>
+                </div>
+                <h2>StartShow</h2>
+                <p>Startups inovadoras</p>
+            </div>
+
+            <div class="card-quem-somos reveal-on-scroll">
+                <div class="card-icon icon-yellow">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <h2>EmpreendeShow</h2>
+                <p>Empreendedores visionários</p>
+            </div>
+
+            <div class="card-quem-somos reveal-on-scroll">
+                <div class="card-icon icon-blue">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+                <h2>SaúdeShow</h2>
+                <p>Inovação em saúde</p>
+            </div>
+
+            <div class="card-quem-somos reveal-on-scroll">
+                <div class="card-icon icon-yellow">
+                    <i class="bi bi-flower1"></i> </div>
+                <h2>FarmShow</h2>
+                <p>Sustentabilidade e agro</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container-sobre">
+            <h1> Sobre a Janela de Ideias </h1>
+            <p> A Janela de Ideias é uma iniciativa da Pró-Reitoria de Pesquisa e Inovação da Universidade Federal do Piauí (PROPESQI-UFPI) que visa fortalecer o potencial empreendedor e inovador dentro da universidade. </p>
+            <p> O projeto é uma vitrine das startups que tiveram o seu desenvolvimento iniciado ou fomentado pela UFPI, uma forma de divulgar e incentivar a participação da comunidade acadêmica como um todo. </p>
+        </div>
+    </section>
+
+    <section class="news-section">
+      <div class="news">
+          <div class="header">
+              <h2>Fique por Dentro</h2>
+              <p>Acompanhe as últimas novidades do ecossistema de inovação e empreendedorismo da UFPI.</p>
+          </div>
+
+
+          <div class="carousel-wrapper">
+              <button id="prevBtn" class="nav-btn">&lt;</button>
+              <div class="carousel-container">
+                  <div class="carousel-track">
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 1">
+                          <div class="card-content">
+                              <span class="tag">STARTUPS</span>
+                              <h3>Startups da UFPI são selecionadas para o Web Summit Lisboa...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 15 de Janeiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 2">
+                          <div class="card-content">
+                              <span class="tag">INOVAÇÃO</span>
+                              <h3>Novo edital de inovação aberta é lançado em parceria com...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 18 de Janeiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 3">
+                          <div class="card-content">
+                              <span class="tag">EVENTOS</span>
+                              <h3>UFPI sedia a semana nacional de ciência e tecnologia com foco em...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 22 de Janeiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 4">
+                          <div class="card-content">
+                              <span class="tag">PESQUISA</span>
+                              <h3>Pesquisadores desenvolvem nova tecnologia para o agronegócio...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 25 de Janeiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 5">
+                          <div class="card-content">
+                              <span class="tag">EMPREENDEDORISMO</span>
+                              <h3>Alunos de administração vencem maratona de empreendedorismo...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 28 de Janeiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 6">
+                          <div class="card-content">
+                              <span class="tag">STARTUPS</span>
+                              <h3>Incubadora da UFPI recebe nova seleção de projetos inovadores...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 02 de Fevereiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 7">
+                          <div class="card-content">
+                              <span class="tag">TECNOLOGIA</span>
+                              <h3>Laboratório de TI da UFPI firma parceria com empresa de software...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 05 de Fevereiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="../static/images/startup.jpeg" alt="Notícia 8">
+                          <div class="card-content">
+                              <span class="tag">EXTENSÃO</span>
+                              <h3>Projeto de extensão leva robótica para escolas públicas da região...</h3>
+                              <div class="card-footer">
+                                  <span><i class="far fa-calendar-alt"></i> 10 de Fevereiro, 2025</span>
+                                  <a href="#">Ler mais &rightarrow;</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <button id="nextBtn" class="nav-btn">&gt;</button>
+          </div>
+      </div>
+  </section>
+    
+ <section id="como-participar">
+  <div class="container-como">
+    <div class="card-participar">
+      <h2>Como participar?</h2>
+      <p>
+        Preencha o Formulário Google disponível ou entre em contato com o e-mail a seguir:
+      </p>
+      <div class="buttons">
+        <a onclick="copyEmail()" class="btn-email">
+          <i class="bi bi-envelope-fill"></i> propesqi@ufpi.edu.br
+        </a>
+        <a href="#" target="_blank" class="btn-form">
+          Formulário Google
+        </a>
+      </div>
+    </div>
+
+    <div class="mapa">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.3058509353173!2d-42.80191292416458!3d-5.058997396323059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x78e37631f0f5bb3%3A0x2cd4303e0e7f09cb!2sUniversidade%20Federal%20do%20Piau%C3%AD%20-%20UFPI!5e0!3m2!1spt-BR!2sbr!4v1713456789012!5m2!1spt-BR!2sbr" 
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="realizacao">
+  <h2>Realização</h2>
+  <div class="container-realizacao">
+    <div class="logo-realizacao">
+      <img src="../static/images/ufpi.png" alt="UFPI">
+    </div>
+    <div class="logo-realizacao logo-menor">
+      <img src="../static/images/propesqi.png" alt="propesqi">
+    </div>
+    <div class="logo-realizacao logo-menor">
+      <img src="../static/images/nintec.png" alt="nintec">
+    </div>
+    <div class="logo-realizacao">
+      <img src="../static/images/gaai-img-bg.png" alt="GAAI">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section footer-logo">
+      <div class="logo-footer">
+        <img src="../static/images/logo-linear.png" alt="Logo Janela de Ideias">
+      </div>
+      <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Navegação</h3>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#">Catálogo</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <div class="contact-info">
+        <p><i class="bi bi-envelope-fill"></i> propesqi@ufpi.edu.br</p>
+        <p>Bairro Ininga - Teresina - PI</p>
+        <p>CEP: 64049-550</p>
+        <p>Universidade Federal do Piauí - UFPI</p>
+        <p>Campus Universitário Ministro Petrônio Portella</p>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Redes Sociais</h3>
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <i class="bi bi-instagram"></i> @propesqiufpi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 PROPESQI-UFPI. Todos os direitos reservados.</p>
+    <a></a>
+  </div>
+</footer>
+
+<script src="../static/js/home.js"></script>
+</body>
+</html>

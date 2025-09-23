@@ -1,0 +1,65 @@
+#sobre {
+    position: relative; 
+    overflow: hidden;   
+    width: 100%;
+}
+
+#sobre::before,
+#sobre::after {
+    content: ''; 
+    position: absolute;
+    left: 0;
+    width: 200%; 
+    height: 5px; 
+    
+    background-image: linear-gradient(
+        90deg, 
+        #f7dc6f 25%, 
+        #a2d9ce 25%, 
+        #a2d9ce 50%, 
+        #f7dc6f 50%, 
+        #f7dc6f 75%, 
+        #a2d9ce 75%, 
+        #a2d9ce 100%
+    );
+    background-size: 50% 100%; 
+    animation: moverLinha 15s linear infinite;
+}
+
+#sobre::before {
+    top: 0;
+}
+
+#sobre::after {
+    bottom: 0;
+}
+
+
+@keyframes moverLinha {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
+}
+
+.container-sobre {
+    background-color: #eaf2f8; 
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.container-sobre h1 {
+    color: #1b4f72; 
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container-sobre p {
+    color: #736B6B; 
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 600px; 
+    margin: 0 auto; 
+}
