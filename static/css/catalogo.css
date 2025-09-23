@@ -19,13 +19,12 @@ body {
 
 /* Hero Section */
 .hero-catalogo {
-    background-image: url('../images/texture2.png'), linear-gradient(to bottom right, #f8f9fa, #e9ecef);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
     color: #333;
-    padding: 80px 0 60px;
+    padding: 60px 0 60px;
     text-align: center;
 }
 
@@ -103,16 +102,25 @@ body {
 
 /* Filtros Section */
 .filtros-section {
-    background-color: white;
-    padding: 40px 0;
+    padding: 20px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .filtros-container {
-    display: flex;
-    align-items: center;
     gap: 30px;
     justify-content: space-between;
+    align-items: center;
+    border: #c4c8cb 1px solid;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.filtros-flex {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .search-box {
@@ -123,8 +131,8 @@ body {
 
 .search-input {
     width: 100%;
-    padding: 15px 50px 15px 20px;
-    border: 2px solid #e1e5e9;
+    padding: 10px 10px 10px 20px;
+    border: 2px solid #c4c8cb;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -156,15 +164,15 @@ body {
 }
 
 .filtro-select {
-    padding: 15px 20px;
-    border: 2px solid #e1e5e9;
+    width: 100%;
+    padding: 10px 10px;
+    border: 2px solid #c4c8cb;
     border-radius: 8px;
-    background-color: white;
     font-size: 1rem;
     color: #333;
     cursor: pointer;
     transition: border-color 0.3s ease;
-    min-width: 160px;
+    min-width: 100px;
 }
 
 .filtro-select:focus {
@@ -174,7 +182,7 @@ body {
 
 /* Startups Grid */
 .startups-grid-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background-color: #f8f9fa;
 }
 
@@ -190,7 +198,7 @@ body {
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e1e5e9;
+    border: 2px solid #c4c8cb;
 }
 
 .startup-card:hover {
@@ -254,7 +262,7 @@ body {
 
 .startup-descricao {
     color: #666;
-    line-height: 1.6;
+    
     margin-bottom: 25px;
     font-size: 0.95rem;
 }
@@ -267,6 +275,7 @@ body {
     align-items: center;
     gap: 8px;
     transition: color 0.3s ease;
+    margin-top: 10px;
 }
 
 .ver-detalhes:hover {

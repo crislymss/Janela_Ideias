@@ -143,3 +143,37 @@ function copyEmail() {
         alert('Email copiado para a área de transferência!');
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Função que anima um número de 0 até o valor final
+    const animateNumber = (element) => {
+        const target = +element.getAttribute('data-target');
+        let current = 0;
+        const duration = 2000; // Duração total da animação em milissegundos (2 segundos)
+        const stepTime = 10; // Intervalo de atualização em milissegundos
+        const totalSteps = duration / stepTime;
+        const increment = target / totalSteps;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.innerText = target;
+                clearInterval(timer);
+            } else {
+                element.innerText = Math.ceil(current);
+            }
+        }, stepTime);
+    };
+
+    // Para que a função funcione, vamos primeiro guardar o valor final
+    // em um atributo de dados e zerar o texto visível.
+    const numberElements = document.querySelectorAll('.numero');
+    numberElements.forEach(el => {
+        const targetValue = el.innerText;
+        el.setAttribute('data-target', targetValue);
+        el.innerText = '0';
+        
+        // Inicia a animação para cada elemento
+        animateNumber(el);
+    });
+});
