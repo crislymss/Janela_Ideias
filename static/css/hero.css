@@ -42,6 +42,7 @@
 }
 
 .btn-primary {
+    text-decoration: none;
     background: rgb(229, 229, 229);
     color: #165961;
 }
@@ -53,6 +54,7 @@
 }
 
 .btn-secondary {
+    text-decoration: none;
     background-color: rgba(255, 255, 255, 0.1);
     color: rgb(229, 229, 229);
     border: white 1px solid;

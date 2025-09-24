@@ -96,10 +96,29 @@ footer {
 
 .footer-bottom {
   background-color: #1a252f;
-  text-align: center;
+  text-align: center; /* Isso garante que seu texto fique no centro */
   padding: 20px 0;
   margin-top: 40px;
   border-top: 1px solid #34495e;
+  position: relative; /* Essencial para o posicionamento do ícone */
+}
+
+.footer-icon {
+  position: absolute; /* Tira o ícone do fluxo normal */
+  right: 40px;      /* Distância da borda direita */
+  top: 50%;         /* Alinha o topo do ícone ao meio do container */
+  transform: translateY(-50%); /* Centraliza o ícone verticalmente de forma precisa */
+}
+
+/* Estilos de cor e tamanho do ícone (pode manter como estava) */
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #1a252f;
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover i {
+  color: white;
 }
 
 .footer-bottom p {
