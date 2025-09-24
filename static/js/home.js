@@ -28,6 +28,12 @@ const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
 // Instrui o observador a monitorar cada um desses elementos
 elementsToReveal.forEach((el) => observer.observe(el));
 
+
+/* NOTA: Existem duas implementações de carrossel abaixo. 
+  A segunda é mais completa, com cálculo de cards visíveis e desativação de botões.
+  A primeira foi deixada como no original, mas pode ser redundante.
+*/
+
 /**
  * @description Inicializa a funcionalidade de um carrossel horizontal após o
  * documento HTML ter sido completamente carregado.
@@ -73,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verificação de limite: impede o deslize para antes do primeiro card
     if (targetIndex < 0) {
       targetIndex = 0;
-    // Verificação de limite: impede o deslize para além do último conjunto de cards
+      // Verificação de limite: impede o deslize para além do último conjunto de cards
     } else if (targetIndex > cards.length - 3) {
       targetIndex = cards.length - 3;
     }
@@ -94,102 +100,170 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Funções para os botões do hero section
+
+/**
+ * @description Rola a página suavemente para a seção "quem-somos" quando chamada.
+ * Ideal para ser usada como um handler de evento de clique em um botão.
+ *
+ * @logic
+ * 1. Procura no DOM por um elemento com o ID 'quem-somos'.
+ * 2. Se o elemento for encontrado, utiliza o método `scrollIntoView` com a
+ * opção `behavior: 'smooth'` para criar uma animação de rolagem suave até ele.
+ */
 function explorar() {
   // Scroll para a seção "quem-somos"
   const quemSomosSection = document.getElementById('quem-somos');
   if (quemSomosSection) {
-    quemSomosSection.scrollIntoView({ behavior: 'smooth' });
+    quemSomosSection.scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 }
 
+/**
+ * @description Inicializa uma versão aprimorada do carrossel que calcula
+ * dinamicamente os limites e desativa os botões de navegação quando o
+ * início ou o fim é alcançado.
+ *
+ * @logic
+ * 1. Aguarda o DOM estar completamente carregado.
+ * 2. Seleciona os elementos do carrossel e calcula dinamicamente quantos cards
+ * são visíveis com base na largura do contêiner e dos cards.
+ * 3. Calcula o índice máximo (`maxIndex`) para o qual o carrossel pode rolar
+ * sem mostrar espaço em branco no final.
+ * 4. A função `updateNavButtons` verifica a posição atual (`currentIndex`) e
+ * adiciona ou remove a classe 'disabled' e o atributo `disabled` dos botões
+ * de navegação, impedindo cliques desnecessários.
+ * 5. A função `moveToCard` move o carrossel e, em seguida, chama `updateNavButtons`
+ * para garantir que o estado dos botões esteja sempre correto.
+ * 6. Adiciona event listeners aos botões de navegação e chama `updateNavButtons`
+ * uma vez no início para definir o estado inicial correto (o botão "anterior"
+ * começa desativado).
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const cards = Array.from(track.children);
-    const nextButton = document.getElementById('nextBtn');
-    const prevButton = document.getElementById('prevBtn');
+  const track = document.querySelector('.carousel-track');
+  const cards = Array.from(track.children);
+  const nextButton = document.getElementById('nextBtn');
+  const prevButton = document.getElementById('prevBtn');
 
-    if (!track || cards.length === 0 || !nextButton || !prevButton) {
-        console.error('Elementos do carrossel não foram encontrados.');
-        return;
+  if (!track || cards.length === 0 || !nextButton || !prevButton) {
+    console.error('Elementos do carrossel não foram encontrados.');
+    return;
+  }
+
+  const cardWidth = cards[0].offsetWidth + 20;
+  const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+  const cardsVisible = Math.round(containerWidth / cardWidth);
+
+  let currentIndex = 0;
+  const maxIndex = cards.length - cardsVisible;
+
+  // Função para atualizar a aparência e o estado dos botões
+  const updateNavButtons = () => {
+    // Botão "Anterior"
+    if (currentIndex === 0) {
+      prevButton.classList.add('disabled');
+      prevButton.disabled = true;
+    } else {
+      prevButton.classList.remove('disabled');
+      prevButton.disabled = false;
     }
 
-    const cardWidth = cards[0].offsetWidth + 20;
-    const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-    const cardsVisible = Math.round(containerWidth / cardWidth);
-    
-    let currentIndex = 0;
-    const maxIndex = cards.length - cardsVisible;
+    // Botão "Próximo"
+    if (currentIndex >= maxIndex) {
+      nextButton.classList.add('disabled');
+      nextButton.disabled = true;
+    } else {
+      nextButton.classList.remove('disabled');
+      nextButton.disabled = false;
+    }
+  }
 
-    // Função para atualizar a aparência e o estado dos botões
-    const updateNavButtons = () => {
-        // Botão "Anterior"
-        if (currentIndex === 0) {
-            prevButton.classList.add('disabled');
-            prevButton.disabled = true;
-        } else {
-            prevButton.classList.remove('disabled');
-            prevButton.disabled = false;
-        }
-
-        // Botão "Próximo"
-        if (currentIndex === maxIndex) {
-            nextButton.classList.add('disabled');
-            nextButton.disabled = true;
-        } else {
-            nextButton.classList.remove('disabled');
-            nextButton.disabled = false;
-        }
+  const moveToCard = (targetIndex) => {
+    if (targetIndex < 0) {
+      targetIndex = 0;
+    } else if (targetIndex > maxIndex) {
+      targetIndex = maxIndex;
     }
 
-    const moveToCard = (targetIndex) => {
-        if (targetIndex < 0) {
-            targetIndex = 0;
-        } else if (targetIndex > maxIndex) {
-            targetIndex = maxIndex;
-        }
+    track.style.transform = 'translateX(-' + (targetIndex * cardWidth) + 'px)';
+    currentIndex = targetIndex;
 
-        track.style.transform = 'translateX(-' + (targetIndex * cardWidth) + 'px)';
-        currentIndex = targetIndex;
-
-        // Atualiza os botões após cada movimento
-        updateNavButtons();
-    }
-
-    nextButton.addEventListener('click', () => {
-        moveToCard(currentIndex + 1);
-    });
-
-    prevButton.addEventListener('click', () => {
-        moveToCard(currentIndex - 1);
-    });
-
-    // Inicia os botões no estado correto
+    // Atualiza os botões após cada movimento
     updateNavButtons();
+  }
+
+  nextButton.addEventListener('click', () => {
+    moveToCard(currentIndex + 1);
+  });
+
+  prevButton.addEventListener('click', () => {
+    moveToCard(currentIndex - 1);
+  });
+
+  // Inicia os botões no estado correto
+  updateNavButtons();
 });
 
+/**
+ * @description Rola a página suavemente para a seção "como-participar"
+ * quando chamada.
+ *
+ * @logic
+ * 1. Procura no DOM por um elemento com o ID 'como-participar'.
+ * 2. Se o elemento for encontrado, utiliza o método `scrollIntoView` com a
+ * opção `behavior: 'smooth'` para rolar a página até ele.
+ */
 function participar() {
   // Scroll para a seção "como-participar"
   const comoParticiparSection = document.getElementById('como-participar');
   if (comoParticiparSection) {
-    comoParticiparSection.scrollIntoView({ behavior: 'smooth' });
+    comoParticiparSection.scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 }
 
-window.addEventListener("scroll", function(){
-    // Seleciona a tag <header> corretamente
-    const header = document.querySelector("header");
-    
-    // Adiciona a classe 'rolagem' se a rolagem for maior que 0, senão remove
-    header.classList.toggle("rolagem", window.scrollY > 0);
+/**
+ * @description Adiciona ou remove a classe 'rolagem' do cabeçalho (<header>)
+ * com base na posição de rolagem da página. Útil para aplicar estilos
+ * quando o usuário rola a página, como um fundo sólido ou uma sombra.
+ *
+ * @logic
+ * 1. Um event listener é adicionado ao evento 'scroll' da janela.
+ * 2. Sempre que o usuário rola a página, a função de callback é executada.
+ * 3. Ela seleciona o elemento <header>.
+ * 4. Utiliza `classList.toggle` com um segundo argumento booleano (`window.scrollY > 0`).
+ * Isso adiciona a classe 'rolagem' se o usuário rolou para baixo (scrollY > 0) e
+ * a remove se ele está no topo (scrollY === 0).
+ */
+window.addEventListener("scroll", function() {
+  // Seleciona a tag <header> corretamente
+  const header = document.querySelector("header");
+
+  // Adiciona a classe 'rolagem' se a rolagem for maior que 0, senão remove
+  header.classList.toggle("rolagem", window.scrollY > 0);
 });
 
+/**
+ * @description Copia um endereço de e-mail pré-definido para a área de
+ * transferência do usuário e exibe um alerta de confirmação.
+ *
+ * @logic
+ * 1. Cria um elemento <input> temporário na memória.
+ * 2. Define o valor desse input para o endereço de e-mail "propesqi@ufpi.edu.br".
+ * 3. Anexa o input ao corpo do documento (necessário para que `select()` funcione).
+ * 4. Seleciona o conteúdo do input.
+ * 5. Executa o comando "copy" do navegador, que copia o texto selecionado.
+ * 6. Remove o input temporário do documento para não deixar lixo no HTML.
+ * 7. Exibe um alerta para informar ao usuário que a cópia foi bem-sucedida.
+ */
 function copyEmail() {
-    var tempInput = document.createElement("input");
-    tempInput.value = "propesqi@ufpi.edu.br";
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-    alert("Endereço de email copiado!");
+  var tempInput = document.createElement("input");
+  tempInput.value = "propesqi@ufpi.edu.br";
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Endereço de email copiado!");
 }
