@@ -1,0 +1,252 @@
+/* --- ESTILOS GLOBAIS PARA A PÁGINA --- */
+:root {
+    --primary-blue: rgb(4, 101, 153);
+    --secund-blue: rgba(126, 209, 232, 0.7);
+    --border-color: rgba(70, 110, 122, 0.55);
+    --text-color-soft: #5f6c7b;
+    --text-color-dark: #343a40;
+}
+
+body.perfil-page {
+    background-color: #ffffff;
+}
+
+/* --- CONTAINER PRINCIPAL QUE ALINHA TUDO --- */
+.profile-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- BANNER DA STARTUP --- */
+.startup-banner {
+    display: flex;
+    align-items: center;
+    background-color: #eaf6ff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.startup-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 25px;
+    border: 1px solid white;
+}
+
+.banner-content h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color-dark);
+    margin: 0 0 8px 0;
+}
+
+.banner-content .tag {
+    display: inline-block;
+    background-color: var(--secund-blue);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* --- GRID DE CONTEÚDO --- */
+.page-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* --- ESTILO DE CARD UNIFICADO --- */
+.card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+/* Remove a margem do último card para não criar espaço extra */
+.main-details .card:last-child {
+    margin-bottom: 0;
+}
+.sidebar .card:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- SEÇÕES DA COLUNA DE BAIXO --- */
+.card h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color-soft);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 12px;
+   
+    border-radius: 8px;
+    
+}
+
+.team-member img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.team-member strong {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-color-dark);
+}
+
+.team-member span {
+    font-size: 13px;
+    color: var(--text-color-soft);
+}
+
+
+/* --- SIDEBAR DA COLUNA DIREITA --- */
+.info-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-bottom: 15px;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card ul li {
+    display: flex;
+    align-items: center;
+    padding: 1px 0;
+}
+
+.info2 {
+    padding: 15px 0;
+}
+
+.info3 {
+    padding: 1px 0;
+    border-bottom: 1px solid rgba(70, 110, 122, 0.55);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(70, 110, 122, 0.55);
+}
+
+.info-card ul li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.info-card ul li:first-child {
+    padding-top: 0;
+}
+
+.info-card ul li .icon {
+    font-size: 24px;
+    color: var(--border-color);
+    margin-right: 20px;
+    width: 24px;
+}
+
+.info-card li div {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card li div span {
+    font-size: 14px;
+    color: var(--text-color-soft);
+    margin-bottom: 2px;
+}
+
+.info-card li div strong,
+.info-card li a {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.info-card li a {
+    color: var(--text-color-soft);
+    transition: color 0.2s ease-in-out;
+}
+.info-card li a:hover {
+    color: var(--primary-blue);
+}
+
+.social-links-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    padding-top: 16px;
+    margin-bottom: 15px;
+}
+
+.social-links-container a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    font-size: 18px;
+    margin-right: 10px;
+    color: var(--text-color-soft);
+    transition: all 0.2s ease-in-out;
+}
+
+.social-links-container a:hover {
+    background-color: var(--primary-blue);
+    color: #fff;
+    border-color: var(--primary-blue);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .page-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        padding: 20px;
+    }
+}
