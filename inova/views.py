@@ -1,18 +1,10 @@
-from .models import Startup, Projeto
-from django.shortcuts import render, get_object_or_404
-from .models import Startup, Noticias
-from django.shortcuts import render, get_object_or_404
-from .models import Startup, Projeto
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Startup, Membro, Administrador
-from .forms import MembroForm, AdministradorForm, CustomAuthenticationForm
+from django.db import transaction
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models import Startup, MembroEquipe, RedesSociais, Contato
+from .forms import StartupForm, ContatoForm, RedesSociaisForm, MembroEquipeFormSet
 from django.shortcuts import render, redirect
-from .forms import StartupForm
-from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect
-from django.urls import reverse
-from django.core.exceptions import PermissionDenied
-from functools import wraps
+from django.http import HttpResponse
 
-# views.py
-# Criar Objetos
+def pagina_inicial(request):
+    return HttpResponse("<h1>Projeto rodando...</h1>")
