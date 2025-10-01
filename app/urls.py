@@ -27,7 +27,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', views.pagina_inicial, name='home'), 
-    path('noticias/', include('inova.urls')),
+    path('noticias/', views.NoticiaListView.as_view(), name='lista_noticias'),
+    path('noticias/<int:pk>/', views.NoticiaDetailView.as_view(), name='detalhe_noticia'),
     path('admin/', admin.site.urls),
 ]
 
