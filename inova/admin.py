@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Startup, MembroEquipe, RedesSociais, Contato
+from .models import Noticia
 
 # Crie classes inline para os modelos relacionados ao Startup
 # StackedInline mostra os campos um abaixo do outro
@@ -36,3 +37,11 @@ admin.site.register(Startup, StartupAdmin)
 # admin.site.register(MembroEquipe)
 # admin.site.register(RedesSociais)
 # admin.site.register(Contato)
+
+
+@admin.register(Noticia)
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'categoria', 'data_publicacao', 'administrador', 'link')
+    list_filter = ('categoria', 'data_publicacao')
+    search_fields = ('titulo', 'descricao')
+    date_hierarchy = 'data_publicacao'

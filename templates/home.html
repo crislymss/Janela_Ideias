@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -96,113 +97,47 @@
         </div>
     </section>
 
-    <section class="news-section">
-      <div class="news">
-          <div class="header">
+        <section class="news-section">
+          <div class="news">
+            <div class="header">
               <h2>Fique por Dentro</h2>
               <p>Acompanhe as últimas novidades do ecossistema de inovação e empreendedorismo da UFPI.</p>
-          </div>
+            </div>
 
-
-          <div class="carousel-wrapper">
-              <button id="prevBtn" class="nav-btn">&lt;</button>
+            <div class="carousel-wrapper">
+              <button id="prevBtn" class="nav-btn"><i class="bi bi-chevron-left"></i></button>
               <div class="carousel-container">
-                  <div class="carousel-track">
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 1">
-                          <div class="card-content">
-                              <span class="tag">STARTUPS</span>
-                              <h3>Startups da UFPI são selecionadas para o Web Summit Lisboa...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 15 de Janeiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 2">
-                          <div class="card-content">
-                              <span class="tag">INOVAÇÃO</span>
-                              <h3>Novo edital de inovação aberta é lançado em parceria com...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 18 de Janeiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 3">
-                          <div class="card-content">
-                              <span class="tag">EVENTOS</span>
-                              <h3>UFPI sedia a semana nacional de ciência e tecnologia com foco em...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 22 de Janeiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 4">
-                          <div class="card-content">
-                              <span class="tag">PESQUISA</span>
-                              <h3>Pesquisadores desenvolvem nova tecnologia para o agronegócio...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 25 de Janeiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 5">
-                          <div class="card-content">
-                              <span class="tag">EMPREENDEDORISMO</span>
-                              <h3>Alunos de administração vencem maratona de empreendedorismo...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 28 de Janeiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 6">
-                          <div class="card-content">
-                              <span class="tag">STARTUPS</span>
-                              <h3>Incubadora da UFPI recebe nova seleção de projetos inovadores...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 02 de Fevereiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 7">
-                          <div class="card-content">
-                              <span class="tag">TECNOLOGIA</span>
-                              <h3>Laboratório de TI da UFPI firma parceria com empresa de software...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 05 de Fevereiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <img src="../static/images/startup.jpeg" alt="Notícia 8">
-                          <div class="card-content">
-                              <span class="tag">EXTENSÃO</span>
-                              <h3>Projeto de extensão leva robótica para escolas públicas da região...</h3>
-                              <div class="card-footer">
-                                  <span><i class="far fa-calendar-alt"></i> 10 de Fevereiro, 2025</span>
-                                  <a href="#">Ler mais &rightarrow;</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <button id="nextBtn" class="nav-btn">&gt;</button>
+                <div class="carousel-track">
+          {% for noticia in noticias %}
+          <div class="card">
+            {% if noticia.imagem %}
+              <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}">
+            {% else %}
+              <img src="{% static 'images/default-news.jpg' %}" alt="{{ noticia.titulo }}">
+            {% endif %}
+            <div class="card-content">
+            <span class="tag">{{ noticia.get_categoria_display }}</span>
+            <p>{{ noticia.descricao }}</p>
+        </div>
+
+        <div class="card-footer">
+            <span class="date">
+                <i class="bi bi-calendar"></i>
+                <span class="date-text">{{ noticia.data_publicacao|date:"d \d\e F, Y" }}</span>
+            </span>
+            {% if noticia.link %}
+            <a href="{{ noticia.link }}" target="_blank">Ler mais &rarr;</a>
+            {% endif %}
+        </div>
+
           </div>
-      </div>
-  </section>
-    
+          {% endfor %}
+        </div>
+    </div>
+    <button id="nextBtn" class="nav-btn"><i class="bi bi-chevron-right"></i></button>
+  </div>
+</section>
+
  <section id="como-participar">
   <div class="container-como">
     <div class="card-participar">

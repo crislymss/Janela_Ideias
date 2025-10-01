@@ -25,9 +25,10 @@
 }
 
 .carousel-wrapper {
-    position: relative; 
-    padding: 0 40px;  
-    z-index: 1; 
+    position: relative;  
+    width: 100%;
+  
+    
 }
 
 .carousel-container {
@@ -38,10 +39,27 @@
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out; 
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    justify-content: flex-start;
 }
 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;       
+    gap: 20px;             
+    justify-content: flex-start; 
+}
+
+.card-content a {
+    color: #007bff; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
 .nav-btn {
-    z-index: 1111;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -66,21 +84,28 @@
 }
 
 #prevBtn {
-    left: -20px;
+    position: absolute;
+    top: 50%;
+    left: -60px; 
+    transform: translateY(-50%);
 }
 
 #nextBtn {
-    right: -20px;
+    position: absolute;
+    top: 50%;
+    right: -60px;
+    transform: translateY(-50%);
 }
 
 .card {
     min-width: calc(33.333% - 20px); 
-    margin: 0 10px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border: 1px solid #e0e0e0;
     text-align: left;
+    flex: 1 1 calc(33.333% - 20px);
+    width: 300px;
 }
 
 .card img {
@@ -98,15 +123,42 @@
     color: #FFA000;
     padding: 4px 8px;
     border-radius: 15px;
-    font-size: 0.75rem;
+    font-size: 1rem ;
     font-weight: bold;
     border: #FFA000 1px solid;
+    
 }
 
-.card-content h3 {
+.card-content p {
     font-size: 1.1rem;
     margin: 15px 0;
-    color: #333;
+    color: #686767;
+    display: block; 
+}
+
+.card-content .date {
+    display: flex;   
+    align-items: center;
+    font-size: 1.1rem;
+    margin: 15px 0 0 0;    
+    color: #686767;
+    gap: 15px; 
+}
+
+.card-content .date i {
+    margin-right: 15px;
+    color: #7a7777; 
+}
+
+.card-footer .date {
+  display: inline-flex;
+  align-items: center;
+  color: #686767;
+}
+
+.card-footer .date .date-text {
+  margin-left: 12px; 
+  
 }
 
 .card-footer {
@@ -115,10 +167,24 @@
     align-items: center;
     font-size: 0.9rem;
     color: #777;
+    margin-top: 10px;
+    padding-left: 20px;
 }
 
 .card-footer a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .card {
+        flex: 1 1 calc(50% - 20px); 
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 100%; 
+    }
 }

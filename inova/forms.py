@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import inlineformset_factory
 from .models import Startup, MembroEquipe, RedesSociais, Contato
+from .models import Noticia
 
 # CSS_CLASS é uma forma de adicionar classes CSS a todos os campos
 # para facilitar a estilização com o Bootstrap
@@ -102,3 +103,9 @@ MembroEquipeFormSet = inlineformset_factory(
     min_num=1,         # Exige que pelo menos um membro seja cadastrado
     validate_min=True, # Garante a validação do min_num
 )
+
+
+class NoticiaForm(forms.ModelForm):
+    class Meta:
+        model = Noticia
+        fields = ['titulo', 'descricao', 'data_publicacao', 'categoria']
