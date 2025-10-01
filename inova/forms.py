@@ -1,3 +1,17 @@
+
+
+"""
+Define os formulários da aplicação baseados nos modelos.
+
+Este módulo contém todas as classes de formulário (`ModelForm`) usadas para
+criar, validar e processar dados inseridos pelos usuários. Os formulários
+são baseados nos modelos definidos em `models.py` e incluem personalizações
+de widgets, labels e validações.
+
+Também define um `inlineformset_factory` para o gerenciamento de múltiplos
+membros de equipe associados a uma única Startup.
+"""
+
 from django import forms
 from django.forms import inlineformset_factory
 from .models import Startup, MembroEquipe, RedesSociais, Contato
@@ -8,7 +22,33 @@ from .models import Noticia
 CSS_CLASS = 'form-control'
 
 class StartupForm(forms.ModelForm):
+    
+    """
+    Formulário para criar e atualizar os dados principais de uma Startup.
+    
+    Este `ModelForm` está vinculado ao modelo `Startup` e personaliza a
+    renderização de seus campos através da classe Meta, definindo os campos
+    exibidos, seus rótulos e os widgets HTML.
+    """
+    
     class Meta:
+        
+        """
+        Configurações do formulário, associando-o ao modelo Startup.
+        
+        As informações coletadas para o cadastro das startups são:
+        
+        nome da startup,
+        logo da startup,
+        sobre a startup,
+        como a UFPI contribui com a startup,
+        ano de fundação,
+        setor de atuação,
+        tamanho da equipe,
+        incubadora.
+        
+        """
+        
         model = Startup
         fields = [
             'nome_startup',
@@ -47,7 +87,28 @@ class StartupForm(forms.ModelForm):
 
 
 class ContatoForm(forms.ModelForm):
+    
+    """
+    Formulário para os dados de contato associados a uma Startup.
+
+    Vinculado ao modelo `Contato`, este formulário exclui o campo `startup`,
+    pois a associação é gerenciada pela view que processa o formulário,
+    garantindo que o contato seja ligado à `Startup` correta.
+    """
+    
     class Meta:
+        
+        """
+        Configurações do ContatoForm.
+        
+        As informações coletadas para o cadastro do contato são:
+        
+        email,
+        telefone,
+        website oficial da startup.
+        
+        """
+        
         model = Contato
         exclude = ['startup'] # O campo 'startup' será associado na view
         labels = {
@@ -63,7 +124,23 @@ class ContatoForm(forms.ModelForm):
 
 
 class RedesSociaisForm(forms.ModelForm):
+    
+    """Formulário para os links de redes sociais de uma Startup."""
+    
     class Meta:
+        
+        """
+        Configurações do RedesSociaisForm.
+        
+        As informações coletadas para o cadastro das redes sociais são:
+        
+        link do linkedin,
+        link do facebook,
+        link do instagram,
+        link do twitter.
+        
+        """
+        
         model = RedesSociais
         exclude = ['startup']
         # Usar placeholders já é bastante descritivo aqui
@@ -76,7 +153,22 @@ class RedesSociaisForm(forms.ModelForm):
 
 
 class MembroEquipeForm(forms.ModelForm):
+    
+    """Formulário para os dados de um único membro da equipe de uma Startup."""
+    
     class Meta:
+        
+        """
+        Configurações do MembroEquipeForm.
+        
+        As informações coletadas para o cadastro de um membro da equipe são:
+        
+        nome completo,
+        cargo/função,
+        foto do membro.
+        
+        """
+        
         model = MembroEquipe
         exclude = ['startup']
         labels = {
@@ -106,6 +198,21 @@ MembroEquipeFormSet = inlineformset_factory(
 
 
 class NoticiaForm(forms.ModelForm):
+    
+    """Formulário para criar e atualizar instâncias do modelo Noticia."""
+    
     class Meta:
+        
+        """
+        Configurações do NoticiaForm.
+        As informações coletadas para o cadastro das noticias são:
+        
+        titulo,
+        descrição,
+        data de publicação,
+        categoria.
+        
+        """
+        
         model = Noticia
         fields = ['titulo', 'descricao', 'data_publicacao', 'categoria']
