@@ -191,3 +191,34 @@ class Noticia(models.Model):
         """Retorna o título da notícia como sua representação em string."""
         
         return self.titulo
+
+
+class LinkFormulario(models.Model):
+    
+    """
+    Representa um link de formulário que pode ser atualizado pelos administradores.
+    
+    Este modelo permite que os administradores mantenham e atualizem links de
+    formulários importantes, com controle de data de atualização.
+    
+    Atributos:
+        link (URLField): URL do formulário.
+        data (DateTimeField): Data e hora da última atualização do link.
+    """
+    
+    link = models.URLField("Link do Formulário", max_length=500)
+    data = models.DateTimeField("Data de Atualização")
+    
+    class Meta:
+        
+        """Define metadados para o modelo LinkFormulario."""
+        
+        verbose_name = 'Link do Formulário'
+        verbose_name_plural = 'Links dos Formulários'
+        ordering = ['-data']
+
+    def __str__(self):
+        
+        """Retorna uma representação em string do link do formulário."""
+        
+        return f"Link do Formulário - {self.data.strftime('%d/%m/%Y %H:%M')}"

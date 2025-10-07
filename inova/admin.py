@@ -10,7 +10,7 @@ e inlines para facilitar o gerenciamento de modelos relacionados.
 
 from django.contrib import admin
 from .models import Startup, MembroEquipe, RedesSociais, Contato
-from .models import Noticia
+from .models import Noticia, LinkFormulario
 
 # Crie classes inline para os modelos relacionados ao Startup
 # StackedInline mostra os campos um abaixo do outro
@@ -95,3 +95,27 @@ class NoticiaAdmin(admin.ModelAdmin):
     list_filter = ('categoria', 'data_publicacao')
     search_fields = ('titulo', 'descricao')
     date_hierarchy = 'data_publicacao'
+
+
+@admin.register(LinkFormulario)
+class LinkFormularioAdmin(admin.ModelAdmin):
+    
+    """
+    Define a configuração da administração para o modelo LinkFormulario.
+
+    Atributos:
+        list_display (tuple): Campos exibidos na lista de links de formulários.
+        search_fields (tuple): Campos nos quais a busca será realizada.
+        date_hierarchy (str): Adiciona uma navegação hierárquica por data.
+        readonly_fields (tuple): Campos que não podem ser editados.
+    """
+    
+    list_display = ('link', 'data')
+    search_fields = ('link',)
+    date_hierarchy = 'data'
+    
+    fieldsets = (
+        (None, {
+            'fields': ('link', 'data')
+        }),
+    )
