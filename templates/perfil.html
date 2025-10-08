@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+    {% load static %}  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,29 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/perfil.css">
-    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
-    <link rel="icon" href="../static/images/janela.png" type="image/png">
+    <link rel="icon" href="{% static 'images/janela.png' %}" type="image/png">
 
-    <title>Perfil de Startups</title>
+    <title>Perfil de {{ startup.nome_startup }}</title>
 </head>
+
 
 <body class="perfil-page">
     <header>
         <div class="logo">
-            <a href="../templates/home.html">
-                <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo Janela de Ideias"> 
             </a>
         </div>
         <nav>
-            <a href="home.html">Inicío</a>
-            <a href="home.html#sobre">Sobre</a>
-            <a href="catalogo.html">Catalogo</a>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'home' %}#sobre">Sobre</a>
+            <a href="{% url 'catalogo' %}">Catálogo</a>
         </nav>
     </header>
 
@@ -39,10 +41,11 @@
         <div class="profile-container">
 
             <section class="startup-banner">
-                <img src="../static/images/logo-startup.png" alt="Logo da TechFlow" class="startup-logo">
+                <img src="{% if startup.logo %}{{ startup.logo.url }}{% else %}{% static 'images/logo-startup.png' %}{% endif %}" 
+                     alt="Logo da {{ startup.nome }}" class="startup-logo">
                 <div class="banner-content">
-                    <h1>TechFlow</h1>
-                    <span class="tag">Tecnologia da Informação</span>
+                    <h1>{{ startup.nome_startup }}</h1>
+                    <span class="tag">{{ startup.setor_atuacao }}</span>
                 </div>
             </section>
 
@@ -50,57 +53,27 @@
                 <div class="main-details">
                     <section class="card" id="sobre">
                         <h2>Sobre a Startup</h2>
-                        <p>
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que
-                            utiliza inteligência artificial avançada para otimizar os workflows e aumentar
-                            significativamente a produtividade das equipes. Nossa solução identifica gargalos nos
-                            processos, sugere melhorias e automatiza tarefas repetitivas, permitindo que as empresas
-                            foquem no que é realmente importante: inovação e crescimento.
-                        </p>
+                        <p>{{ startup.sobre_a_startup|linebreaks }}</p>
                     </section>
 
                     <section class="card" id="contribuicao">
                         <h2>Como a UFPI Contribuiu</h2>
-                        <p>
-                            A UFPI foi fundamental no desenvolvimento da TechFlow através do programa de incubação
-                            INOVAPI, fornecendo mentoria especializada, acesso aos laboratórios do IA do Departamento de
-                            Computação, e conexão com professores pesquisadores. Além disso, participamos do programa de
-                            extensão universitária onde alunos de Ciência da Computação contribuíram diretamente no
-                            desenvolvimento dos algoritmos de machine learning.
-                        </p>
+                        <p>{{ startup.como_UFPI_contribuiu|linebreaks }}</p>
                     </section>
 
                     <section class="card" id="equipe">
                         <h2>Equipe</h2>
                         <div class="team-grid">
+                            {% for membro in equipe %}
                             <div class="team-member">
-                                <img src="../static/images/foto-equipe.png" alt="Foto de Maria Santos">
+                                <img src="{% if membro.foto %}{{ membro.foto.url }}{% else %}{% static 'images/foto-equipe.png' %}{% endif %}" 
+                                     alt="Foto de {{ membro.nome_membro }}">
                                 <div>
-                                    <strong>Maria Santos</strong>
-                                    <span>Desenvolvedora Sênior</span>
+                                    <strong>{{ membro.nome_membro }}</strong>
+                                    <span>{{ membro.funcao_membro }}</span>
                                 </div>
                             </div>
-                            <div class="team-member">
-                                <img src="../static/images/foto-equipe.png" alt="Foto de Maria Santos">
-                                <div>
-                                    <strong>Maria Santos</strong>
-                                    <span>Desenvolvedora Sênior</span>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="../static/images/foto-equipe.png" alt="Foto de Maria Santos">
-                                <div>
-                                    <strong>Maria Santos</strong>
-                                    <span>Desenvolvedora Sênior</span>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="../static/images/foto-equipe.png" alt="Foto de Maria Santos">
-                                <div>
-                                    <strong>Maria Santos</strong>
-                                    <span>Desenvolvedora Sênior</span>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </section>
                 </div>
@@ -109,72 +82,70 @@
                     <div class="card info-card">
 
                         <h3>Informações</h3>
-                        <ul>
-                            <div class="info">
-                                <li>
-                                    <i class="bi bi-calendar-event icon"></i>
-                                    <div>
-                                        <span>Fundada em</span>
-                                        <strong>2022</strong>
-                                    </div>
-                                </li>
-                            </div>
+                        <ul class="info-list">
+                            <li>
+                                <i class="bi bi-calendar-event icon"></i>
+                                <div>
+                                    <span>Fundada em</span>
+                                    <strong>{{ startup.ano_fundacao }}</strong>
+                                </div>
+                            </li>
 
-                            <div class="info">
                             <li>
                                 <i class="bi bi-laptop icon"></i>
                                 <div>
                                     <span>Setor</span>
-                                    <strong>Tecnologia da Informação</strong>
+                                    <strong>{{ startup.setor_atuacao }}</strong>
                                 </div>
                             </li>
-                            </div>
-                            <div class="info">
+
                             <li>
                                 <i class="bi bi-people-fill icon"></i>
                                 <div>
                                     <span>Tamanho da Equipe</span>
-                                    <strong>8 pessoas</strong>
+                                    <strong>{{ equipe|length }} pessoas</strong>
                                 </div>
                             </li>
-                            </div>
-                            
+
                             <li>
                                 <div class="info2">
                                     <span>Incubadora</span>
-                                    <strong>NOVAPI - Incubadora de Empresas da UFPI</strong>
+                                    <strong>{{ startup.incubadora }}</strong>
                                 </div>
                             </li>
                         </ul>
                     </div>
+
                     <div class="card info-card">
-                        
                         <h3>Contato</h3>
-                        <ul>
-                            
+                        <ul class="contact-list">
                             <li>
                                 <i class="bi bi-envelope-fill icon"></i>
-                                <a href="mailto:contato@techflow.com.br">contato@techflow.com.br</a>
+                                <a href="mailto:{{ contato.email_startup }}">{{ contato.email_startup }}</a>
                             </li>
                             <li>
                                 <i class="bi bi-telephone-fill icon"></i>
-                                <a href="tel:00999999999">(00) 99999-9999</a>
+                                <a href="tel:{{ contato.telefone_startup }}">{{ contato.telefone_startup }}</a>
                             </li>
-                            <div class="info3">
                             <li>
                                 <i class="bi bi-globe icon"></i>
-                                <a href="#">Website</a>
+                                <a href="{{ contato.site_startup }}" target="_blank">{{ contato.site_startup }}</a>
                             </li>
-                            </div>
-                            
                         </ul>
-                        
+
                         <div class="social-links-header">Redes Sociais</div>
                         <div class="social-links-container">
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
-                            <a href="#"><i class="bi bi-twitter-x"></i></a>
+                            <a href="{{ redes.linkedin }}" {% if not redes.linkedin %}style="visibility:hidden;"{% endif %}>
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="{{ redes.instagram }}" {% if not redes.instagram %}style="visibility:hidden;"{% endif %}>
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                           <a href="{{ redes.twitter }}" {% if not redes.twitter %}style="visibility:hidden;"{% endif %}>
+                                <i class="bi bi-twitter"></i>
+                           </a>
                         </div>
+
                     </div>
                 </aside>
             </div>
@@ -186,7 +157,7 @@
         <div class="footer-content">
             <div class="footer-section footer-logo">
                 <div class="logo-footer">
-                    <img src="../static/images/logo-linear.png" alt="Logo Janela de Ideias">
+                    <img src="{% static 'images/logo-linear.png' %}" alt="Logo Janela de Ideias">
                 </div>
                 <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
@@ -194,9 +165,9 @@
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul>
-                    <li><a href="home.html">Início</a></li>
-                    <li><a href="home.html#sobre">Sobre</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+                    <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
                 </ul>
             </div>
 
@@ -227,7 +198,7 @@
         </div>
     </footer>
 
-    <script src="../static/js/catalogo.js"></script>
+    <script src="{% static 'js/catalogo.js' %}"></script>
 </body>
 
 </html>

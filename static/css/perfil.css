@@ -164,6 +164,25 @@ body.perfil-page {
     padding: 16px 0;
     border-bottom: 1px solid rgba(70, 110, 122, 0.55);
 }
+.info-list li,
+.contact-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(58, 59, 59, 0.2);
+}
+
+.info-list li:last-child,
+.contact-list li:last-child {
+    border-bottom: none;
+}
+
+.info-list li .icon,
+.contact-list li .icon {
+    margin-right: 15px;
+    font-size: 20px;
+    color: var(--border-color);
+}
 
 .info-card ul li:last-child {
     border-bottom: none;
@@ -213,6 +232,7 @@ body.perfil-page {
     color: var(--text-color-dark);
     padding-top: 16px;
     margin-bottom: 15px;
+    border-top: 1px solid rgba(70, 110, 122, 0.2);
 }
 
 .social-links-container a {
@@ -221,13 +241,14 @@ body.perfil-page {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border: 1px solid var(--border-color);
+    border: none;
     border-radius: 50%;
     font-size: 18px;
     margin-right: 10px;
     color: var(--text-color-soft);
     transition: all 0.2s ease-in-out;
 }
+
 
 .social-links-container a:hover {
     background-color: var(--primary-blue);

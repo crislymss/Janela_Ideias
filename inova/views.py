@@ -14,11 +14,13 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Startup, MembroEquipe, RedesSociais, Contato
 from .forms import StartupForm, ContatoForm, RedesSociaisForm, MembroEquipeFormSet
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Noticia
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import NoticiaForm
+from .models import Startup
+
 
 def pagina_inicial(request):
     
@@ -188,3 +190,44 @@ class NoticiaDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return noticia.administrador == self.request.user or self.request.user.is_superuser
     
 
+
+def catalogo(request):
+    
+    
+    startups = Startup.objects.all()
+
+    # Estatísticas
+    total_startups = startups.count()
+    total_setores = startups.values('setor_atuacao').distinct().count()
+    total_incubadoras = startups.values('incubadora').distinct().count()
+
+    context = {
+        'startups': startups,
+        'total_startups': total_startups,
+        'total_setores': total_setores,
+        'total_incubadoras': total_incubadoras,
+    }
+
+    return render(request, 'catalogo.html', context)
+
+def perfil_startup(request, startup_id):
+
+
+    # Pega a startup pelo ID
+    startup = get_object_or_404(Startup, id=startup_id)
+
+    # Pega todos os membros da equipe
+    equipe = MembroEquipe.objects.filter(startup=startup)
+
+    # Pega contato e redes sociais, se existirem
+    contato = getattr(startup, 'contato', None)
+    redes = getattr(startup, 'redes_sociais', None)
+    
+    context = {
+        'startup': startup,
+        'equipe': equipe,
+        'contato': contato,
+        'redes': redes
+    }
+
+    return render(request, 'perfil.html', context)

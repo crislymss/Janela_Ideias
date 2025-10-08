@@ -30,6 +30,9 @@ urlpatterns = [
     path('noticias/', views.NoticiaListView.as_view(), name='lista_noticias'),
     path('noticias/<int:pk>/', views.NoticiaDetailView.as_view(), name='detalhe_noticia'),
     path('admin/', admin.site.urls),
+    path('catalogo/', views.catalogo, name='catalogo'),  
+    path('perfil/<int:startup_id>/', views.perfil_startup, name='perfil'),
+
 ]
 
 if settings.DEBUG:
