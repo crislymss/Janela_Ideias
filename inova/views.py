@@ -192,6 +192,23 @@ class NoticiaDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def catalogo(request):
+
+    """
+    Exibe a página de catálogo de startups.
+
+    Recupera todas as startups cadastradas no sistema e calcula estatísticas básicas
+    para exibição no template, incluindo:
+        - total de startups,
+        - total de setores distintos,
+        - total de incubadoras distintas.
+
+    Parâmetros:
+        request (HttpRequest): Objeto HttpRequest padrão do Django.
+
+    Retorna:
+        HttpResponse: Renderiza o template 'catalogo.html' com o contexto contendo
+                      a lista de startups e as estatísticas.
+    """
     
     
     startups = Startup.objects.all()
@@ -211,6 +228,22 @@ def catalogo(request):
     return render(request, 'catalogo.html', context)
 
 def perfil_startup(request, startup_id):
+
+    """
+    Exibe a página de perfil de uma startup específica.
+
+    Recupera a startup pelo ID fornecido, bem como os membros da equipe,
+    informações de contato e redes sociais associadas à startup. Caso a
+    startup não exista, retorna um erro 404.
+
+    Parâmetros:
+        request (HttpRequest): Objeto HttpRequest padrão do Django.
+        startup_id (int): ID da startup a ser exibida.
+
+    Retorna:
+        HttpResponse: Renderiza o template 'perfil.html' com o contexto contendo
+                      os dados da startup, equipe, contato e redes sociais.
+    """
 
 
     # Pega a startup pelo ID
