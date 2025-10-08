@@ -20,26 +20,23 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.static import static
-from inova.views import teste, index, catalogo_startup, perfil_startup, login_view
 from inova import views
 from django.contrib import admin
 from django.urls import path
-
-
-
+from django.urls import path, include
 
 urlpatterns = [
+    path('', views.pagina_inicial, name='home'), 
+    path('noticias/', views.NoticiaListView.as_view(), name='lista_noticias'),
+    path('noticias/<int:pk>/', views.NoticiaDetailView.as_view(), name='detalhe_noticia'),
     path('admin/', admin.site.urls),
-    path('', views.index, name='home'),
-    path('teste/', views.teste, name='teste'),
-    path('catalogo_startup/', views.catalogo_startup, name='catalogo_startup'),
-    path('criar_startup/', views.criar_startup, name='criar_startup'),
-    path('perfil_projeto/<str:startup_nome>/<str:projeto_nome>/',
-         views.perfil_projeto, name='perfil_projeto'),
-    path('login/', login_view, name='login'),
-    path('catalogo_startup/perfil_startup/<str:nome>/', perfil_startup, name='perfil_startup'),
+]
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
 
 # urls.py
 
