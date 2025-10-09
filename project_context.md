@@ -46,9 +46,11 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 4. Documentar uso para outros desenvolvedores
 
 ## Tecnologias
-- Django Framework
-- SQLite (desenvolvimento)
-- Python
+- Django Framework 4.2.24
+- PostgreSQL (banco de dados de produção) ✅
+- Python 3.9.6
+- django-environ (gerenciamento de variáveis de ambiente)
+- psycopg 3.2.10 (adaptador PostgreSQL)
 
 ## Estrutura de Arquivos
 - `app/`: Configurações principais do Django
@@ -56,3 +58,4 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 - `templates/`: Templates HTML
 - `static/`: Arquivos estáticos (CSS, JS, imagens)
 - `media/`: Uploads de usuários (logos, fotos, etc.)
+- `.env`: Arquivo de variáveis de ambiente (credenciais do banco)

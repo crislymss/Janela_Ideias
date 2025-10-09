@@ -14,11 +14,13 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Startup, MembroEquipe, RedesSociais, Contato
 from .forms import StartupForm, ContatoForm, RedesSociaisForm, MembroEquipeFormSet
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Noticia
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import NoticiaForm
+from .models import Startup
+
 
 def pagina_inicial(request):
     
@@ -188,3 +190,77 @@ class NoticiaDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return noticia.administrador == self.request.user or self.request.user.is_superuser
     
 
+
+def catalogo(request):
+
+    """
+    Exibe a página de catálogo de startups.
+
+    Recupera todas as startups cadastradas no sistema e calcula estatísticas básicas
+    para exibição no template, incluindo:
+        - total de startups,
+        - total de setores distintos,
+        - total de incubadoras distintas.
+
+    Parâmetros:
+        request (HttpRequest): Objeto HttpRequest padrão do Django.
+
+    Retorna:
+        HttpResponse: Renderiza o template 'catalogo.html' com o contexto contendo
+                      a lista de startups e as estatísticas.
+    """
+    
+    
+    startups = Startup.objects.all()
+
+    # Estatísticas
+    total_startups = startups.count()
+    total_setores = startups.values('setor_atuacao').distinct().count()
+    total_incubadoras = startups.values('incubadora').distinct().count()
+
+    context = {
+        'startups': startups,
+        'total_startups': total_startups,
+        'total_setores': total_setores,
+        'total_incubadoras': total_incubadoras,
+    }
+
+    return render(request, 'catalogo.html', context)
+
+def perfil_startup(request, startup_id):
+
+    """
+    Exibe a página de perfil de uma startup específica.
+
+    Recupera a startup pelo ID fornecido, bem como os membros da equipe,
+    informações de contato e redes sociais associadas à startup. Caso a
+    startup não exista, retorna um erro 404.
+
+    Parâmetros:
+        request (HttpRequest): Objeto HttpRequest padrão do Django.
+        startup_id (int): ID da startup a ser exibida.
+
+    Retorna:
+        HttpResponse: Renderiza o template 'perfil.html' com o contexto contendo
+                      os dados da startup, equipe, contato e redes sociais.
+    """
+
+
+    # Pega a startup pelo ID
+    startup = get_object_or_404(Startup, id=startup_id)
+
+    # Pega todos os membros da equipe
+    equipe = MembroEquipe.objects.filter(startup=startup)
+
+    # Pega contato e redes sociais, se existirem
+    contato = getattr(startup, 'contato', None)
+    redes = getattr(startup, 'redes_sociais', None)
+    
+    context = {
+        'startup': startup,
+        'equipe': equipe,
+        'contato': contato,
+        'redes': redes
+    }
+
+    return render(request, 'perfil.html', context)

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,9 +12,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/catalogo.css">
-    <link rel="stylesheet" href="../static/css/footer.css">
+   <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
     <link rel="icon" href="../static/images/janela.png" type="image/png">
 
@@ -23,12 +24,12 @@
 <body class="catalogo-page">
     <header>
         <div class="logo">
-            <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
+            <img src="{% static 'images/logo.png' %}" alt="Logo Janela de Ideias">
         </div>
         <nav>
-            <a href="home.html">Inicío</a>
-            <a href="home.html#sobre">Sobre</a>
-            <a href="catalogo.html">Catalogo</a>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'home' %}#sobre">Sobre</a>
+            <a href="{% url 'catalogo' %}">Catálogo</a>
         </nav>
     </header>
 
@@ -40,18 +41,19 @@
                 
                 <div class="estatisticas">
                     <div class="stat-item">
-                        <span class="numero numero-azul">67</span>
+                        <span class="numero numero-azul">{{ total_startups }}</span>
                         <span class="label">Startups Cadastradas</span>
                     </div>
                     <div class="stat-item">
-                        <span class="numero numero-amarelo">14</span>
+                        <span class="numero numero-amarelo">{{ total_setores }}</span>
                         <span class="label">Setores Atendidos</span>
                     </div>
                     <div class="stat-item">
-                        <span class="numero numero-verde">7</span>
+                        <span class="numero numero-verde">{{ total_incubadoras }}</span>
                         <span class="label">Incubadoras Ativas</span>
                     </div>
                 </div>
+
                 
                 <p class="descricao">Descubra inovações que estão transformando diferentes setores da economia piauiense</p>
             </div>
@@ -80,157 +82,48 @@
                                 <option>Saúde</option>
                                 <option>Agronegócio</option>
                             </select>
+
                         </div>
                     </div>
 
                     <div class="resultado-busca">
-                        <span>6 startups encontradas</span>
+                        <span>{{ startups|length }} startups encontradas</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Startups Grid -->
-        <section class="startups-grid-section">
-            <div class="container">
-                <div class="startups-grid">
-                    <!-- Startup Card 1 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
-                                
-                            </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
-                        </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="perfil.html" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
+                    <!-- Startups Grid -->
+                    <section class="startups-grid-section">
+                        <div class="container">
+                            <div class="startups-grid">
+                                {% for startup in startups %}
+                                <div class="startup-card">
+                                    <div class="card-header">
+                                        <div class="startup-icon">
+                                            <div class="icon-bg">
+                                                <i class="bi bi-rocket-takeoff-fill"></i>
+                                            </div>
+                                        </div>
+                                        <span class="setor-tag">{{ startup.setor_atuacao }}</span>
+                                    </div>
 
-                    <!-- Startup Card 2 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
-                                
-                            </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
-                        </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="#" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
+                                    <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
+                                    <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
+                                    <hr>
+                                    <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
+                                        Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
+                                    </a>
 
-                    <!-- Startup Card 3 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
                                 </div>
-                                
+                                {% empty %}
+                                <p>Nenhuma startup cadastrada ainda.</p>
+                                {% endfor %}
                             </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
                         </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="#" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
+                    </section>
 
-                    <!-- Startup Card 4 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
-                                
-                            </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
-                        </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="#" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
 
-                    <!-- Startup Card 5 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
-                                
-                            </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
-                        </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="#" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
-
-                    <!-- Startup Card 6 -->
-                    <div class="startup-card">
-                        <div class="card-header">
-                            <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
-                                
-                            </div>
-                            <span class="setor-tag">Tecnologia da Informação</span>
-                        </div>
-                        
-                        <h3 class="startup-nome">TechFlow</h3>
-                        
-                        <p class="startup-descricao">
-                            A TechFlow é uma plataforma revolucionária de automação de processos empresariais que utiliza inteligência artificial...
-                        </p>
-                        <hr>
-                        <a href="#" class="ver-detalhes">
-                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>
