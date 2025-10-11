@@ -39,6 +39,23 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 - Ordenação por data (mais recente primeiro)
 - Interface amigável no painel administrativo
 
+### 2024 - Implementação do Link do Painel Administrativo
+**Data**: Implementado hoje
+**Descrição**: Adicionado link funcional para o painel administrativo em todos os templates.
+
+**Detalhes da Implementação**:
+- Link do admin adicionado em `templates/perfil.html` (linha 197)
+- Link do admin adicionado em `templates/home.html` (linha 226)
+- Link do admin adicionado em `templates/catalogo.html` (linha 174)
+- Todos os links apontam para `/admin/` (rota padrão do Django)
+- Mantido o ícone `bi-person-circle` e tooltip "Acessar o painel do admin"
+
+**Funcionalidades**:
+- Acesso direto ao painel administrativo do Django
+- Link disponível em todas as páginas do site
+- Interface consistente em todos os templates
+- Facilita administração do sistema para usuários autorizados
+
 ## Próximos Passos Sugeridos
 1. Testar a funcionalidade no painel administrativo
 2. Considerar adicionar validações específicas para URLs
