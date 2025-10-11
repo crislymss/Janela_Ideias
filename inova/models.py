@@ -165,6 +165,7 @@ class Noticia(models.Model):
         ('INOVACAO', 'Inovação'),
         ('EVENTO', 'Eventos'),
     ]
+    
     categoria = models.CharField("Categoria", max_length=20, choices=CATEGORIA_CHOICES)
     
     

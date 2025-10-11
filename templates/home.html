@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../static/css/hero.css">
     <link rel="stylesheet" href="../static/css/quem-somos.css">
     <link rel="stylesheet" href="../static/css/sobre.css">
-    <link rel="stylesheet" href="../static/css/news.css">
+    <link rel="stylesheet" href="../static/css/news.css?v=20241230">
     <link rel="stylesheet" href="../static/css/como-participar-localizaçao.css">
     <link rel="stylesheet" href="../static/css/realizacao.css">
     <link rel="stylesheet" href="../static/css/footer.css">
@@ -108,29 +108,30 @@
               <button id="prevBtn" class="nav-btn"><i class="bi bi-chevron-left"></i></button>
               <div class="carousel-container">
                 <div class="carousel-track">
-          {% for noticia in noticias %}
-          <div class="card">
-            {% if noticia.imagem %}
-              <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}">
-            {% else %}
-              <img src="{% static 'images/default-news.jpg' %}" alt="{{ noticia.titulo }}">
-            {% endif %}
-            <div class="card-content">
-            <span class="tag">{{ noticia.get_categoria_display }}</span>
-            <p>{{ noticia.descricao }}</p>
-        </div>
-
-        <div class="card-footer">
-            <span class="date">
-                <i class="bi bi-calendar"></i>
-                <span class="date-text">{{ noticia.data_publicacao|date:"d \d\e F, Y" }}</span>
-            </span>
-            {% if noticia.link %}
-            <a href="{{ noticia.link }}" target="_blank">Ler mais &rarr;</a>
-            {% endif %}
-        </div>
-
-          </div>
+                  {% for noticia in noticias %}
+                  <div class="card">
+                    {% if noticia.imagem %}
+                      <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                    {% else %}
+                      <img src="{% static 'images/default-news.jpg' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                    {% endif %}
+                    <div class="card-content">
+                      <span class="tag" style="font-size: 0.7rem !important;">{{ noticia.get_categoria_display }}</span>
+                      <h3 class="card-title" style="font-size: 0.9rem !important;">{{ noticia.titulo|truncatechars:60 }}</h3>
+                      <p class="card-description" style="font-size: 0.75rem !important;">{{ noticia.descricao|truncatechars:120 }}</p>
+                      
+                      <div class="card-footer" style="font-size: 0.7rem !important;">
+                        <span class="date" style="font-size: 0.7rem !important;">
+                            <i class="bi bi-calendar"></i>
+                            <span class="date-text" style="font-size: 0.7rem !important;">{{ noticia.data_publicacao|date:"d \d\e F, Y" }}</span>
+                        </span>
+                        {% if noticia.link %}
+                        <a href="{{ noticia.link }}" target="_blank" style="font-size: 0.7rem !important;">Ler mais &rarr;</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                    
+                  </div>
           {% endfor %}
         </div>
     </div>
