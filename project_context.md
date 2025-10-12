@@ -20,7 +20,7 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 
 ## Mudanças Recentes
 
-### 2024 - Adição do Modelo LinkFormulario
+### 2025 - Adição do Modelo LinkFormulario
 **Data**: Implementado hoje
 **Descrição**: Criado novo modelo para gerenciar links de formulários no painel administrativo.
 
@@ -38,6 +38,49 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 - Busca por link
 - Ordenação por data (mais recente primeiro)
 - Interface amigável no painel administrativo
+
+### 2025 - Implementação do Link do Painel Administrativo
+**Data**: Implementado hoje
+**Descrição**: Adicionado link funcional para o painel administrativo em todos os templates.
+
+**Detalhes da Implementação**:
+- Link do admin adicionado em `templates/perfil.html` (linha 197)
+- Link do admin adicionado em `templates/home.html` (linha 226)
+- Link do admin adicionado em `templates/catalogo.html` (linha 174)
+- Todos os links apontam para `/admin/` (rota padrão do Django)
+- Mantido o ícone `bi-person-circle` e tooltip "Acessar o painel do admin"
+
+**Funcionalidades**:
+- Acesso direto ao painel administrativo do Django
+- Link disponível em todas as páginas do site
+- Interface consistente em todos os templates
+- Facilita administração do sistema para usuários autorizados
+
+### 2025 - Melhoria Completa dos Cards de Notícias
+**Data**: Implementado hoje
+**Descrição**: Reformulação completa do design e funcionalidade dos cards de notícias para melhor experiência visual.
+
+**Detalhes da Implementação**:
+- **CORREÇÃO**: Corrigida estrutura HTML quebrada onde o footer estava fora do card
+- **MELHORIA**: Ajustada largura dos cards (280px-320px) para melhor proporção visual
+- **MELHORIA**: Aumentado espaçamento interno (padding de 24px) para melhor respiração
+- **MELHORIA**: Aumentado espaçamento entre elementos (gap de 24px entre cards)
+- **MELHORIA**: Ajustados tamanhos de fonte para melhor hierarquia visual
+- Adicionado título das notícias nos cards (estava faltando)
+- Padronizado o tamanho das imagens com altura fixa de 200px e `object-fit: cover`
+- **NOVO**: Implementado limite de caracteres: título (60 chars) e descrição (120 chars)
+- **NOVO**: CSS inline com `!important` para garantir tamanho das imagens
+- Mantido layout responsivo com media queries atualizados
+- Corrigidos warnings de CSS adicionando propriedades padrão `line-clamp`
+
+**Funcionalidades**:
+- Imagens das notícias com tamanho padronizado (200px de altura) garantido
+- Títulos limitados a 60 caracteres com truncamento automático
+- Descrições limitadas a 120 caracteres com truncamento automático
+- Footer (data e link "Ler mais") corretamente posicionado dentro do card
+- Layout responsivo melhorado (desktop, tablet, mobile)
+- Espaçamento interno e externo otimizado para melhor legibilidade
+- Design mais limpo e profissional
 
 ## Próximos Passos Sugeridos
 1. Testar a funcionalidade no painel administrativo

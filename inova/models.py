@@ -165,6 +165,7 @@ class Noticia(models.Model):
         ('INOVACAO', 'Inovação'),
         ('EVENTO', 'Eventos'),
     ]
+    
     categoria = models.CharField("Categoria", max_length=20, choices=CATEGORIA_CHOICES)
     
     
@@ -207,7 +208,7 @@ class LinkFormulario(models.Model):
     """
     
     link = models.URLField("Link do Formulário", max_length=500)
-    data = models.DateTimeField("Data de Atualização")
+    data = models.DateTimeField("Data de Atualização", auto_now=True)
     
     class Meta:
         
