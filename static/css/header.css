@@ -17,15 +17,20 @@ header {
   background: #f8f8f8;
   padding: 10px 40px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-wrap: wrap;
   
-  transition: padding 0.3s ease, background 0.3s ease
+  transition: padding 0.3s ease, background 0.3s ease;
+
+  
+
 }
 
 /* Header específico para catálogo */
@@ -60,20 +65,27 @@ header.rolagem {
     background: rgba(248, 248, 248, 0.9);
 }
 
+.logo {
+  margin-bottom: 15px; 
+}
+
 .logo img {
   width: 120px;
   transition: width 0.3s ease;
+  margin-bottom: 10px;
+  height: auto;
 }
 
 nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;           
+  flex-direction: row;     
+  gap: 25px;               
+  
 }
 
 nav a {
   position: relative; 
-  margin: 0 15px; 
+  margin: 0; 
   text-decoration: none;
   color: #555;
   font-weight: 500;
@@ -87,16 +99,51 @@ nav a:hover {
 
 nav a::after {
   content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0; 
-  width: 100%;
+  display: block;
   height: 2px;
   background: #165961;
   transform: scaleX(0);
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s;
 }
 
 nav a:hover::after {
   transform: scaleX(1);
+}
+
+/* RESPONSIVO MOBILE (≤768px) */
+@media (max-width: 768%) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10% 20%;
+    gap: 10%;
+  }
+
+  .logo {
+    flex:1;
+  }
+
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10%;
+    width: 100%;
+    margin: 0%;
+    order: 2;
+  }
+
+  nav a {
+    padding: 8% 12%;
+    width: 100%;
+    text-align: left;
+  }
 }
