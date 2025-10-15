@@ -211,6 +211,12 @@ def catalogo(request):
     """
     
     
+    # Obter dados para os filtros
+    setores_distintos = Startup.objects.values_list('setor_atuacao', flat=True).distinct().order_by('setor_atuacao')
+    incubadoras_distintas = Startup.objects.values_list('incubadora', flat=True).distinct().order_by('incubadora')
+    # Filtrar valores vazios
+    incubadoras_distintas = [inc for inc in incubadoras_distintas if inc]
+
     startups = Startup.objects.all()
 
     # Estatísticas
@@ -223,6 +229,8 @@ def catalogo(request):
         'total_startups': total_startups,
         'total_setores': total_setores,
         'total_incubadoras': total_incubadoras,
+        'setores_distintos': setores_distintos,
+        'incubadoras_distintas': incubadoras_distintas,
     }
 
     return render(request, 'catalogo.html', context)

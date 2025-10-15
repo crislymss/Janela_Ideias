@@ -70,17 +70,18 @@
                         </div>
                         
                         <div class="filtros">
-                            <select class="filtro-select">
-                                <option>Todas as incubadoras</option>
-                                <option>Incubadora 1</option>
-                                <option>Incubadora 2</option>
+                            <select class="filtro-select" id="filtro-incubadora">
+                                <option value="">Todas as incubadoras</option>
+                                {% for incubadora in incubadoras_distintas %}
+                                <option value="{{ incubadora }}" {% if incubadora == incubadora_atual %}selected{% endif %}>{{ incubadora }}</option>
+                                {% endfor %}
                             </select>
                             
-                            <select class="filtro-select">
-                                <option>Todos os setores</option>
-                                <option>Tecnologia da Informação</option>
-                                <option>Saúde</option>
-                                <option>Agronegócio</option>
+                            <select class="filtro-select" id="filtro-setor">
+                                <option value="">Todos os setores</option>
+                                {% for setor in setores_distintos %}
+                                <option value="{{ setor }}" {% if setor == setor_atual %}selected{% endif %}>{{ setor }}</option>
+                                {% endfor %}
                             </select>
 
                         </div>
@@ -110,6 +111,8 @@
 
                                     <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
                                     <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
+                                    <span class="incubadora" style="display:none;">{{ startup.incubadora }}</span>
+                                    <span class="setor-tag" style="display:none;">{{ startup.setor_atuacao }}</span>
                                     <hr>
                                     <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
                                         Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
