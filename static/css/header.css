@@ -20,17 +20,13 @@ header {
 
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  position: relative;
   
   position: sticky;
   top: 0;
   z-index: 10;
-  flex-wrap: wrap;
   
   transition: padding 0.3s ease, background 0.3s ease;
-
-  
-
 }
 
 /* Header específico para catálogo */
@@ -60,13 +56,23 @@ body.catalogo-page nav a:hover {
   color: #1a6b74 !important;
 }
 
+
+body.catalogo-page nav {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 50% !important;
+  margin-top: -15px !important;
+}
+
+
 header.rolagem {
     padding: 5px 40px;
     background: rgba(248, 248, 248, 0.9);
 }
 
 .logo {
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
 .logo img {
@@ -79,8 +85,10 @@ header.rolagem {
 nav {
   display: flex;           
   flex-direction: row;     
-  gap: 25px;               
-  
+  gap: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 nav a {
