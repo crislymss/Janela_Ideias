@@ -82,6 +82,30 @@ Projeto Django para gestão de startups e notícias da área de inovação. O si
 - Espaçamento interno e externo otimizado para melhor legibilidade
 - Design mais limpo e profissional
 
+### 2025 - Implementação de Imagens das Startups
+**Data**: Implementado hoje
+**Descrição**: Adicionada funcionalidade para exibir as imagens das startups nos templates de catálogo e perfil.
+
+**Detalhes da Implementação**:
+- **CATÁLOGO**: Modificado `templates/catalogo.html` para usar `logo_startup` ao invés do ícone de foguete
+- **PERFIL**: Corrigido `templates/perfil.html` para usar `logo_startup` no banner (estava usando campo incorreto)
+- **CSS**: Adicionados estilos específicos para `.startup-logo` em ambos os arquivos CSS
+- **FALLBACK**: Mantido ícone de foguete como fallback quando não há imagem da startup
+- **RESPONSIVIDADE**: Imagens com `object-fit: cover` para manter proporção e qualidade
+
+**Funcionalidades**:
+- Exibição automática das imagens das startups quando disponíveis
+- Fallback para imagem padrão `startup.png` quando não há imagem da startup
+- Imagens circulares com bordas e sombras para melhor apresentação
+- Tamanhos otimizados: 50px no catálogo, 140px no perfil
+- Compatibilidade mantida com o design existente
+
+**CORREÇÃO FINAL**: Sistema dinâmico implementado corretamente:
+- **SE startup tem foto**: Exibe a foto específica da startup (puxada do banco de dados)
+- **SE startup NÃO tem foto**: Exibe ícone de foguete como fallback
+- **Painel Admin**: Configurado para permitir upload de fotos das startups
+- **Mídia**: Configurado para servir arquivos de upload corretamente
+
 ## Próximos Passos Sugeridos
 1. Testar a funcionalidade no painel administrativo
 2. Considerar adicionar validações específicas para URLs

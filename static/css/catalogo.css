@@ -226,8 +226,8 @@ span {
 }
 
 .icon-bg {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     background: linear-gradient(135deg, #1a6b74, #232f42);
     border-radius: 50%;
     display: flex;
@@ -238,7 +238,16 @@ span {
 
 .icon-bg i {
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
+}
+
+.startup-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .incubadora {
