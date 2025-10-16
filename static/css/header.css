@@ -71,15 +71,10 @@ header.rolagem {
     background: rgba(248, 248, 248, 0.9);
 }
 
-.logo {
-  margin-bottom: 15px;
-}
 
 .logo img {
   width: 120px;
   transition: width 0.3s ease;
-  margin-bottom: 10px;
-  height: auto;
 }
 
 nav {
@@ -96,6 +91,7 @@ nav a {
   margin: 0; 
   text-decoration: none;
   color: #555;
+  font-size: 15px;
   font-weight: 500;
   transition: color 0.3s; 
   padding-bottom: 5px; 

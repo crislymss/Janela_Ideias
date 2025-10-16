@@ -94,39 +94,34 @@
             </div>
         </section>
 
-                    <!-- Startups Grid -->
-                    <section class="startups-grid-section">
-                        <div class="container">
-                            <div class="startups-grid">
-                                {% for startup in startups %}
-                                <div class="startup-card">
-                                    <div class="card-header">
-                                        <div class="startup-icon">
-                                            <div class="icon-bg">
-                                                <i class="bi bi-rocket-takeoff-fill"></i>
-                                            </div>
-                                        </div>
-                                        <span class="setor-tag">{{ startup.setor_atuacao }}</span>
-                                    </div>
-
-                                    <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
-                                    <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
-                                    <span class="incubadora" style="display:none;">{{ startup.incubadora }}</span>
-                                    <span class="setor-tag" style="display:none;">{{ startup.setor_atuacao }}</span>
-                                    <hr>
-                                    <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
-                                        Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                                    </a>
-
+        <!-- Startups Grid -->
+        <section class="startups-grid-section">
+            <div class="container">
+                <div class="startups-grid">
+                    {% for startup in startups %}
+                    <div class="startup-card">
+                        <div class="card-header">
+                            <div class="startup-icon">
+                                <div class="icon-bg">
+                                    <i class="bi bi-rocket-takeoff-fill"></i>
                                 </div>
-                                {% empty %}
-                                <p>Nenhuma startup cadastrada ainda.</p>
-                                {% endfor %}
                             </div>
+                            <span class="setor-tag">{{ startup.setor_atuacao }}</span>
                         </div>
-                    </section>
 
+                        <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
+                        <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
+                        <span class="incubadora" style="display:none;">{{ startup.incubadora }}</span>
+                        <span class="setor-tag" style="display:none;">{{ startup.setor_atuacao }}</span>
+                        <hr>
+                        <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
+                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
 
+                    </div>
+                    {% empty %}
+                    <p>Nenhuma startup cadastrada ainda.</p>
+                    {% endfor %}
                 </div>
             </div>
         </section>
