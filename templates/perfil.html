@@ -41,8 +41,8 @@
         <div class="profile-container">
 
             <section class="startup-banner">
-                <img src="{% if startup.logo %}{{ startup.logo.url }}{% else %}{% static 'images/logo-startup.png' %}{% endif %}" 
-                     alt="Logo da {{ startup.nome }}" class="startup-logo">
+                <img src="{% if startup.logo_startup %}{{ startup.logo_startup.url }}{% else %}{% static 'images/logo-startup.png' %}{% endif %}" 
+                     alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
                 <div class="banner-content">
                     <h1>{{ startup.nome_startup }}</h1>
                     <span class="tag">{{ startup.setor_atuacao }}</span>

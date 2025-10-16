@@ -59,7 +59,7 @@ class StartupAdmin(admin.ModelAdmin):
     """
     
     # Lista de campos que aparecem na listagem de todas as startups
-    list_display = ('nome_startup', 'setor_atuacao', 'ano_fundacao')
+    list_display = ('nome_startup', 'setor_atuacao', 'ano_fundacao', 'logo_startup')
     
     # Adicione os inlines à página de edição da Startup
     inlines = [

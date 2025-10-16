@@ -101,9 +101,13 @@
                                 <div class="startup-card">
                                     <div class="card-header">
                                         <div class="startup-icon">
-                                            <div class="icon-bg">
-                                                <i class="bi bi-rocket-takeoff-fill"></i>
-                                            </div>
+                                            {% if startup.logo_startup %}
+                                                <img src="{{ startup.logo_startup.url }}" alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
+                                            {% else %}
+                                                <div class="icon-bg">
+                                                    <i class="bi bi-rocket-takeoff-fill"></i>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                         <span class="setor-tag">{{ startup.setor_atuacao }}</span>
                                     </div>
