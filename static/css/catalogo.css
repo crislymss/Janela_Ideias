@@ -47,7 +47,7 @@ body {
 
 .titulo-principal {
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 400;
     margin-bottom: 50px;
     color: #232f42;
@@ -70,7 +70,7 @@ body {
 }
 
 .numero {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 10px;
@@ -89,13 +89,13 @@ body {
 }
 
 .label {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     color: #666;
     text-align: center;
 }
 
 .descricao {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
@@ -135,7 +135,7 @@ body {
     padding: 10px 10px 10px 20px;
     border: 2px solid #c4c8cb;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: border-color 0.3s ease;
 }
 
@@ -150,7 +150,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     color: #666;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
 }
 
 .resultado-busca {
@@ -169,7 +169,7 @@ body {
     padding: 10px 10px;
     border: 2px solid #c4c8cb;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #333;
     cursor: pointer;
     transition: border-color 0.3s ease;
@@ -179,6 +179,10 @@ body {
 .filtro-select:focus {
     outline: none;
     border-color: #1a6b74;
+}
+
+span {
+    font-size: 0.8rem;
 }
 
 /* Startups Grid */

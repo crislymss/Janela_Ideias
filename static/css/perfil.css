@@ -228,6 +228,41 @@ body.perfil-page {
     color: var(--primary-blue);
 }
 
+.info-item {
+    display: flex;
+    align-items: flex-start;; 
+    gap: 10px;
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    overflow: visible
+}
+
+.icon {
+    font-size: 24px;
+    color: var(--border-color);
+    flex-shrink: 0;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 1;
+    position: relative;
+}
+
+.info-content::before {
+    content: '';
+    position: absolute;
+    left: 34px;
+    top: 0;
+    width: calc(100% + 32px);
+    height: 2px;
+   background-color: rgba(82, 84, 85, 0.2);
+    z-index: 10;
+}
+
 .social-links-header {
     font-size: 16px;
     font-weight: 600;

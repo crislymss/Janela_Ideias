@@ -11,14 +11,16 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/hero.css">
-    <link rel="stylesheet" href="../static/css/quem-somos.css">
-    <link rel="stylesheet" href="../static/css/sobre.css">
-    <link rel="stylesheet" href="../static/css/news.css?v=20241230">
-    <link rel="stylesheet" href="../static/css/como-participar-localizaçao.css">
-    <link rel="stylesheet" href="../static/css/realizacao.css">
-    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/quem-somos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sobre.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'css/como-participar-localizaçao.css' %}">
+    <link rel="stylesheet" href="{% static 'css/realizacao.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+   
 
     <link rel="icon" href="../static/images/janela.png" type="image/png">
 
@@ -30,11 +32,13 @@
         <div class="logo">
             <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
         </div>
+
         <nav>
             <a href="{% url 'home' %}">Início</a>
             <a href="{% url 'home' %}#sobre">Sobre</a>
             <a href="{% url 'catalogo' %}">Catálogo</a>
         </nav>
+
     </header>
 
     <section class="hero" style="background-image: url('../static/images/texture2.png'), linear-gradient(to bottom right, #007DAF, #e9c46a);">
@@ -195,8 +199,8 @@
     <div class="footer-section">
       <h3>Navegação</h3>
       <ul>
-        <li><a href="home.html">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="{% url 'home' %}">Início</a></li>
+        <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
         <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
       </ul>
     </div>
@@ -228,6 +232,7 @@
   </div>
 </footer>
 
-<script src="../static/js/home.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+
 </body>
 </html>

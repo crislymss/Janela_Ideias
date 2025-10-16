@@ -26,11 +26,11 @@
         <div class="logo">
             <img src="{% static 'images/logo.png' %}" alt="Logo Janela de Ideias">
         </div>
-        <nav>
-            <a href="{% url 'home' %}">Início</a>
-            <a href="{% url 'home' %}#sobre">Sobre</a>
-            <a href="{% url 'catalogo' %}">Catálogo</a>
-        </nav>
+        <div id="nav-centralizada" style="position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; display: flex !important; gap: 25px !important; z-index: 1000 !important; background: rgba(255,255,255,0.9) !important; padding: 10px 20px !important; border-radius: 5px !important;">
+            <a href="{% url 'home' %}" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Início</a>
+            <a href="{% url 'home' %}#sobre" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Sobre</a>
+            <a href="{% url 'catalogo' %}" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Catálogo</a>
+        </div>
     </header>
 
     <main class="catalogo-main">
@@ -70,17 +70,18 @@
                         </div>
                         
                         <div class="filtros">
-                            <select class="filtro-select">
-                                <option>Todas as incubadoras</option>
-                                <option>Incubadora 1</option>
-                                <option>Incubadora 2</option>
+                            <select class="filtro-select" id="filtro-incubadora">
+                                <option value="">Todas as incubadoras</option>
+                                {% for incubadora in incubadoras_distintas %}
+                                <option value="{{ incubadora }}" {% if incubadora == incubadora_atual %}selected{% endif %}>{{ incubadora }}</option>
+                                {% endfor %}
                             </select>
                             
-                            <select class="filtro-select">
-                                <option>Todos os setores</option>
-                                <option>Tecnologia da Informação</option>
-                                <option>Saúde</option>
-                                <option>Agronegócio</option>
+                            <select class="filtro-select" id="filtro-setor">
+                                <option value="">Todos os setores</option>
+                                {% for setor in setores_distintos %}
+                                <option value="{{ setor }}" {% if setor == setor_atual %}selected{% endif %}>{{ setor }}</option>
+                                {% endfor %}
                             </select>
 
                         </div>
@@ -93,41 +94,34 @@
             </div>
         </section>
 
-                    <!-- Startups Grid -->
-                    <section class="startups-grid-section">
-                        <div class="container">
-                            <div class="startups-grid">
-                                {% for startup in startups %}
-                                <div class="startup-card">
-                                    <div class="card-header">
-                                        <div class="startup-icon">
-                                            {% if startup.logo_startup %}
-                                                <img src="{{ startup.logo_startup.url }}" alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
-                                            {% else %}
-                                                <div class="icon-bg">
-                                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <span class="setor-tag">{{ startup.setor_atuacao }}</span>
-                                    </div>
-
-                                    <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
-                                    <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
-                                    <hr>
-                                    <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
-                                        Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
-                                    </a>
-
+        <!-- Startups Grid -->
+        <section class="startups-grid-section">
+            <div class="container">
+                <div class="startups-grid">
+                    {% for startup in startups %}
+                    <div class="startup-card">
+                        <div class="card-header">
+                            <div class="startup-icon">
+                                <div class="icon-bg">
+                                    <i class="bi bi-rocket-takeoff-fill"></i>
                                 </div>
-                                {% empty %}
-                                <p>Nenhuma startup cadastrada ainda.</p>
-                                {% endfor %}
                             </div>
+                            <span class="setor-tag">{{ startup.setor_atuacao }}</span>
                         </div>
-                    </section>
 
+                        <h3 class="startup-nome">{{ startup.nome_startup }}</h3>
+                        <p class="startup-descricao">{{ startup.sobre_a_startup|truncatechars:150 }}</p>
+                        <span class="incubadora" style="display:none;">{{ startup.incubadora }}</span>
+                        <span class="setor-tag" style="display:none;">{{ startup.setor_atuacao }}</span>
+                        <hr>
+                        <a href="{% url 'perfil' startup.id %}" class="ver-detalhes"> 
+                            Ver Detalhes <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
 
+                    </div>
+                    {% empty %}
+                    <p>Nenhuma startup cadastrada ainda.</p>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -146,9 +140,9 @@
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul>
-                    <li><a href="home.html">Início</a></li>
-                    <li><a href="home.html#sobre">Sobre</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+                    <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
                 </ul>
             </div>
 
