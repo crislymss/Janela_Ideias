@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Exibe o card apenas se todas as condições forem atendidas
             if (matchSearch && matchIncubadora && matchSetor) {
-                card.style.display = 'block';
+                card.style.display = '';
                 visibleCount++;
             } else {
                 card.style.display = 'none';

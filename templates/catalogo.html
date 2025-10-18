@@ -106,7 +106,9 @@
             <div class="container">
                 <div class="startups-grid">
                     {% for startup in startups %}
-                    <div class="startup-card">
+                    <div class="startup-card 
+                            {% if forloop.counter > 10 %}card-limit-mobile{% endif %}
+                            {% if forloop.counter > 30 %}card-limit-desktop{% endif %}">
                         <div class="card-header">
                             <div class="startup-icon">
                                 {% if startup.logo_startup %}
