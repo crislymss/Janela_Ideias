@@ -29,7 +29,6 @@ header {
   transition: padding 0.3s ease, background 0.3s ease;
 }
 
-/* Header específico para catálogo */
 body.catalogo-page header,
 html body.catalogo-page header {
   background: white !important;
@@ -70,6 +69,7 @@ header.rolagem {
     padding: 5px 40px;
     background: rgba(248, 248, 248, 0.9);
 }
+
 
 
 .logo img {
@@ -114,40 +114,78 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-/* RESPONSIVO MOBILE (≤768px) */
-@media (max-width: 768%) {
+.menu-toggle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none; 
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 60;
+}
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #165961;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+@media (max-width: 768px) {
   header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10% 20%;
-    gap: 10%;
+    padding: 10px 20px;
+    justify-content: space-between;
   }
 
-  .logo {
-    flex:1;
+  body.catalogo-page nav{
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 50% !important;
+    margin-top: -15px !important;
   }
 
-  .logo img {
-    width: 100%;
-    height: auto;
-  }
+  .logo img { width: 100px; }
 
+  .menu-toggle { display: flex; right: 20px; }
 
   nav {
-    display: flex;
+    position: fixed !important;
+    top: 60px;
+    left: 0;
+    right: 0;
+    transform: none;
+    background: #f8f8f8;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 10%;
+    align-items: center;
     width: 100%;
-    margin: 0%;
-    order: 2;
+    padding: 40px 0;
+    display: none;      
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: none !important; 
+    margin-top: 10px !important;
   }
 
-  nav a {
-    padding: 8% 12%;
-    width: 100%;
-    text-align: left;
+  nav.active {
+    display: flex;
+    animation: slideDown 0.25s ease;
   }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+  }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+
+  nav a { padding: 5px 0; text-align: center; font-size: 16px; }
 }
+

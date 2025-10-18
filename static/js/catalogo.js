@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Exibe o card apenas se todas as condições forem atendidas
             if (matchSearch && matchIncubadora && matchSetor) {
-                card.style.display = 'block';
+                card.style.display = '';
                 visibleCount++;
             } else {
                 card.style.display = 'none';
@@ -205,4 +205,29 @@ document.addEventListener("DOMContentLoaded", () => {
         el.innerText = '0';
         animateNumber(el);
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav-menu");
+
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener("click", () => {
+    const open = toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+    // para acessibilidade: informa se está aberto
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  // Fecha menu ao clicar em um link (útil em mobile)
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      if (nav.classList.contains("active")) {
+        nav.classList.remove("active");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
 });

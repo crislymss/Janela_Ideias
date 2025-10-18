@@ -29,17 +29,23 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
-        </div>
+      <div class="logo">
+        <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
+      </div>
 
-        <nav>
-            <a href="{% url 'home' %}">Início</a>
-            <a href="{% url 'home' %}#sobre">Sobre</a>
-            <a href="{% url 'catalogo' %}">Catálogo</a>
-        </nav>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
+      <nav id="nav-menu">
+        <a href="{% url 'home' %}">Início</a>
+        <a href="{% url 'home' %}#sobre">Sobre</a>
+        <a href="{% url 'catalogo' %}">Catálogo</a>
+      </nav>
     </header>
+
 
     <section class="hero" style="background-image: url('../static/images/texture2.png'), linear-gradient(to bottom right, #007DAF, #e9c46a);">
         <div class="hero-content">

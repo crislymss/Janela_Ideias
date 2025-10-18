@@ -23,14 +23,21 @@
 
 <body class="catalogo-page">
     <header>
-        <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo Janela de Ideias">
-        </div>
-        <div id="nav-centralizada" style="position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; display: flex !important; gap: 25px !important; z-index: 1000 !important; background: rgba(255,255,255,0.9) !important; padding: 10px 20px !important; border-radius: 5px !important;">
-            <a href="{% url 'home' %}" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Início</a>
-            <a href="{% url 'home' %}#sobre" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Sobre</a>
-            <a href="{% url 'catalogo' %}" style="color: #555 !important; text-decoration: none !important; font-weight: 500 !important; font-size: 16px !important;">Catálogo</a>
-        </div>
+      <div class="logo">
+        <img src="../static/images/logo.png" alt="Logo Janela de Ideias">
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="nav-menu">
+        <a href="{% url 'home' %}">Início</a>
+        <a href="{% url 'home' %}#sobre">Sobre</a>
+        <a href="{% url 'catalogo' %}">Catálogo</a>
+      </nav>
     </header>
 
     <main class="catalogo-main">
@@ -99,12 +106,18 @@
             <div class="container">
                 <div class="startups-grid">
                     {% for startup in startups %}
-                    <div class="startup-card">
+                    <div class="startup-card 
+                            {% if forloop.counter > 10 %}card-limit-mobile{% endif %}
+                            {% if forloop.counter > 30 %}card-limit-desktop{% endif %}">
                         <div class="card-header">
                             <div class="startup-icon">
-                                <div class="icon-bg">
-                                    <i class="bi bi-rocket-takeoff-fill"></i>
-                                </div>
+                                {% if startup.logo_startup %}
+                                    <img src="{{ startup.logo_startup.url }}" alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
+                                {% else %}
+                                    <div class="icon-bg">
+                                        <i class="bi bi-rocket-takeoff-fill"></i>
+                                    </div>
+                                {% endif %}
                             </div>
                             <span class="setor-tag">{{ startup.setor_atuacao }}</span>
                         </div>

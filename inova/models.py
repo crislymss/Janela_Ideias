@@ -36,7 +36,7 @@ class Startup(models.Model):
     como_UFPI_contribuiu = models.TextField(verbose_name="Como a UFPI contribuiu?", null=True, blank=True)
     ano_fundacao = models.IntegerField(default=0, verbose_name="Ano de Fundação")
     setor_atuacao = models.CharField(max_length=100, verbose_name="Setor de Atuação")
-    tamanho_equipe = models.CharField(max_length=100, verbose_name="Tamanho da Equipe")
+    tamanho_equipe = models.CharField(default=0, verbose_name="Tamanho da Equipe")
     incubadora = models.CharField(max_length=100, blank=True) 
     logo_startup = models.ImageField(upload_to='logos_startups/', blank=True, null=True)
 
@@ -164,6 +164,10 @@ class Noticia(models.Model):
         ('STARTUP', 'Startups'),
         ('INOVACAO', 'Inovação'),
         ('EVENTO', 'Eventos'),
+        ('PESQUISA', 'Pesquisa'),
+        ('TECNOLOGIA', 'Tecnologia'),
+        ('INSTITUCIONAL', 'Institucional'),
+        ('OUTROS', 'Outros'),
     ]
     
     categoria = models.CharField("Categoria", max_length=20, choices=CATEGORIA_CHOICES)
