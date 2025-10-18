@@ -33,7 +33,7 @@
   
 }
 .card-participar p {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   max-width: 500px;
   margin-bottom: 30px;
 }
@@ -78,6 +78,7 @@
 }
 
 .btn-email {
+  font-size: 16px;
   background: transparent;
   border: 2px solid #e9c46a;
   color: #e9c46a;
