@@ -4,7 +4,7 @@
 }
 
 #realizacao h2 {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: #666;
   margin-bottom: 30px;
   font-weight: bold;
@@ -70,6 +70,6 @@
   }
   
   .logo-realizacao img {
-    height: 60px;
+    height: 40px;
   }
 }

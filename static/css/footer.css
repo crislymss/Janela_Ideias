@@ -132,15 +132,32 @@ footer {
     gap: 30px;
     padding: 0 20px;
   }
-  
+
   .footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-  
+
   .footer-logo {
     align-items: center;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
+
 
 @media (max-width: 480px) {
   .footer-content {
