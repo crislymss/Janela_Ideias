@@ -81,7 +81,7 @@ class StartupForm(forms.ModelForm):
             'como_UFPI_contribuiu': forms.Textarea(attrs={'class': CSS_CLASS, 'rows': 4}),
             'ano_fundacao': forms.NumberInput(attrs={'class': CSS_CLASS, 'placeholder': 'Ex: 2024'}),
             'setor_atuacao': forms.TextInput(attrs={'class': CSS_CLASS, 'placeholder': 'Ex: Tecnologia, Saúde, Educação'}),
-            'tamanho_equipe': forms.TextInput(attrs={'class': CSS_CLASS, 'placeholder': 'Ex: 1-5 pessoas, 6-10 pessoas'}),
+            'tamanho_equipe': forms.TextInput(attrs={'class': CSS_CLASS, 'placeholder': 'Ex: 1-5, 6-10, 11-20'}),
             'incubadora': forms.TextInput(attrs={'class': CSS_CLASS, 'placeholder': 'Ex: Parnaíba Valley'}),
         }
 
