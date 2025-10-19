@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 import environ
 
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +45,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'inova',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Login Administrativo",
+    "site_header": "Login Administrativo",
+    "site_brand": "Janela de Ideias",
+    "welcome_sign": "",
+    "show_ui_builder": False,
+    "login_logo": "/images/janela.png",  
+    "custom_css": "css/login.css",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",  
+    "dark_mode_theme": None,
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "accent": "primary",  
+    "navbar": "bg-primary",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'janela_ideias',
         'USER': 'postgres',
-        'PASSWORD': '12345',
+        'PASSWORD': 'naiana07',
         'HOST': 'localhost',
         'PORT': '5432',
     }

@@ -1,61 +1,25 @@
-/* LOGIN FORM */
-
-.login {
-    background: var(--darkened-bg);
-    height: auto;
+/* Fundo gradiente da tela de login */
+.login-page {
+    background: linear-gradient(120deg, #0082c8, #c8b800);
+    background-size: cover;
+    height: 100vh;
 }
 
-.login #header {
-    height: auto;
-    padding: 15px 16px;
-    justify-content: center;
+.login-box {
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
 }
 
-.login #header h1 {
-    font-size: 1.125rem;
-    margin: 0;
+/* Botão Entrar */
+.btn-primary {
+    background-color: #0072b5;
+    border-color: #0072b5;
 }
 
-.login #header h1 a {
-    color: var(--header-link-color);
-}
-
-.login #content {
-    padding: 20px;
-}
-
-.login #container {
-    background: var(--body-bg);
-    border: 1px solid var(--hairline-color);
+/* Input fields */
+.form-control {
     border-radius: 4px;
-    overflow: hidden;
-    width: 28em;
-    min-width: 300px;
-    margin: 100px auto;
-    height: auto;
 }
 
-.login .form-row {
-    padding: 4px 0;
-}
 
-.login .form-row label {
-    display: block;
-    line-height: 2em;
-}
-
-.login .form-row #id_username, .login .form-row #id_password {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.login .submit-row {
-    padding: 1em 0 0 0;
-    margin: 0;
-    text-align: center;
-}
-
-.login .password-reset-link {
-    text-align: center;
-}
