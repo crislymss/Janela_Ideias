@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 JAZZMIN_SETTINGS = {
     "site_title": "Login Administrativo",# Título exibido na aba do navegador
     "site_header": "Login Administrativo",# Título exibido no topo da interface do admin
-    "site_brand": "Janela de Ideias",# Nome/marca exibida no menu lateral
+    "site_brand": "Janela de Ideias",# Nome exibida no menu lateral
     "welcome_sign": "", # Mensagem exibida na tela de login (string vazia remove a mensagem)
     "show_ui_builder": False,# Desabilita o construtor de UI do Jazzmin na interface do admin
     "login_logo": "/images/janela.png", # Caminho do logo exibido na tela de login
@@ -65,7 +65,7 @@ JAZZMIN_UI_TWEAKS = {
     "footer_small_text": False, # Controla tamanho do texto no rodapé
     "body_small_text": False,# Controla tamanho do texto no corpo da interface
     "brand_small_text": False,# Controla tamanho do texto da marca
-    "accent": "primary", # Cor de destaque padrão do tema (Bootstrap)  
+    "accent": "primary", # Cor de destaque padrão do tema 
     "navbar": "bg-primary",# Cor/tema da barra do topo do admin
 }
 
