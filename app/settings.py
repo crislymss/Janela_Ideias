@@ -54,6 +54,19 @@ JAZZMIN_SETTINGS = {
     "show_ui_builder": False,
     "login_logo": "/images/janela.png",  
     "custom_css": "css/login.css",
+    
+    # Ordem do menu (como na imagem-alvo)
+    "order_with_respect_to": ["inova.Startup", "inova.Noticia", "inova.LinkFormulario", "auth"],
+
+    # Ícones da barra lateral (Bootstrap Icons)
+    "icons": {
+        "auth": "bi bi-people-fill",
+        "auth.User": "bi bi-person-fill",
+        
+        "inova.Startup": "bi bi-rocket-takeoff-fill",
+        "inova.Noticia": "bi bi-newspaper",
+        "inova.LinkFormulario": "bi bi-file-earmark-text-fill",
+    },
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -64,7 +77,30 @@ JAZZMIN_UI_TWEAKS = {
     "body_small_text": False,
     "brand_small_text": False,
     "accent": "primary",  
-    "navbar": "bg-primary",
+    "navbar": "bg-white",
+    "navbar_fixed": True,
+    "sidebar": "bg-primary", # Deixa a barra lateral azul
+    "accent": "accent-primary",
+    "sidebar_fixed": True,
+    "sidebar_text": "text-white", # Texto da barra lateral branco
+    "show_ui_builder": False,
+    
+    # ISSO É O QUE FORÇA AS CORES AZUIS NO DASHBOARD E NO SIDEBAR,
+    # SEM AFETAR A TELA DE LOGIN.
+    "theme": "flatly", # O tema flatly é o azul/branco
+    "dark_mode_theme": None, # Desativa o modo escuro
+    
+    # Cores da barra superior e lateral
+    "navbar": "navbar-white", # Barra superior branca
+    "sidebar": "sidebar-dark-primary", # Barra lateral azul escura
+    "sidebar_nav_child_indent": True, # Indentação para sub-menus
+    
+    # Fixa as barras
+    "navbar_fixed": True,
+    "sidebar_fixed": True,
+    
+    "show_ui_builder": False, # Esconde o construtor de UI
+    
 }
 
 MIDDLEWARE = [
@@ -104,7 +140,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'janela_ideias',
         'USER': 'postgres',
-        'PASSWORD': 'naiana07',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '5432',
     }

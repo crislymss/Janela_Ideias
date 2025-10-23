@@ -6,3 +6,4 @@ app/__pycache__/
 media/media/membros/
 media/
 .db.sqlite3
+staticfiles/

@@ -39,7 +39,8 @@ class Startup(models.Model):
     tamanho_equipe = models.CharField(default=0, verbose_name="Tamanho da Equipe")
     incubadora = models.CharField(max_length=100, blank=True) 
     logo_startup = models.ImageField(upload_to='logos_startups/', blank=True, null=True)
-
+    data_criacao = models.DateTimeField(default=timezone.now, verbose_name="Data de Criação")
+    
     def __str__(self):
         
         """Retorna o nome da startup como sua representação em string."""

@@ -24,12 +24,14 @@ from inova import views
 from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
+from inova.admin import admin_site
 
 urlpatterns = [
     path('', views.pagina_inicial, name='home'), 
     path('noticias/', views.NoticiaListView.as_view(), name='lista_noticias'),
     path('noticias/<int:pk>/', views.NoticiaDetailView.as_view(), name='detalhe_noticia'),
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    path('admin/', admin_site.urls),
     path('catalogo/', views.catalogo, name='catalogo'),  
     path('perfil/<int:startup_id>/', views.perfil_startup, name='perfil'),
 
