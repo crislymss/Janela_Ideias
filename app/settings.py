@@ -46,25 +46,27 @@ INSTALLED_APPS = [
     'inova',
 ]
 
+# Configurações do tema Jazzmin para estilização do Django Admin
 JAZZMIN_SETTINGS = {
-    "site_title": "Login Administrativo",
-    "site_header": "Login Administrativo",
-    "site_brand": "Janela de Ideias",
-    "welcome_sign": "",
-    "show_ui_builder": False,
-    "login_logo": "/images/janela.png",  
-    "custom_css": "css/login.css",
+    "site_title": "Login Administrativo",# Título exibido na aba do navegador
+    "site_header": "Login Administrativo",# Título exibido no topo da interface do admin
+    "site_brand": "Janela de Ideias",# Nome/marca exibida no menu lateral
+    "welcome_sign": "", # Mensagem exibida na tela de login (string vazia remove a mensagem)
+    "show_ui_builder": False,# Desabilita o construtor de UI do Jazzmin na interface do admin
+    "login_logo": "/images/janela.png", # Caminho do logo exibido na tela de login
+    "custom_css": "css/login.css",# CSS customizado para sobrescrever estilos padrão
 }
 
+# Ajustes visuais adicionais do tema Jazzmin
 JAZZMIN_UI_TWEAKS = {
-    "theme": "flatly",  
-    "dark_mode_theme": None,
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-    "accent": "primary",  
-    "navbar": "bg-primary",
+    "theme": "flatly", # Tema base (entre os disponíveis no Jazzmin)  
+    "dark_mode_theme": None,# Desativa tema escuro automático
+    "navbar_small_text": False,# Controla tamanho do texto no navbar
+    "footer_small_text": False, # Controla tamanho do texto no rodapé
+    "body_small_text": False,# Controla tamanho do texto no corpo da interface
+    "brand_small_text": False,# Controla tamanho do texto da marca
+    "accent": "primary", # Cor de destaque padrão do tema (Bootstrap)  
+    "navbar": "bg-primary",# Cor/tema da barra do topo do admin
 }
 
 MIDDLEWARE = [
