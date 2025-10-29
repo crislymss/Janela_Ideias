@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Chau Philomene One', sans-serif;
+  font-weight: 400;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden; 
+}
+
+header {
+  background: #f8f8f8;
+  padding: 10px 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  
+  transition: padding 0.3s ease, background 0.3s ease;
+}
+
+body.catalogo-page header,
+html body.catalogo-page header {
+  background: white !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+body.catalogo-page header .logo img {
+  filter: none;
+}
+
+body.catalogo-page nav a {
+  color: #555 !important;
+}
+
+body.catalogo-page nav a.active {
+  color: #1a6b74 !important;
+}
+
+body.catalogo-page nav a::after {
+  background: #1a6b74 !important;
+}
+
+body.catalogo-page nav a:hover {
+  color: #1a6b74 !important;
+}
+
+
+body.catalogo-page nav {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 50% !important;
+  margin-top: -15px !important;
+}
+
+
+header.rolagem {
+    padding: 5px 40px;
+    background: rgba(248, 248, 248, 0.9);
+}
+
+
+
+.logo img {
+  width: 120px;
+  transition: width 0.3s ease;
+}
+
+nav {
+  display: flex;           
+  flex-direction: row;     
+  gap: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav a {
+  position: relative; 
+  margin: 0; 
+  text-decoration: none;
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s; 
+  padding-bottom: 5px; 
+}
+
+nav a:hover {
+  color: #165961;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: #165961;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-toggle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none; 
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 60;
+}
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #165961;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px;
+    justify-content: space-between;
+  }
+
+  body.catalogo-page nav{
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 50% !important;
+    margin-top: -15px !important;
+  }
+
+  .logo img { width: 100px; }
+
+  .menu-toggle { display: flex; right: 20px; }
+
+  nav {
+    position: fixed !important;
+    top: 60px;
+    left: 0;
+    right: 0;
+    transform: none;
+    background: #f8f8f8;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 40px 0;
+    display: none;      
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: none !important; 
+    margin-top: 10px !important;
+  }
+
+  nav.active {
+    display: flex;
+    animation: slideDown 0.25s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+  }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+
+  nav a { padding: 5px 0; text-align: center; font-size: 16px; }
+}
+

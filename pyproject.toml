@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "Janela_Ideias"
+version = "0.1.0"
+description = "A Janela de Ideias é uma iniciativa da Pró-Reitoria de Pesquisa e Inovação da Universidade Federal do Piauí (PROPESQI-UFPI) que visa fortalecer o potencial empreendedor e inovador dentro da universidade. O projeto é uma vitrine das startups que tiveram o seu desenvolvimento iniciado ou fomentado pela UFPI, uma forma de divulgar e incentivar a participação da comunidade acadêmica como um todo."
+authors = ["crisly, erlanny"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^5.1.1"
+django-cors-headers = "^4.4.0"
+pillow = "^10.4.0"
+django-environ = "^0.11.2"
+django-jazzmin = "^3.0.0"
+
+
+[tool.poetry.group.psycopg.dependencies]
+psycopg2-binary = "^2.9.9"
+psycopg = "^3.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
