@@ -1,0 +1,171 @@
+footer {
+  background-color: #232f42;
+  color: white;
+  padding: 60px 0 0 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.footer-section h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1a6b74;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.logo-footer img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.footer-logo p {
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #1a6b74;
+}
+
+.contact-info p {
+  color: #bdc3c7;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.contact-info p i {
+  font-size: 18px;
+  color: #1a6b74;
+  margin-right: 8px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-link {
+  color: #bdc3c7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #1a6b74;
+}
+
+.social-link i {
+  font-size: 1.2rem;
+}
+
+.footer-bottom {
+  background-color: #1a252f;
+  text-align: center; /* Isso garante que seu texto fique no centro */
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #34495e;
+  position: relative; /* Essencial para o posicionamento do ícone */
+}
+
+.footer-icon {
+  position: absolute; /* Tira o ícone do fluxo normal */
+  right: 40px;      /* Distância da borda direita */
+  top: 50%;         /* Alinha o topo do ícone ao meio do container */
+  transform: translateY(-50%); /* Centraliza o ícone verticalmente de forma precisa */
+}
+
+/* Estilos de cor e tamanho do ícone (pode manter como estava) */
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #1a252f;
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover i {
+  color: white;
+}
+
+.footer-bottom p {
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo {
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    align-items: center;
+  }
+}

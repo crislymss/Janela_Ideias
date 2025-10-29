@@ -12,6 +12,26 @@ from django.contrib import admin
 from .models import Startup, MembroEquipe, RedesSociais, Contato
 from .models import Noticia, LinkFormulario
 
+from django.contrib.admin import AdminSite
+from django.db.models import Count
+from django.utils import timezone
+from django.contrib.auth.models import User, Group
+from django.db.models.functions import TruncMonth
+from inova.models import LinkFormulario
+
+class CustomAdminSite(AdminSite):
+    site_header = "Janela de Ideias"
+
+    def each_context(self, request):
+        context = super().each_context(request)
+
+        # Busca o link mais recente cadastrado
+        ultimo_link = LinkFormulario.objects.first()
+
+        context["link_formulario"] = ultimo_link.link if ultimo_link else None
+        return context
+
+
 # Crie classes inline para os modelos relacionados ao Startup
 # StackedInline mostra os campos um abaixo do outro
 class ContatoInline(admin.StackedInline):
@@ -113,9 +133,64 @@ class LinkFormularioAdmin(admin.ModelAdmin):
     list_display = ('link', 'data')
     search_fields = ('link',)
     date_hierarchy = 'data'
+    readonly_fields = ('data',)
     
     fieldsets = (
         (None, {
-            'fields': ('link', 'data')
+            'fields': ('link',)
         }),
     )
+
+class CustomAdminSite(AdminSite):
+    def index(self, request, extra_context=None):
+        # Total de Startups
+        total_startups = Startup.objects.count()
+        
+        # Recentes (Últimos 7 dias)
+        recentes_count = Startup.objects.filter(
+            data_criacao__gte=timezone.now() - timezone.timedelta(days=7)
+        ).count()
+
+        # Últimas Startups
+        ultimas_startups = Startup.objects.order_by('-data_criacao')[:3]
+        
+        # Gráfico: Startups por Mês
+        chart_data = [0] * 12
+        startups_por_mes = Startup.objects.annotate(
+            mes=TruncMonth('data_criacao')
+        ).values('mes').annotate(
+            total=Count('id')
+        ).order_by('mes')
+
+        for item in startups_por_mes:
+            if item['mes'] and 1 <= item['mes'].month <= 12:
+                chart_data[item['mes'].month - 1] = item['total']
+        
+        chart_labels = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+
+        # Última atualização do formulário 
+        ultimo_link = LinkFormulario.objects.first()
+        data_formulario = ultimo_link.data if ultimo_link else None
+
+        # Adiciona tudo ao contexto
+        extra_context = extra_context or {}
+        extra_context['total_startups'] = total_startups
+        extra_context['recentes_count'] = recentes_count
+        extra_context['ultimas_startups'] = ultimas_startups
+        extra_context['chart_labels'] = chart_labels
+        extra_context['chart_data'] = chart_data
+        extra_context['data_formulario'] = data_formulario  # adiciona a data
+        
+        return super().index(request, extra_context)
+
+
+# --- 3. REGISTRO NO NOVO 'admin_site' ---
+
+admin_site = CustomAdminSite(name='myadmin')
+
+admin_site.register(Startup, StartupAdmin)
+admin_site.register(Noticia, NoticiaAdmin)
+admin_site.register(LinkFormulario, LinkFormularioAdmin)
+admin_site.register(User)
+admin_site.register(Group)
+

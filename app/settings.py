@@ -48,25 +48,69 @@ INSTALLED_APPS = [
 
 # Configurações do tema Jazzmin para estilização do Django Admin
 JAZZMIN_SETTINGS = {
-    "site_title": "Login Administrativo",# Título exibido na aba do navegador
-    "site_header": "Login Administrativo",# Título exibido no topo da interface do admin
-    "site_brand": "Janela de Ideias",# Nome exibida no menu lateral
-    "welcome_sign": "", # Mensagem exibida na tela de login (string vazia remove a mensagem)
-    "show_ui_builder": False,# Desabilita o construtor de UI do Jazzmin na interface do admin
-    "login_logo": "/images/janela.png", # Caminho do logo exibido na tela de login
-    "custom_css": "css/login.css",# CSS customizado para sobrescrever estilos padrão
+    "site_title": "Janela de Ideias",
+    "site_header": "Janela de Ideias",
+    "site_brand": "Janela de Ideias",
+    "welcome_sign": "Bem-vindo ao painel Janela de Ideias",
+    "copyright": "Janela de Ideias",
+    
+    # LOGO personalizada
+    "site_logo": "images/janela.png",  # coloque o arquivo em static/img/logo_janela.png
+    "site_brand": "Janela de Ideias",
+
+    # Tema de cores
+    "theme": "flatly",  # base leve
+    "dark_mode_theme": None,
+
+    "login_template": "admin/login.html",
+    # Ordem do menu (como na imagem-alvo)
+    "order_with_respect_to": ["inova.Startup", "inova.Noticia", "inova.LinkFormulario", "auth"],
+
+    # Ícones da barra lateral (Bootstrap Icons)
+    "icons": {
+        "auth": "bi bi-people-fill",
+        "auth.User": "bi bi-person-fill",
+        
+        "inova.Startup": "bi bi-rocket-takeoff-fill",
+        "inova.Noticia": "bi bi-newspaper",
+        "inova.LinkFormulario": "bi bi-file-earmark-text-fill",
+    },
 }
 
-# Ajustes visuais adicionais do tema Jazzmin
+JAZZMIN_SETTINGS["custom_css"] = "css/custom_admin.css"
+
 JAZZMIN_UI_TWEAKS = {
-    "theme": "flatly", # Tema base (entre os disponíveis no Jazzmin)  
-    "dark_mode_theme": None,# Desativa tema escuro automático
-    "navbar_small_text": False,# Controla tamanho do texto no navbar
-    "footer_small_text": False, # Controla tamanho do texto no rodapé
-    "body_small_text": False,# Controla tamanho do texto no corpo da interface
-    "brand_small_text": False,# Controla tamanho do texto da marca
-    "accent": "primary", # Cor de destaque padrão do tema 
-    "navbar": "bg-primary",# Cor/tema da barra do topo do admin
+    "theme": "flatly",  
+    "dark_mode_theme": None,
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "accent": "primary",  
+    "navbar": "bg-white",
+    "navbar_fixed": True,
+    "sidebar": "bg-primary", # Deixa a barra lateral azul
+    "accent": "accent-primary",
+    "sidebar_fixed": True,
+    "sidebar_text": "text-white", # Texto da barra lateral branco
+    "show_ui_builder": False,
+    
+    # ISSO É O QUE FORÇA AS CORES AZUIS NO DASHBOARD E NO SIDEBAR,
+    # SEM AFETAR A TELA DE LOGIN.
+    "theme": "flatly", # O tema flatly é o azul/branco
+    "dark_mode_theme": None, # Desativa o modo escuro
+    
+    # Cores da barra superior e lateral
+    "navbar": "navbar-white", # Barra superior branca
+    "sidebar": "sidebar-dark-primary", # Barra lateral azul escura
+    "sidebar_nav_child_indent": True, # Indentação para sub-menus
+    
+    # Fixa as barras
+    "navbar_fixed": True,
+    "sidebar_fixed": True,
+    
+    "show_ui_builder": False, # Esconde o construtor de UI
+    
 }
 
 MIDDLEWARE = [
@@ -106,9 +150,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'janela_ideias',
         'USER': 'postgres',
-        'PASSWORD': 'naiana07',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': '12345',
+        'HOST': 'db',
     }
 }
 

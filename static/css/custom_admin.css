@@ -1,0 +1,164 @@
+/* custom_admin.css
+   Corrige ícones que somem quando o item da sidebar está ativo/menu-open
+   + garante consistência da cor do texto/ícone na sidebar.
+   Coloque em static/css/custom_admin.css
+*/
+
+/* 1) Força cor do texto e dos ícones na sidebar (estado normal) */
+/* ======== Sidebar ======== */
+.main-sidebar {
+    background-color: #2f89b3 !important; /* Azul claro */
+}
+
+.main-sidebar .brand-link {
+    background-color: #1e6b8a !important;
+    color: rgb(227, 229, 229) !important;
+}
+
+.main-sidebar .brand-link img {
+    height: 38px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.main-sidebar .nav-link.active {
+    background-color: #9cd0e0 !important;
+    color: #000 !important;
+    border-radius: 8px;
+}
+
+.main-sidebar .nav-link {
+    color: white !important;
+}
+
+.main-sidebar .nav-link:hover {
+    background-color: #62a9c4 !important;
+}
+
+/* 4) Corrige possíveis pseudo-elementos que possam esconder ícones */
+.main-sidebar .nav-link .nav-icon::before,
+.sidebar .nav-link .nav-icon::before {
+  color: inherit !important;
+}
+
+/* 5) Se houver ícones em SVG inline (algumas versões usam SVG), força sua cor */
+.main-sidebar svg,
+.sidebar svg {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 6) Pequenas correções de legibilidade (opcional) */
+.main-sidebar .nav-link .nav-text, 
+.sidebar .nav-link .nav-text {
+  color: #ffffff !important;
+}
+
+/* 7) Em telas muito pequenas, ainda garantir contraste */
+@media (max-width: 768px) {
+  .main-sidebar .nav-link,
+  .sidebar .nav-link {
+    color: #ffffff !important;
+  }
+}
+
+/* ======== Estilo geral ======== */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7f9;
+}
+
+
+/* ======== Cards do dashboard (afinados) ======== */
+.card {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    min-height: 100px !important; /* altura mais fina */
+}
+
+.card-header {
+    font-weight: 600;
+    font-size: 14px;
+    background: none !important;
+    border-bottom: none !important;
+    padding-bottom: 4px !important;
+    color: #ffffff;
+}
+
+.widget-total-startups {
+    background-color: #7bb4b8 !important;
+    color: white !important;
+}
+
+.widget-recentes {
+    background-color: #f5d96f !important;
+    color: #000 !important;
+}
+
+.widget-formulario {
+    background-color: #7bb4b8 !important;
+    color: white !important;
+}
+
+
+/* ======== Lista ======== */
+.list-group-item {
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    font-size: 14px;
+}
+
+.list-group-item:last-child {
+    border-bottom: none !important;
+}
+
+/* ======== Gráfico ======== */
+canvas {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* ======== Copyright ======== */
+.footer {
+    background: #f5f7f9 !important;
+    color: #999;
+    font-size: 13px;
+}
+
+/* ======== Correção de fontes ======== */
+body, label, input, button, select, textarea {
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif !important;
+  color: #333 !important;
+}
+
+/* Evita títulos gigantes */
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  font-size: 1.1rem !important;
+  color: #004e6b !important;
+}
+
+/* Fundo e formulários */
+.content-wrapper {
+  background-color: #f5f7f9 !important;
+}
+
+.form-control {
+  border-radius: 6px !important;
+  border: 1px solid #ccc !important;
+  font-size: 14px !important;
+}
+
+.btn {
+  border-radius: 6px !important;
+}
+
+/* Corrige labels e espaçamentos */
+label {
+  font-weight: 500 !important;
+  color: #333 !important;
+}
+
+
