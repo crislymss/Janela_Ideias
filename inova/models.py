@@ -220,7 +220,7 @@ class LinkFormulario(models.Model):
         """Define metadados para o modelo LinkFormulario."""
         
         verbose_name = 'Link do Formulário'
-        verbose_name_plural = 'Links dos Formulários'
+        verbose_name_plural = 'Link do Formulário'
         ordering = ['-data']
 
     def __str__(self):

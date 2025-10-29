@@ -28,4 +28,4 @@ class InovaConfig(AppConfig):
     
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'inova' 
-    verbose_name = 'App'
+    verbose_name = 'Gestão e Controle'

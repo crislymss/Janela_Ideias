@@ -43,9 +43,9 @@
     display: flex;
     transition: transform 0.5s ease-in-out; 
     gap: 24px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding-bottom: 20px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .cards-container {
@@ -101,6 +101,7 @@
 }
 
 .card {
+    flex-shrink: 0;
     min-width: calc(33.333% - 30px); 
     background-color: #fff;
     border-radius: 12px;

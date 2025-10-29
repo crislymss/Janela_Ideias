@@ -160,9 +160,15 @@
         <a onclick="copyEmail()" class="btn-email">
           <i class="bi bi-envelope-fill"></i> propesqi@ufpi.edu.br
         </a>
-        <a href="#" target="_blank" class="btn-form">
-          Formulário Google
-        </a>
+        {% if link_formulario %}
+          <a href="{{ link_formulario }}" target="_blank" class="btn-form">
+            Formulário Google
+          </a>
+        {% else %}
+          <a href="#" class="btn-form disabled" style="opacity: 0.6; pointer-events: none;">
+            Nenhum link disponível
+          </a>
+        {% endif %}
       </div>
     </div>
 

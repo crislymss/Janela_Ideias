@@ -47,14 +47,21 @@ INSTALLED_APPS = [
 ]
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Login Administrativo",
-    "site_header": "Login Administrativo",
+    "site_title": "Janela de Ideias",
+    "site_header": "Janela de Ideias",
     "site_brand": "Janela de Ideias",
-    "welcome_sign": "",
-    "show_ui_builder": False,
-    "login_logo": "/images/janela.png",  
-    "custom_css": "css/login.css",
+    "welcome_sign": "Bem-vindo ao painel Janela de Ideias",
+    "copyright": "Janela de Ideias",
     
+    # LOGO personalizada
+    "site_logo": "images/janela.png",  # coloque o arquivo em static/img/logo_janela.png
+    "site_brand": "Janela de Ideias",
+
+    # Tema de cores
+    "theme": "flatly",  # base leve
+    "dark_mode_theme": None,
+
+    "login_template": "admin/login.html",
     # Ordem do menu (como na imagem-alvo)
     "order_with_respect_to": ["inova.Startup", "inova.Noticia", "inova.LinkFormulario", "auth"],
 
@@ -68,6 +75,8 @@ JAZZMIN_SETTINGS = {
         "inova.LinkFormulario": "bi bi-file-earmark-text-fill",
     },
 }
+
+JAZZMIN_SETTINGS["custom_css"] = "css/custom_admin.css"
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "flatly",  

@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Calcula a largura de um card mais sua margem (assumida como 20px)
-  const cardWidth = cards[0].getBoundingClientRect().width + 20;
+  const cardWidth = cards[0].getBoundingClientRect().width + 24;
 
   // Rastreia a posição atual do carrossel
   let currentIndex = 0;
