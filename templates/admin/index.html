@@ -1,0 +1,109 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <!-- Primeira linha -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card widget-total-startups h-100 shadow-sm">
+        <div class="card-header"><i class="bi bi-rocket-takeoff-fill"></i> Total de Startups</div>
+        <div class="card-body text-center">
+          <h2>{{ total_startups|default:"0" }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card widget-recentes h-100 shadow-sm">
+        <div class="card-header"><i class="bi bi-clock-fill"></i> Recentes</div>
+        <div class="card-body text-center">
+          <h2>{{ recentes_count|default:"0" }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card widget-formulario h-100 shadow-sm">
+        <div class="card-header"><i class="bi bi-link-45deg"></i> Última atualização do Formulário</div>
+        <div class="card-body text-center">
+          {% if data_formulario %}
+            <h5>{{ data_formulario|date:"d/m/Y H:i" }}</h5>
+          {% else %}
+            <h5>Sem atualização</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda linha -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header">Últimas Startups</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for startup in ultimas_startups %}
+              <li class="list-group-item">
+                <strong>{{ startup.nome_startup }}</strong><br>
+                <small>{{ startup.data_criacao|date:"d/m/Y H:i" }}</small>
+              </li>
+            {% empty %}
+              <li class="list-group-item text-muted">Nenhuma startup encontrada.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header">Startups por mês</div>
+        <div class="card-body" style="height: 360px;">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const meses = {{ chart_labels|safe }};
+  const dados = {{ chart_data|safe }};
+  const ctx = document.getElementById('myChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: meses,
+      datasets: [{
+        label: 'Startups',
+        data: dados,
+        borderWidth: 1,
+        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+      plugins: { legend: { display: true, position: 'top' } }
+    }
+  });
+</script>
+{% endblock %}

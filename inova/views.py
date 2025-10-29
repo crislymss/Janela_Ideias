@@ -20,6 +20,7 @@ from .models import Noticia
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import NoticiaForm
 from .models import Startup
+from .models import LinkFormulario
 
 
 def pagina_inicial(request):
@@ -37,8 +38,15 @@ def pagina_inicial(request):
         HttpResponse: Uma resposta HTTP contendo a página inicial renderizada.
     """
     
-    noticias = Noticia.objects.all().order_by('-data_publicacao')[:9]  
-    return render(request, 'home.html', {'noticias': noticias})
+    noticias = Noticia.objects.all().order_by('-data_publicacao')[:9]
+    link_form = LinkFormulario.objects.first()  # pega o mais recente, se existir
+
+    context = {
+        'noticias': noticias,
+        'link_formulario': link_form.link if link_form else None
+    }
+    
+    return render(request, 'home.html', context)
 
 class NoticiaListView(ListView):
     
