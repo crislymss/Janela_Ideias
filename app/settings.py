@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'inova',
 ]
 
+# Configurações do tema Jazzmin para estilização do Django Admin
 JAZZMIN_SETTINGS = {
     "site_title": "Janela de Ideias",
     "site_header": "Janela de Ideias",
