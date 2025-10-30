@@ -47,7 +47,7 @@
         <div class="profile-container">
 
             <section class="startup-banner">
-                <img src="{% if startup.logo_startup %}{{ startup.logo_startup.url }}{% else %}{% static 'images/logo-startup.png' %}{% endif %}" 
+                <img src="{% if startup.logo_startup %}{{ startup.logo_startup.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" 
                      alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
                 <div class="banner-content">
                     <h1>{{ startup.nome_startup }}</h1>
@@ -75,7 +75,7 @@
                                 {% for membro in equipe %}
                                     <div class="team-member">
                                         
-                                        <img src="{{ membro.foto_membro.url }}" alt="Foto de {{ membro.nome_membro }}">
+                                        <img src="{% if membro.foto_membro %}{{ membro.foto_membro.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" alt="Foto de {{ membro.nome_membro }}">
                                         
                                         <div class="member-details">
                                             <strong>{{ membro.nome_membro }}</strong>
@@ -174,6 +174,12 @@
                             <a href="{{ redes.twitter }}">
                                 <i class="bi bi-twitter"></i>
                             </a>
+                            {% endif %}
+
+                            {% if redes.facebook %}
+                                <a href="{{ redes.facebook }}">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
                             {% endif %}
                             
                         </div>

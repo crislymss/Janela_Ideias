@@ -112,7 +112,7 @@
                         <div class="card-header">
                             <div class="startup-icon">
                                 {% if startup.logo_startup %}
-                                    <img src="{{ startup.logo_startup.url }}" alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
+                                    <img src="{% if startup.logo_startup%}{{ startup.logo_startup.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
                                 {% else %}
                                     <div class="icon-bg">
                                         <i class="bi bi-rocket-takeoff-fill"></i>
