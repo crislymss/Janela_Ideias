@@ -95,38 +95,44 @@ body.perfil-page {
     color: var(--text-color-soft);
 }
 
+/* 1. team-grid: OK, mantém o layout de duas colunas */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
+/* 2. team-member: Agora usa flexbox para alinhar a Imagem e os Detalhes lado a lado */
 .team-member {
-    display: flex;
-    align-items: center;
+    display: flex; /* CHAVE: Usa flexbox */
+    align-items: center; /* Alinha Imagem e Detalhes verticalmente ao centro */
     background-color: #f8f9fa;
     padding: 12px;
-   
     border-radius: 8px;
-    
 }
 
 .team-member img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 15px; /* Espaço entre a imagem e o texto */
+    /* Remove 'display: flex' e 'align-items: center' que estavam aqui e eram desnecessários */
 }
 
-.team-member strong {
+/* 3. Novo bloco para envolver Nome e Função */
+.member-details {
+    /* Faz com que o nome e a função fiquem em cima e embaixo (layout de coluna) */
     display: flex;
-    align-items: center;
+    flex-direction: column;
+}
+
+.member-details strong {
     font-weight: 600;
     font-size: 15px;
     color: var(--text-color-dark);
 }
 
-.team-member span {
+.member-details span {
     font-size: 13px;
     color: var(--text-color-soft);
 }

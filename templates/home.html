@@ -107,6 +107,7 @@
         </div>
     </section>
 
+    {% for noticia in noticias %}
         <section class="news-section">
           <div class="news">
             <div class="header">
@@ -118,7 +119,7 @@
               <button id="prevBtn" class="nav-btn"><i class="bi bi-chevron-left"></i></button>
               <div class="carousel-container">
                 <div class="carousel-track">
-                  {% for noticia in noticias %}
+                  
                   <div class="card">
                     {% if noticia.imagem %}
                       <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
@@ -142,12 +143,12 @@
                     </div>
                     
                   </div>
-          {% endfor %}
+            </div>
         </div>
-    </div>
-    <button id="nextBtn" class="nav-btn"><i class="bi bi-chevron-right"></i></button>
-  </div>
-</section>
+        <button id="nextBtn" class="nav-btn"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </section>
+  {% endfor %}
 
  <section id="como-participar">
   <div class="container-como">

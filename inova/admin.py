@@ -97,31 +97,36 @@ class StartupAdmin(admin.ModelAdmin):
     
     """
     Define a configuração da administração para o modelo Startup.
-
-    Atributos:
-        list_display (tuple): Campos a serem exibidos na lista de startups.
-        inlines (list): Classes inline para permitir a edição de modelos
-            relacionados (Contato, RedesSociais, MembroEquipe) na mesma página.
+    
+    Adiciona o campo 'administrador' na listagem e o preenche automaticamente.
     """
     
-    # Lista de campos que aparecem na listagem de todas as startups
-    list_display = ('nome_startup', 'setor_atuacao', 'ano_fundacao', 'logo_startup')
+    # 1. Adiciona 'administrador' na listagem
+    # Supondo que você queira o 'administrador' no final
+    list_display = ('nome_startup', 'setor_atuacao', 'ano_fundacao', 'logo_startup', 'administrador')
     
-    # Adicione os inlines à página de edição da Startup
     inlines = [
         ContatoInline,
         RedesSociaisInline,
         MembroEquipeInline,
     ]
+    
+    # 2. Esconde o campo 'administrador' do formulário
+    exclude = ('administrador',)
+
+    # 3. Lógica para salvar o administrador automaticamente
+    def save_model(self, request, obj, form, change):
+        """
+        Atribui o usuário logado ao campo 'administrador' ao criar uma Startup.
+        """
+        if not obj.pk:
+            # Atribui o usuário logado como o administrador da Startup
+            obj.administrador = request.user
+        
+        super().save_model(request, obj, form, change)
 
 # Registre o modelo Startup usando a classe de admin personalizada
 admin.site.register(Startup, StartupAdmin)
-
-# Você pode registrar os outros modelos se quiser acessá-los individualmente também,
-# mas não é necessário se você só for editá-los através da página da Startup.
-# admin.site.register(MembroEquipe)
-# admin.site.register(RedesSociais)
-# admin.site.register(Contato)
 
 
 @admin.register(Noticia)
@@ -141,6 +146,18 @@ class NoticiaAdmin(admin.ModelAdmin):
     list_filter = ('categoria', 'data_publicacao')
     search_fields = ('titulo', 'descricao')
     date_hierarchy = 'data_publicacao'
+    
+    exclude = ('administrador',)
+
+    # Este método continua responsável por atribuir o valor automaticamente
+    def save_model(self, request, obj, form, change):
+        """
+        Atribui o usuário logado ao campo 'administrador' ao criar uma notícia.
+        """
+        if not obj.pk:
+            obj.administrador = request.user
+        
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(LinkFormulario)
@@ -148,24 +165,37 @@ class LinkFormularioAdmin(admin.ModelAdmin):
     
     """
     Define a configuração da administração para o modelo LinkFormulario.
-
-    Atributos:
-        list_display (tuple): Campos exibidos na lista de links de formulários.
-        search_fields (tuple): Campos nos quais a busca será realizada.
-        date_hierarchy (str): Adiciona uma navegação hierárquica por data.
-        readonly_fields (tuple): Campos que não podem ser editados.
+    
+    Adiciona o campo 'administrador' na listagem e o preenche automaticamente.
     """
     
-    list_display = ('link', 'data')
+    # 1. Adiciona 'administrador' na listagem
+    list_display = ('link', 'data', 'administrador')
     search_fields = ('link',)
     date_hierarchy = 'data'
-    readonly_fields = ('data',)
+    # 2. Mantém 'data' como readonly e garante que 'administrador' também será
+    readonly_fields = ('data',) # Não escondemos o administrador, deixamos ele readonly
+
+    # Excluímos o administrador do formulário para evitar a edição manual
+    exclude = ('administrador',)
     
     fieldsets = (
         (None, {
-            'fields': ('link',)
+            # Se for um campo de link, não precisa da vírgula final
+            'fields': ('link',) 
         }),
     )
+    
+    # 3. Lógica para salvar o administrador automaticamente
+    def save_model(self, request, obj, form, change):
+        """
+        Atribui o usuário logado ao campo 'administrador' ao criar um LinkFormulario.
+        """
+        if not obj.pk:
+            # Atribui o usuário logado como o administrador do LinkFormulario
+            obj.administrador = request.user
+        
+        super().save_model(request, obj, form, change)
 
 class CustomAdminSite(AdminSite):
     

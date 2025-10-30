@@ -41,6 +41,15 @@ class Startup(models.Model):
     logo_startup = models.ImageField(upload_to='logos_startups/', blank=True, null=True)
     data_criacao = models.DateTimeField(default=timezone.now, verbose_name="Data de Criação")
     
+    administrador = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,  # Se o usuário for deletado, o campo fica nulo
+        null=True,
+        blank=True,
+        related_name='startups_criadas', # Use um related_name único
+        verbose_name="Administrador"
+    )
+    
     def __str__(self):
         
         """Retorna o nome da startup como sua representação em string."""
@@ -214,6 +223,15 @@ class LinkFormulario(models.Model):
     
     link = models.URLField("Link do Formulário", max_length=500)
     data = models.DateTimeField("Data de Atualização", auto_now=True)
+    
+    administrador = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='links_cadastrados', # Use um related_name único
+        verbose_name="Administrador"
+    )
     
     class Meta:
         

@@ -69,20 +69,20 @@
 
                     {% if equipe %} 
                         <section class="card" id="equipe">
-                            <h2>Equipe</h2>
-                            <div class="team-grid">
-                                {% for membro in equipe %}
-                                <div class="team-member">
-                                    <img src="{% if membro.foto %}{{ membro.foto.url }}{% else %}{% static 'images/foto-equipe.png' %}{% endif %}" 
-                                         alt="Foto de {{ membro.nome_membro }}">
-                                    <div>
-                                        <strong>{{ membro.nome_membro }}</strong>
-                                        <span>{{ membro.funcao_membro }}</span>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </section>
+                            <h2>Equipe</h2>
+                            
+                            <div class="team-grid">
+                                {% for membro in equipe %}
+                                    <div class="team-member">
+                                        
+                                        <img src="{{ membro.foto_membro.url }}" alt="Foto de {{ membro.nome_membro }}">
+                                        
+                                        <div class="member-details">
+                                            <strong>{{ membro.nome_membro }}</strong>
+                                            <span>{{ membro.funcao_membro }}</span>
+                                        </div>
+                                    </div> {% endfor %}
+                            </div> </section>
                     {% endif %}
                 </div>
 
