@@ -20,9 +20,35 @@ from django.db.models.functions import TruncMonth
 from inova.models import LinkFormulario
 
 class CustomAdminSite(AdminSite):
+    
+    """
+    Personaliza o site de administração do Django.
+    
+    Esta classe estende o AdminSite padrão para adicionar configurações customizadas
+    ao painel administrativo, incluindo a injeção de links de formulários no contexto.
+    
+    Atributos:
+        site_header (str): Título exibido no cabeçalho do painel administrativo.
+    """
+    
     site_header = "Janela de Ideias"
 
     def each_context(self, request):
+        
+        """
+        Adiciona dados personalizados ao contexto de cada página do admin.
+        
+        Este método é chamado em cada requisição ao painel administrativo e
+        adiciona o link do formulário mais recente ao contexto, tornando-o
+        disponível em todos os templates do admin.
+        
+        Args:
+            request (HttpRequest): O objeto da requisição HTTP.
+        
+        Returns:
+            dict: Dicionário de contexto atualizado com o link do formulário.
+        """
+        
         context = super().each_context(request)
 
         # Busca o link mais recente cadastrado
@@ -142,7 +168,37 @@ class LinkFormularioAdmin(admin.ModelAdmin):
     )
 
 class CustomAdminSite(AdminSite):
+    
+    """
+    Site de administração customizado com estatísticas e gráficos.
+    
+    Esta versão estendida do AdminSite personaliza a página inicial do painel
+    administrativo para exibir estatísticas sobre startups, incluindo totais,
+    recentes, e gráficos de distribuição mensal.
+    """
+    
     def index(self, request, extra_context=None):
+        
+        """
+        Renderiza a página inicial do admin com estatísticas personalizadas.
+        
+        Este método sobrescreve o index padrão do Django Admin para adicionar
+        informações estatísticas sobre startups ao contexto da página inicial,
+        incluindo:
+            - Total de startups cadastradas
+            - Número de startups recentes (últimos 7 dias)
+            - Lista das 3 startups mais recentes
+            - Dados para gráfico de startups por mês
+            - Data da última atualização do formulário
+        
+        Args:
+            request (HttpRequest): O objeto da requisição HTTP.
+            extra_context (dict, optional): Contexto adicional para o template.
+        
+        Returns:
+            HttpResponse: A página inicial do admin renderizada com o contexto expandido.
+        """
+        
         # Total de Startups
         total_startups = Startup.objects.count()
         
