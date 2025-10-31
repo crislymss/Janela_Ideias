@@ -122,9 +122,9 @@
                   
                   <div class="card">
                     {% if noticia.imagem %}
-                      <img src="{% if noticia.imagem %}{{ noticia.imagem.url }}{% else %}{% static 'images/sem_foto.png' %}{% endif %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
                     {% else %}
-                      <img src="{% static 'images/default-news.jpg' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      <img src="{% static 'images/sem_foto.png' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
                     {% endif %}
                     <div class="card-content">
                       <span class="tag" style="font-size: 0.7rem !important;">{{ noticia.get_categoria_display }}</span>
