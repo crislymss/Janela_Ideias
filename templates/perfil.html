@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
-    <link rel="icon" href="janeladeideias{% static 'images/janela.png' %}" type="image/png">
+    <link rel="icon" href="images/janela.png" type="image/png">
 
     <title>{{ startup.nome_startup }}</title>
 </head>
@@ -37,9 +37,9 @@
       </div>
 
       <nav id="nav-menu">
-        <a href="{% url 'home' %}">Início</a>
-        <a href="{% url 'home' %}#sobre">Sobre</a>
-        <a href="{% url 'catalogo' %}">Catálogo</a>
+        <a href="janeladeideias{% url 'home' %}">Início</a>
+        <a href="janeladeideias{% url 'home' %}#sobre">Sobre</a>
+        <a href="janeladeideias{% url 'catalogo' %}">Catálogo</a>
       </nav>
     </header>
 
@@ -196,7 +196,7 @@
         <div class="footer-content">
             <div class="footer-section footer-logo">
             <div class="logo-footer">
-                <img src="janeladeideias{% static "../static/images/logo-linear.png" %}" alt="Logo Janela de Ideias">
+                <img src="../static/images/logo-linear.png" alt="Logo Janela de Ideias">
             </div>
             <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
@@ -204,9 +204,9 @@
             <div class="footer-section">
             <h3>Navegação</h3>
             <ul>
-                <li><a href="{% url 'home' %}">Início</a></li>
-                <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
-                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="janeladeideias{% url 'home' %}">Início</a></li>
+                <li><a href="janeladeideias{% url 'home' %}#sobre">Sobre</a></li>
+                <li><a href="janeladeideias{% url 'catalogo' %}">Catálogo</a></li>
             </ul>
             </div>
 
