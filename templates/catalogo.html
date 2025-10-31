@@ -12,9 +12,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="janeladeideias{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="janeladeideias{% static 'css/catalogo.css' %}">
-    <link rel="stylesheet" href="janeladeideias{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
     <link rel="icon" href="../static/images/janela.png" type="image/png">
 
@@ -42,7 +42,7 @@
 
     <main class="catalogo-main">
         <!-- Hero Section -->
-        <section class="hero-catalogo" style=" background-image: url(janeladeideias{% static "../static/images/texture2.png" %}), linear-gradient(to bottom right, #dcfa7cff, #6fb5fbff);">
+        <section class="hero-catalogo" style=" background-image: url({% static "../static/images/texture2.png" %}), linear-gradient(to bottom right, #dcfa7cff, #6fb5fbff);">
             <div class="container">
                 <h1 class="titulo-principal">Catálogo de Startups</h1>
                 
@@ -145,7 +145,7 @@
         <div class="footer-content">
             <div class="footer-section footer-logo">
             <div class="logo-footer">
-                <img src="janeladeideias{% static "../static/images/logo-linear.png" %}" alt="Logo Janela de Ideias">
+                <img src="{% static "../static/images/logo-linear.png" %}" alt="Logo Janela de Ideias">
             </div>
             <p>Uma ação da Pró-Reitoria de Pesquisa e Inovação PROPESQI/UFPI</p>
             </div>
@@ -186,6 +186,6 @@
         </div>
     </footer>
 
-    <script src="janeladeideias{% static "../static/js/catalogo.js" %}"></script>
+    <script src="{% static "../static/js/catalogo.js" %}"></script>
 </body>
 </html>
