@@ -107,7 +107,8 @@
         </div>
     </section>
 
-    {% for noticia in noticias %}
+    {% raw %}
+      {% if noticias %}
         <section class="news-section">
           <div class="news">
             <div class="header">
@@ -120,35 +121,36 @@
               <div class="carousel-container">
                 <div class="carousel-track">
                   
-                  <div class="card">
-                    {% if noticia.imagem %}
-                      <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
-                    {% else %}
-                      <img src="{% static 'images/sem_foto.png' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
-                    {% endif %}
-                    <div class="card-content">
-                      <span class="tag" style="font-size: 0.7rem !important;">{{ noticia.get_categoria_display }}</span>
-                      <h3 class="card-title" style="font-size: 0.9rem !important;">{{ noticia.titulo|truncatechars:60 }}</h3>
-                      <p class="card-description" style="font-size: 0.75rem !important;">{{ noticia.descricao|truncatechars:120 }}</p>
-                      
-                      <div class="card-footer" style="font-size: 0.7rem !important;">
-                        <span class="date" style="font-size: 0.7rem !important;">
-                            <i class="bi bi-calendar"></i>
-                            <span class="date-text" style="font-size: 0.7rem !important;">{{ noticia.data_publicacao|date:"d \d\e F, Y" }}</span>
-                        </span>
-                        {% if noticia.link %}
-                        <a href="{{ noticia.link }}" target="_blank" style="font-size: 0.7rem !important;">Ler mais &rarr;</a>
-                        {% endif %}
+                  {% for noticia in noticias %}
+                    <div class="card">
+                      {% if noticia.imagem %}
+                        <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      {% else %}
+                        <img src="{% static 'images/sem_foto.png' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      {% endif %}
+                      <div class="card-content">
+                        <span class="tag" style="font-size: 0.7rem !important;">{{ noticia.get_categoria_display }}</span>
+                        <h3 class="card-title" style="font-size: 0.9rem !important;">{{ noticia.titulo|truncatechars:60 }}</h3>
+                        <p class="card-description" style="font-size: 0.75rem !important;">{{ noticia.descricao|truncatechars:120 }}</p>
+                        
+                        <div class="card-footer" style="font-size: 0.7rem !important;">
+                          <span class="date" style="font-size: 0.7rem !important;">
+                              <i class="bi bi-calendar"></i>
+                              <span class="date-text" style="font-size: 0.7rem !important;">{{ noticia.data_publicacao|date:"d \d\e F, Y" }}</span>
+                          </span>
+                          {% if noticia.link %}
+                          <a href="{{ noticia.link }}" target="_blank" style="font-size: 0.7rem !important;">Ler mais &rarr;</a>
+                          {% endif %}
+                        </div>
                       </div>
                     </div>
-                    
-                  </div>
+                  {% endfor %} </div>
+              </div>
+              <button id="nextBtn" class="nav-btn"><i class="bi bi-chevron-right"></i></button>
             </div>
-        </div>
-        <button id="nextBtn" class="nav-btn"><i class="bi bi-chevron-right"></i></button>
-      </div>
-    </section>
-  {% endfor %}
+          </div>
+        </section>
+      {% endif %} {% endraw %}
 
  <section id="como-participar">
   <div class="container-como">
