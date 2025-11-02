@@ -222,7 +222,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/janeladeideias/media/'
 
 
 # DEBUG
