@@ -155,6 +155,13 @@ DATABASES = {
     }
 }
 
+# corrção de domininio no deploy
+# Informa ao Django para confiar no cabeçalho 'X-Forwarded-Host' vindo do proxy (Apache)
+USE_X_FORWARDED_HOST = True
+
+# Esta é a linha mais importante:
+# Define o prefixo do caminho onde a aplicação está sendo servida.
+FORCE_SCRIPT_NAME = "/janeladeideias"
 
 
 # Password validation
