@@ -75,7 +75,7 @@
                                 {% for membro in equipe %}
                                     <div class="team-member">
                                         
-                                        <img src="{% if membro.foto_membro %}/janeladeideias{{ membro.foto_membro.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" alt="Foto de {{ membro.nome_membro }}">
+                                        <img src="{% if membro.foto_membro %}{{ membro.foto_membro.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" alt="Foto de {{ membro.nome_membro }}">
                                         
                                         <div class="member-details">
                                             <strong>{{ membro.nome_membro }}</strong>
