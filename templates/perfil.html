@@ -27,7 +27,7 @@
 <body class="perfil-page">
     <header>
       <div class="logo">
-        <img src="janeladeideias{% static 'images/logo.png' %}" alt="Logo Janela de Ideias">
+        <img src="{% static 'images/logo.png' %}" alt="Logo Janela de Ideias">
       </div>
 
       <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
@@ -37,9 +37,9 @@
       </div>
 
       <nav id="nav-menu">
-        <a href="janeladeideias{% url 'home' %}">Início</a>
-        <a href="janeladeideias{% url 'home' %}#sobre">Sobre</a>
-        <a href="janeladeideias{% url 'catalogo' %}">Catálogo</a>
+        <a href="{% url 'home' %}">Início</a>
+        <a href="{% url 'home' %}#sobre">Sobre</a>
+        <a href="{% url 'catalogo' %}">Catálogo</a>
       </nav>
     </header>
 
@@ -47,7 +47,7 @@
         <div class="profile-container">
 
             <section class="startup-banner">
-                <img src="{% if startup.logo_startup %}janeladeideias{{ startup.logo_startup.url }}{% else %}janeladeideias{% static 'images/usuario.jpg' %}{% endif %}" 
+                <img src="{% if startup.logo_startup %}{{ startup.logo_startup.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" 
                      alt="Logo da {{ startup.nome_startup }}" class="startup-logo">
                 <div class="banner-content">
                     <h1>{{ startup.nome_startup }}</h1>
@@ -75,7 +75,7 @@
                                 {% for membro in equipe %}
                                     <div class="team-member">
                                         
-                                        <img src="{% if membro.foto_membro %}janeladeideias{{ membro.foto_membro.url }}{% else %}janeladeideias{% static 'images/usuario.jpg' %}{% endif %}" alt="Foto de {{ membro.nome_membro }}">
+                                        <img src="{% if membro.foto_membro %}{{ membro.foto_membro.url }}{% else %}{% static 'images/usuario.jpg' %}{% endif %}" alt="Foto de {{ membro.nome_membro }}">
                                         
                                         <div class="member-details">
                                             <strong>{{ membro.nome_membro }}</strong>
@@ -204,9 +204,9 @@
             <div class="footer-section">
             <h3>Navegação</h3>
             <ul>
-                <li><a href="janeladeideias{% url 'home' %}">Início</a></li>
-                <li><a href="janeladeideias{% url 'home' %}#sobre">Sobre</a></li>
-                <li><a href="janeladeideias{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'home' %}">Início</a></li>
+                <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
             </ul>
             </div>
 
@@ -233,11 +233,11 @@
 
         <div class="footer-bottom">
             <p>© 2025 PROPESQI-UFPI. Todos os direitos reservados.</p>
-            <a href="janeladeideias/admin/" class="footer-icon" title="Acessar o painel do admin"><i class="bi bi-person-circle"></i></a>
+            <a href="https://inovaufpi.ufpi.br/janeladeideias/admin/login/?next=/admin/" class="footer-icon" title="Acessar o painel do admin"><i class="bi bi-person-circle"></i></a>
         </div>
     </footer>
 
-    <script src="janeladeideias{% static 'js/catalogo.js' %}"></script>
+    <script src="{% static 'js/catalogo.js' %}"></script>
 </body>
 
 </html>

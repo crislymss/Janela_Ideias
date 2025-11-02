@@ -52,7 +52,7 @@
             <h1>JANELA DE IDEIAS</h1>
             <p>Descubra as startups mais inovadoras e seus projetos revolucionários. Conecte-se com o futuro da tecnologia e empreendedorismo.</p>
             <div class="buttons">
-                <a class="btn btn-primary" onclick="explorar()" href="janeladeideias{% url 'catalogo' %}">Explorar Startups <i class="bi bi-arrow-right"></i></a>
+                <a class="btn btn-primary" onclick="explorar()" href="{% url 'catalogo' %}">Explorar Startups <i class="bi bi-arrow-right"></i></a>
                 <a class="btn btn-secondary" onclick="participar()" href="#como-participar">Como Participar</a>
             </div>
         </div>
@@ -122,9 +122,9 @@
                   
                   <div class="card">
                     {% if noticia.imagem %}
-                      <img src="janeladeideias{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
                     {% else %}
-                      <img src="janeladeideias{% static 'images/sem_foto.png' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
+                      <img src="{% static 'images/sem_foto.png' %}" alt="{{ noticia.titulo }}" style="width: 100% !important; height: 200px !important; max-height: 200px !important; object-fit: cover !important; display: block !important;">
                     {% endif %}
                     <div class="card-content">
                       <span class="tag" style="font-size: 0.7rem !important;">{{ noticia.get_categoria_display }}</span>
