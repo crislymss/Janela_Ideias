@@ -224,6 +224,7 @@ CSRF_TRUSTED_ORIGINS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/janeladeideias/media/'
 
+LOGIN_REDIRECT_URL = '/janeladeideias/admin/'
 
 # DEBUG
 """LOGGING = {
